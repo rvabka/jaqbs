@@ -233,7 +233,6 @@ export default function BlogPage() {
               {categories.map(category => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className={
