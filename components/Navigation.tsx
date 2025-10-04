@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/Button';
 import { Truck, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +27,8 @@ export default function Navigation() {
   const navItems = [
     { href: '/', label: 'Strona główna' },
     { href: '/o-nas', label: 'O nas' },
-    { href: '#services', label: 'Współpraca' },
-    { href: '#solutions', label: 'Wycena' },
+    { href: '/dla-przewoznika', label: 'Dla przewoźnika' },
+    { href: '/wycena', label: 'Wycena' },
     { href: '/kariera', label: 'Kariera' },
     { href: '/kontakt', label: 'Kontakt' },
     { href: '/blog', label: 'Blog' }
@@ -49,7 +50,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center space-x-8">
               <div className="flex items-center space-x-8 glass rounded-full px-6 py-3 z-50">
                 {navItems.map(item => (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
                     className={`relative font-medium transition-all duration-300 hover:text-brand-red-800 ${
@@ -62,7 +63,7 @@ export default function Navigation() {
                     {pathname === item.href && (
                       <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-red-700 to-brand-blue-700 rounded-full"></div>
                     )}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

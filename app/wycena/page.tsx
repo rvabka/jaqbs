@@ -1,429 +1,432 @@
 'use client';
 
 import { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/Card';
+import {
+  Truck,
+  MapPin,
+  Package,
+  Phone,
+  User,
+  CheckCircle2,
+  Clock,
+  Shield,
+  TrendingUp
+} from 'lucide-react';
 
-export default function Wycena() {
-  const [step, setStep] = useState(1);
+export default function WycenaPage() {
   const [formData, setFormData] = useState({
-    projectType: '',
-    features: [] as string[],
-    timeline: '',
-    budget: '',
-    name: '',
-    email: '',
+    firstName: '',
+    lastName: '',
+    company: '',
     phone: '',
-    companyName: '',
-    message: ''
+    email: '',
+    loadingPostalCode: '',
+    loadingDate: '',
+    unloadingPostalCode: '',
+    unloadingDate: '',
+    totalWeight: '',
+    packageCount: '',
+    packageType: '',
+    packageDimensions: '',
+    additionalInfo: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    if (checked) {
-      setFormData(prev => ({ ...prev, features: [...prev.features, value] }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        features: prev.features.filter(item => item !== value)
-      }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // W prawdziwej implementacji tutaj byłoby wysłanie danych do API
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Symulacja opóźnienia sieci
-
-      setSubmitSuccess(true);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        company: '',
+        phone: '',
+        email: '',
+        loadingPostalCode: '',
+        loadingDate: '',
+        unloadingPostalCode: '',
+        unloadingDate: '',
+        totalWeight: '',
+        packageCount: '',
+        packageType: '',
+        packageDimensions: '',
+        additionalInfo: ''
+      });
+    }, 3000);
   };
 
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const benefits = [
+    {
+      icon: Clock,
+      title: 'Szybka wycena',
+      description: 'Odpowiedź w ciągu 24 godzin'
+    },
+    {
+      icon: Shield,
+      title: 'Bezpłatna wycena',
+      description: 'Bez żadnych zobowiązań'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Najlepsze ceny',
+      description: 'Konkurencyjne stawki rynkowe'
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Profesjonalna obsługa',
+      description: 'Doświadczony zespół specjalistów'
+    }
+  ];
 
   return (
-    <div className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-10">
-        Darmowa wycena projektu
-      </h1>
+    <div className="min-h-screen bg-gray-50">
+      <Navigation />
 
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        {!submitSuccess ? (
-          <>
-            {/* Progress bar */}
-            <div className="mb-10">
-              <div className="flex justify-between mb-2">
-                <span className="text-sm font-medium">Krok {step} z 3</span>
-                <span className="text-sm font-medium">
-                  {Math.round((step / 3) * 100)}%
-                </span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
-                <div
-                  className="bg-primary h-2.5 rounded-full transition-all duration-300"
-                  style={{ width: `${(step / 3) * 100}%` }}
-                ></div>
-              </div>
+      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center animate-fade-in-up">
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
+              <Truck className="h-5 w-5" />
+              <span>Bezpłatna wycena transportu</span>
             </div>
-
-            <form onSubmit={handleSubmit}>
-              {step === 1 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-6">
-                    Informacje o projekcie
-                  </h2>
-
-                  <div>
-                    <label
-                      htmlFor="projectType"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Rodzaj projektu *
-                    </label>
-                    <select
-                      id="projectType"
-                      name="projectType"
-                      value={formData.projectType}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="" disabled>
-                        Wybierz rodzaj projektu
-                      </option>
-                      <option value="website">Strona internetowa</option>
-                      <option value="e-commerce">Sklep internetowy</option>
-                      <option value="web-app">Aplikacja webowa</option>
-                      <option value="mobile-app">Aplikacja mobilna</option>
-                      <option value="other">Inne</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <p className="block text-sm font-medium text-gray-700 mb-2">
-                      Funkcjonalności (zaznacz wszystkie, które Cię interesują)
-                      *
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {[
-                        { id: 'responsive', label: 'Responsywny design' },
-                        {
-                          id: 'cms',
-                          label: 'System zarządzania treścią (CMS)'
-                        },
-                        { id: 'blog', label: 'Blog' },
-                        { id: 'seo', label: 'Optymalizacja SEO' },
-                        { id: 'analytics', label: 'Analityka i statystyki' },
-                        {
-                          id: 'social',
-                          label: 'Integracja z mediami społecznościowymi'
-                        },
-                        { id: 'payments', label: 'System płatności online' },
-                        {
-                          id: 'users',
-                          label: 'System rejestracji użytkowników'
-                        }
-                      ].map(feature => (
-                        <div key={feature.id} className="flex items-start">
-                          <input
-                            id={feature.id}
-                            name="features"
-                            type="checkbox"
-                            value={feature.id}
-                            checked={formData.features.includes(feature.id)}
-                            onChange={handleCheckboxChange}
-                            className="h-4 w-4 mt-1 text-primary focus:ring-primary border-gray-300 rounded"
-                          />
-                          <label
-                            htmlFor={feature.id}
-                            className="ml-2 text-sm text-gray-700"
-                          >
-                            {feature.label}
-                          </label>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="timeline"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Preferowany termin realizacji *
-                    </label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="" disabled>
-                        Wybierz termin
-                      </option>
-                      <option value="asap">Jak najszybciej</option>
-                      <option value="1month">W ciągu miesiąca</option>
-                      <option value="3months">W ciągu 3 miesięcy</option>
-                      <option value="6months">W ciągu pół roku</option>
-                      <option value="flexible">Elastyczny</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="budget"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Szacowany budżet *
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    >
-                      <option value="" disabled>
-                        Wybierz budżet
-                      </option>
-                      <option value="under5k">Poniżej 5 000 zł</option>
-                      <option value="5k-10k">5 000 - 10 000 zł</option>
-                      <option value="10k-20k">10 000 - 20 000 zł</option>
-                      <option value="20k-50k">20 000 - 50 000 zł</option>
-                      <option value="over50k">Powyżej 50 000 zł</option>
-                      <option value="notSure">Nie jestem pewien</option>
-                    </select>
-                  </div>
-
-                  <div className="pt-4">
-                    <button
-                      type="button"
-                      onClick={nextStep}
-                      disabled={
-                        !formData.projectType ||
-                        formData.features.length === 0 ||
-                        !formData.timeline ||
-                        !formData.budget
-                      }
-                      className="w-full py-3 px-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      Następny krok
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-6">Dane kontaktowe</h2>
-
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Imię i nazwisko *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Telefon
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="companyName"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Nazwa firmy (opcjonalnie)
-                    </label>
-                    <input
-                      type="text"
-                      id="companyName"
-                      name="companyName"
-                      value={formData.companyName}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-
-                  <div className="flex space-x-4 pt-4">
-                    <button
-                      type="button"
-                      onClick={prevStep}
-                      className="w-1/2 py-3 px-4 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      Wstecz
-                    </button>
-                    <button
-                      type="button"
-                      onClick={nextStep}
-                      disabled={!formData.name || !formData.email}
-                      className="w-1/2 py-3 px-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      Następny krok
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {step === 3 && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold mb-6">
-                    Dodatkowe informacje
-                  </h2>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Opis projektu (opcjonalnie)
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={6}
-                      placeholder="Opisz dokładniej swój projekt, cele, oczekiwania itp."
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    ></textarea>
-                  </div>
-
-                  <div className="pt-4">
-                    <div className="flex space-x-4">
-                      <button
-                        type="button"
-                        onClick={prevStep}
-                        className="w-1/2 py-3 px-4 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-                      >
-                        Wstecz
-                      </button>
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-1/2 py-3 px-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? 'Wysyłanie...' : 'Wyślij zapytanie'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </form>
-          </>
-        ) : (
-          <div className="text-center py-10">
-            <div className="bg-green-100 text-green-800 p-6 rounded-lg mb-6">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-16 h-16 mx-auto text-green-600 mb-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-
-              <h2 className="text-2xl font-bold mb-4">
-                Dziękujemy za przesłanie zapytania!
-              </h2>
-              <p className="mb-2">
-                Twoja wycena została przyjęta do realizacji.
-              </p>
-              <p>Skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
+              Wycena transportu
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
+              Sprawdź koszty transportu Twojej przesyłki. To nic nie kosztuje i
+              do niczego nie zobowiązuje!
+            </p>
+            <div className="mt-8 flex items-center justify-center space-x-6 text-lg">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-5 w-5" />
+                <a
+                  href="tel:570112512"
+                  className="hover:text-red-200 transition-colors"
+                >
+                  570 112 512
+                </a>
+              </div>
+              <span className="text-gray-400">lub</span>
+              <span className="text-red-200 font-semibold">
+                wypełnij formularz poniżej
+              </span>
             </div>
-
-            <button
-              onClick={() => {
-                setSubmitSuccess(false);
-                setStep(1);
-                setFormData({
-                  projectType: '',
-                  features: [],
-                  timeline: '',
-                  budget: '',
-                  name: '',
-                  email: '',
-                  phone: '',
-                  companyName: '',
-                  message: ''
-                });
-              }}
-              className="py-3 px-8 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Wyceń nowy projekt
-            </button>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-b from-slate-50/50 to-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {benefits.map((benefit, index) => (
+              <Card
+                key={index}
+                className="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <CardContent className="pt-8 pb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-50 via-red-100 to-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <benefit.icon className="h-8 w-8 text-red-800" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{benefit.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="shadow-2xl border-0 animate-fade-in-up">
+              <CardHeader className="bg-gradient-to-r from-red-50 to-blue-50 border-b border-gray-200">
+                <CardTitle className="text-3xl text-center">
+                  Formularz wyceny
+                </CardTitle>
+                <CardDescription className="text-center text-base mt-2">
+                  Wypełnij poniższe pola, a nasi specjaliści skontaktują się z
+                  Tobą w ciągu 24 godzin
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-8">
+                {isSubmitted ? (
+                  <div className="text-center py-12 animate-scale-in">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 className="h-12 w-12 text-green-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                      Dziękujemy za przesłanie formularza!
+                    </h3>
+                    <p className="text-gray-600 text-lg">
+                      Nasz zespół skontaktuje się z Tobą wkrótce.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <User className="h-5 w-5 mr-2 text-red-700" />
+                        Dane kontaktowe
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <Input
+                          label="Imię"
+                          placeholder="Jan"
+                          value={formData.firstName}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              firstName: e.target.value
+                            })
+                          }
+                          required
+                        />
+                        <Input
+                          label="Nazwisko"
+                          placeholder="Kowalski"
+                          value={formData.lastName}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              lastName: e.target.value
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4 mt-4">
+                        <Input
+                          label="Firma"
+                          placeholder="Nazwa firmy (opcjonalnie)"
+                          value={formData.company}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              company: e.target.value
+                            })
+                          }
+                        />
+                        <Input
+                          label="Numer telefonu"
+                          type="tel"
+                          placeholder="+48 123 456 789"
+                          value={formData.phone}
+                          onChange={e =>
+                            setFormData({ ...formData, phone: e.target.value })
+                          }
+                          required
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <Input
+                          label="Email"
+                          type="email"
+                          placeholder="email@example.com"
+                          value={formData.email}
+                          onChange={e =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-8">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <MapPin className="h-5 w-5 mr-2 text-red-700" />
+                        Trasa transportu
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <Input
+                          label="Kod pocztowy miejsca załadunku"
+                          placeholder="00-001"
+                          value={formData.loadingPostalCode}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              loadingPostalCode: e.target.value
+                            })
+                          }
+                          required
+                        />
+                        <Input
+                          label="Data załadunku"
+                          type="date"
+                          value={formData.loadingDate}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              loadingDate: e.target.value
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4 mt-4">
+                        <Input
+                          label="Kod pocztowy miejsca rozładunku"
+                          placeholder="00-001"
+                          value={formData.unloadingPostalCode}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              unloadingPostalCode: e.target.value
+                            })
+                          }
+                          required
+                        />
+                        <Input
+                          label="Data rozładunku"
+                          type="date"
+                          value={formData.unloadingDate}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              unloadingDate: e.target.value
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-8">
+                      <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <Package className="h-5 w-5 mr-2 text-red-700" />
+                        Szczegóły przesyłki
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <Input
+                          label="Waga całkowita (kg)"
+                          type="number"
+                          placeholder="1000"
+                          value={formData.totalWeight}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              totalWeight: e.target.value
+                            })
+                          }
+                          required
+                        />
+                        <Input
+                          label="Ilość opakowań"
+                          type="number"
+                          placeholder="10"
+                          value={formData.packageCount}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              packageCount: e.target.value
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4 mt-4">
+                        <Input
+                          label="Rodzaj opakowań"
+                          placeholder="np. palety, kartony, skrzynie"
+                          value={formData.packageType}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              packageType: e.target.value
+                            })
+                          }
+                          required
+                        />
+                        <Input
+                          label="Wymiary opakowań"
+                          placeholder="np. 120x80x100 cm"
+                          value={formData.packageDimensions}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              packageDimensions: e.target.value
+                            })
+                          }
+                          required
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <Textarea
+                          label="Dodatkowe informacje"
+                          placeholder="Specjalne wymagania, fix, direct, kilka miejsc rozładunku, ADR, winda, formaliści celne, itp."
+                          rows={5}
+                          value={formData.additionalInfo}
+                          onChange={e =>
+                            setFormData({
+                              ...formData,
+                              additionalInfo: e.target.value
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-200 pt-8">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full shadow-xl hover:shadow-2xl text-xl py-6"
+                      >
+                        Wyślij zapytanie o wycenę
+                      </Button>
+                      <p className="text-center text-gray-600 text-sm mt-4">
+                        Skontaktujemy się z Tobą w ciągu 24 godzin roboczych
+                      </p>
+                    </div>
+                  </form>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-gradient-to-br from-brand-red-700 via-brand-red-800 to-brand-blue-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            Wolisz porozmawiać z naszym ekspertem?
+          </h2>
+          <p className="text-xl mb-10 text-red-100 max-w-3xl mx-auto leading-relaxed">
+            Zadzwoń teraz i uzyskaj natychmiastową wycenę transportu
+          </p>
+          <a
+            href="tel:570112512"
+            className="inline-flex items-center space-x-3 bg-white text-brand-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-5 text-2xl font-bold"
+          >
+            <Phone className="h-7 w-7" />
+            <span>570 112 512</span>
+          </a>
+          <p className="mt-6 text-red-200">
+            Dostępni od poniedziałku do piątku, 8:00 - 18:00
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

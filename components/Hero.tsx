@@ -1,176 +1,261 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/Button';
-import { Play, Truck, ArrowRight, Globe, Shield, BusFront } from 'lucide-react';
+import {
+  PhoneCall,
+  FileText,
+  TrendingUp,
+  MapPin,
+  Clock,
+  Shield,
+  Facebook,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Truck,
+  Award,
+  Zap,
+  Building2,
+  CheckCircle2
+} from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
 
-  const stats = [
-    { icon: Globe, number: '50+', label: 'Countries' },
-    { icon: Truck, number: '10K+', label: 'Deliveries' },
-    { icon: Shield, number: '99.9%', label: 'Success Rate' }
+  const features = [
+    {
+      icon: TrendingUp,
+      text: 'Monitorowanie przesyłek w czasie rzeczywistego'
+    },
+    { icon: MapPin, text: 'Dostawy do 50+ krajów na całym świecie' },
+    { icon: Clock, text: 'Dostawa ekspresowa 24/7' },
+    { icon: Shield, text: '99.9% wskaźnik bezpieczeństwa przesyłek' }
+  ];
+
+  const socials = [
+    { icon: Facebook, href: '#', label: 'Facebook' },
+    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Instagram, href: '#', label: 'Instagram' }
+  ];
+
+  const deliverySteps = [
+    {
+      icon: Shield,
+      label: 'Bezpieczeństwo',
+      description: 'Ubezpieczenie każdej przesyłki'
+    },
+    { icon: Zap, label: 'Szybkość', description: 'Ekspresowa dostawa 24/7' },
+    {
+      icon: Award,
+      label: 'Jakość',
+      description: '99.9% zadowolonych klientów'
+    },
+    { icon: MapPin, label: 'Zasięg', description: '50+ krajów na świecie' }
+  ];
+
+  const advantages = [
+    { icon: CheckCircle2, text: 'Profesjonalna obsługa na każdym etapie' },
+    { icon: Shield, text: 'Pełne ubezpieczenie każdej przesyłki' },
+    { icon: Clock, text: 'Gwarancja terminowości dostaw' }
   ];
 
   useEffect(() => {
     setIsVisible(true);
+    const interval = setInterval(() => {
+      setActiveFeature(prev => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const progressInterval = setInterval(() => {
+      setProgress(prev => (prev >= 100 ? 0 : prev + 1));
+    }, 50);
+    return () => clearInterval(progressInterval);
   }, []);
-  return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 min-h-screen flex items-center overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-brand-blue-700/10 to-brand-red-700/10 rounded-full blur-3xl animate-float"
-          style={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-          }}
-        ></div>
-        <div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-brand-red-700/10 to-brand-blue-700/10 rounded-full blur-3xl animate-float"
-          style={{
-            transform: `translate(${-mousePosition.x * 0.01}px, ${-mousePosition.y * 0.01}px)`,
-            animationDelay: '2s'
-          }}
-        ></div>
 
-        {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-brand-red-700/20 rounded-full animate-float"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${4 + i}s`
-            }}
-          ></div>
-        ))}
+  useEffect(() => {
+    const stepInterval = setInterval(() => {
+      setCurrentStep(prev => (prev >= 3 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(stepInterval);
+  }, []);
+
+  return (
+    <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 min-h-screen flex mt-5 items-center overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl animate-float-glow"
+          style={{ animationDelay: '2s' }}
+        ></div>
+        <div
+          className="absolute top-1/3 right-1/3 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-bounce-glow"
+          style={{ animationDelay: '1s' }}
+        ></div>
+        <div
+          className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-brand-red-500/15 rounded-full blur-3xl animate-bounce-glow"
+          style={{ animationDelay: '3s' }}
+        ></div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center pt-20 relative z-10">
-        {/* Left Content */}
-        <div
-          className={`space-y-8 transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
-        >
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-brand-red-700/10 to-brand-blue-700/10 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 animate-pulse-glow">
-            <div className="w-2 h-2 bg-brand-red-700 rounded-full animate-pulse"></div>
-            <span>Trusted by 10,000+ businesses worldwide</span>
-          </div>
-
-          <div>
-            <h1 className="text-3xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-              <span className="inline-block animate-fade-in-up">
-                TRANSPORT KRAJOWY I MIĘDZYNARODOWY
-              </span>
-            </h1>
-          </div>
-
-          <p
-            className={`text-xl text-gray-600 leading-relaxed max-w-lg transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
-          >
-            Leverage our cutting-edge logistics solutions to streamline your
-            supply chain and expand your global reach with confidence.
-          </p>
-
-          {/* Stats */}
-          <div className="flex items-center space-x-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`text-center transform transition-all duration-700`}
-                style={{ animationDelay: `${0.5 + index * 0.2}s` }}
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-xl flex items-center justify-center mx-auto mb-2 hover:rotate-12 transition-transform duration-300">
-                  <stat.icon className="h-6 w-6 text-brand-red-800" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900">
-                  {stat.number}
-                </div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
+      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
-            className={`flex items-center space-x-4 transform transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
+            className={`space-y-8 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-brand-blue-700 to-brand-blue-800 hover:from-brand-blue-800 hover:to-brand-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-6 text-lg group"
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="flex items-center space-x-2 rounded-full px-6 py-6 border-2 hover:bg-gray-50 transition-all duration-300 group"
-            >
-              <Play className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              <span>Watch Video</span>
-            </Button>
-          </div>
-        </div>
+            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+              <Building2 className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">
+                Od 2010 roku w branży spedycyjnej
+              </span>
+            </div>
 
-        {/* Right Content - Truck Image */}
-        <div
-          className={`relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
-        >
-          <div className="bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-3xl p-8 transform rotate-2 shadow-2xl hover:rotate-1 transition-all duration-500 animate-float hover-glow">
-            <div className="bg-white rounded-2xl p-8 transform -rotate-2 shadow-inner">
-              <div className="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center relative overflow-hidden">
-                <Truck className="h-32 w-32 text-brand-red-800 drop-shadow-lg hover:scale-110 transition-transform duration-300" />
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]">
+              <span className="block mb-3 text-white">Twój Partner</span>
+              <span className="block gradient-text-h1 h-20">w Logistyce</span>
+            </h1>
 
-                {/* Moving elements */}
-                <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <div className="absolute bottom-4 left-4 w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-              </div>
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+              Profesjonalny transport krajowy i międzynarodowy z gwarancją
+              bezpieczeństwa i terminowości
+            </p>
 
-              <div className="mt-6 space-y-3">
-                <div className="h-3 bg-gradient-to-r from-gray-200 to-gray-100 rounded-full w-3/4 animate-pulse"></div>
-                <div
-                  className="h-3 bg-gradient-to-r from-gray-200 to-gray-100 rounded-full w-1/2 animate-pulse"
-                  style={{ animationDelay: '0.5s' }}
-                ></div>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <Link href={'/kontakt'} className="group relative px-8 py-4 bg-white text-brand-blue-900 rounded-full font-semibold text-lg shadow-lg hover:shadow-white/30 transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+                <PhoneCall className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                <span>Skontaktuj się z nami</span>
+              </Link>
+              <Link
+                href={'/wycena'}
+                className="group relative px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              >
+                <FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Poproś o wycenę</span>
+              </Link>
+            </div>
+
+            <div className="flex items-center space-x-4 pt-4">
+              <span className="text-sm text-gray-300">Obserwuj nas:</span>
+              <div className="flex items-center space-x-2">
+                {socials.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    aria-label={social.label}
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group border border-white/20"
+                  >
+                    <social.icon className="w-5 h-5 text-white transition-colors" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Decorative elements */}
-          <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-brand-red-700/20 to-brand-red-800/20 rounded-full blur-xl animate-pulse"></div>
           <div
-            className="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-brand-blue-700/20 to-brand-blue-800/20 rounded-full blur-lg animate-float"
-            style={{ animationDelay: '1s' }}
-          ></div>
-
-          {/* Floating icons */}
-          <div className="absolute top-10 -left-10 w-16 h-16 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg animate-float hover-lift">
-            <Truck className="h-8 w-8 text-brand-blue-700" />
-          </div>
-          <div
-            className="absolute -bottom-4 -left-8 w-14 h-14 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg animate-float hover-lift"
-            style={{ animationDelay: '2s' }}
+            className={`relative transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
-            <BusFront className="h-7 w-7 text-brand-red-700" />
+            <div className="relative glass backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl animate-tilt-3d">
+              <div className="mb-6 text-center">
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Twoje Korzyści
+                </h3>
+                <p className="text-white/80 text-sm">
+                  Dlaczego warto nam zaufać
+                </p>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-white/30">
+                    <Truck className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="text-center">
+                    <h4 className="text-xl font-bold text-white">
+                      Nowoczesna Flota
+                    </h4>
+                    <p className="text-red-500 text-sm">Ponad 100 pojazdów</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {deliverySteps.map((step, index) => {
+                  const status =
+                    index === currentStep
+                      ? 'active'
+                      : index < currentStep
+                        ? 'completed'
+                        : 'pending';
+                  return (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div
+                        className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                          status === 'active'
+                            ? 'bg-gradient-to-br from-red-500 to-red-700 text-white shadow-lg shadow-red-500/50 scale-110'
+                            : 'bg-white/10 backdrop-blur-sm border-2 border-blue-400/20'
+                        }`}
+                      >
+                        <step.icon className="w-6 h-6 transition-colors duration-500 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="mb-1">
+                          <span
+                            className={`font-semibold transition-all duration-500 ${
+                              status === 'active'
+                                ? 'text-red-500 text-lg font-bold'
+                                : 'text-blue-200'
+                            }`}
+                          >
+                            {step.label}
+                          </span>
+                        </div>
+                        <p
+                          className={`text-sm transition-colors duration-500 ${
+                            status === 'active'
+                              ? 'text-cyan-100'
+                              : 'text-blue-300/70'
+                          }`}
+                        >
+                          {step.description}
+                        </p>
+                        {status === 'active' && (
+                          <div className="h-1 bg-white/20 rounded-full overflow-hidden mt-2">
+                            <div
+                              className="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-300 shadow-[0_0_10px_rgba(248,113,113,0.8)]"
+                              style={{ width: `${progress}%` }}
+                            ></div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                  <div className="text-3xl font-bold text-white mb-1">10K+</div>
+                  <div className="text-xs text-white/70">Dostaw rocznie</div>
+                </div>
+                <div className="bg-gradient-to-br from-red-500/20 to-red-500/20 backdrop-blur-sm rounded-xl p-4 border border-red-400/30">
+                  <div className="text-3xl font-bold text-white mb-1">24/7</div>
+                  <div className="text-xs text-white">Wsparcie klienta</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

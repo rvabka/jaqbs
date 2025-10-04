@@ -7,23 +7,20 @@ import CheapestTransport from '@/components/CheapestTransport';
 import Features from '@/components/Features';
 import DriverOpportunity from '@/components/DriverOpportunity';
 import GlobalService from '@/components/GlobalService';
-import InstantRequest from '@/components/InstantRequest';
-import Footer from '@/components/Footer';
+import Faq from '@/components/Faq';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navigation />
       <Hero />
       <Partners />
       <Services />
-      <Solutions />
+      {/* <Solutions /> */}
       <CheapestTransport />
       <Features />
       <DriverOpportunity />
+      <Faq />
       <GlobalService />
-      <InstantRequest />
-      <Footer />
     </main>
   );
 }

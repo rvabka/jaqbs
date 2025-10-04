@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { Shield, Truck, Clock, Headphones } from 'lucide-react';
+import {
+  AnimatedSection,
+  StaggeredContainer,
+  StaggeredItem
+} from './ui/AnimatedSection';
 
 export default function Services() {
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const [isClient, setIsClient] = useState(false);
 
-  // Static positions for background elements to avoid hydration mismatch
   const backgroundElements = [
     { left: '10%', top: '20%', delay: '0s', duration: '4s' },
     { left: '80%', top: '15%', delay: '1s', duration: '5s' },
@@ -28,25 +31,6 @@ export default function Services() {
 
   useEffect(() => {
     setIsClient(true);
-
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute('data-index') || '0'
-            );
-            setVisibleItems(prev => [...prev, index]);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll('.service-item');
-    elements.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
   }, []);
 
   const services = [
@@ -84,103 +68,110 @@ export default function Services() {
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50/50 relative overflow-hidden">
-      {/* Animated background elements - only render on client */}
       {isClient && (
         <div className="absolute inset-0">
           {backgroundElements.map((element, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-brand-red-700/10 rounded-full animate-float"
+              className="absolute w-1 h-1 bg-brand-red-700/10 rounded-full animate-pulse"
               style={{
                 left: element.left,
                 top: element.top,
                 animationDelay: element.delay,
                 animationDuration: element.duration
               }}
-            ></div>
+            />
           ))}
         </div>
       )}
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20 animate-fade-in-up">
+        <AnimatedSection direction="fade" className="text-center mb-20">
           <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
             <div className="w-2 h-2 bg-brand-blue-700 rounded-full animate-pulse"></div>
             <span>Why Choose Us</span>
           </div>
-          <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight animate-slide-in-left">
-            Top-rated safest transport service so far
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-slide-in-right">
-            Industry-leading safety standards with 99.8% customer satisfaction
-            rate across 50+ countries.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <AnimatedSection direction="left" delay={0.2}>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Top-rated safest transport service so far
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection direction="right" delay={0.4}>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Industry-leading safety standards with 99.8% customer satisfaction
+              rate across 50+ countries.
+            </p>
+          </AnimatedSection>
+        </AnimatedSection>
+
+        <StaggeredContainer
+          staggerDelay={0.15}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {services.map((service, index) => (
-            <div
-              key={index}
-              data-index={index}
-              className={`service-item group bg-white rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-brand-red-100 hover:-translate-y-4 cursor-pointer relative overflow-hidden ${
-                visibleItems.includes(index) ? 'animate-bounce-in' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 200}ms` }}
-              onMouseEnter={() => setHoveredItem(index)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              {/* Background gradient on hover */}
+            <StaggeredItem key={index} direction="up" className="h-full">
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}
-              ></div>
-
-              <div className="relative z-10">
+                className="service-item group bg-white rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-700 border border-gray-100 hover:border-brand-red-100 hover:-translate-y-4 cursor-pointer relative overflow-hidden h-full"
+                onMouseEnter={() => setHoveredItem(index)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl`}
-                >
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
+                  className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}
+                />
 
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-brand-red-800 transition-colors duration-300">
-                  {service.title}
-                </h3>
-
-                <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
-                  {service.description}
-                </p>
-
-                {/* Animated progress bar */}
-                <div className="mt-6 h-1 bg-gray-100 rounded-full overflow-hidden">
+                <div className="relative z-10">
                   <div
-                    className={`h-full bg-gradient-to-r ${service.color} rounded-full transition-all duration-1000 ${
-                      hoveredItem === index ? 'w-full' : 'w-0'
-                    }`}
-                  ></div>
-                </div>
-              </div>
+                    className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-xl`}
+                  >
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
 
-              {/* Floating particles on hover - only render on client */}
-              {isClient && hoveredItem === index && (
-                <>
-                  {floatingParticles.map((particle, i) => (
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-brand-red-800 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
+                    {service.description}
+                  </p>
+
+                  {/* Animated progress bar */}
+                  <div className="mt-6 h-1 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      key={i}
-                      className="absolute w-1 h-1 bg-brand-red-700/30 rounded-full animate-float"
-                      style={{
-                        left: particle.left,
-                        top: particle.top,
-                        animationDelay: particle.delay
-                      }}
-                    ></div>
-                  ))}
-                </>
-              )}
-            </div>
+                      className={`h-full bg-gradient-to-r ${service.color} rounded-full transition-all duration-1000 ${
+                        hoveredItem === index ? 'w-full' : 'w-0'
+                      }`}
+                    />
+                  </div>
+                </div>
+
+                {isClient && hoveredItem === index && (
+                  <>
+                    {floatingParticles.map((particle, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-brand-red-700/30 rounded-full animate-pulse"
+                        style={{
+                          left: particle.left,
+                          top: particle.top,
+                          animationDelay: particle.delay
+                        }}
+                      />
+                    ))}
+                  </>
+                )}
+              </div>
+            </StaggeredItem>
           ))}
-        </div>
+        </StaggeredContainer>
 
         {/* Interactive counter */}
-        <div className="mt-20 text-center">
+        <AnimatedSection
+          direction="up"
+          delay={0.8}
+          className="mt-20 text-center"
+        >
           <div className="inline-flex items-center space-x-8 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-red-800 animate-pulse">
@@ -203,7 +194,7 @@ export default function Services() {
               <div className="text-sm text-gray-600">Countries</div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

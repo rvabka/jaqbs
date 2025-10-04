@@ -2,7 +2,11 @@
 
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
-import Navigation from '@/components/Navigation';
+import {
+  AnimatedSection,
+  StaggeredContainer,
+  StaggeredItem
+} from '@/components/ui/AnimatedSection';
 import {
   Building2,
   Users,
@@ -89,8 +93,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navigation />
-
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
@@ -98,38 +100,43 @@ export default function AboutPage() {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
               <Building2 className="h-5 w-5" />
               <span>Od 2010 roku w branży spedycyjnej</span>
             </div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-              O nas
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-              Stanowimy doskonale zgrany zespół młodych i dynamicznych ludzi,
-              nastawionych na długoterminową współpracę
-            </p>
-          </div>
+
+            <AnimatedSection direction="up" delay={0.2}>
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
+                O nas
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
+                Stanowimy doskonale zgrany zespół młodych i dynamicznych ludzi,
+                nastawionych na długoterminową współpracę
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
 
           {/* Stats */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-in-up"
-            style={{ animationDelay: '0.2s' }}
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
           >
             {stats.map((stat, index) => (
-              <Card
-                key={index}
-                className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift"
-              >
-                <CardContent className="p-6 text-center">
-                  <stat.icon className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">{stat.value}</div>
-                  <div className="text-sm text-gray-200">{stat.label}</div>
-                </CardContent>
-              </Card>
+              <StaggeredItem key={index} direction="up">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
+                  <CardContent className="p-6 text-center">
+                    <stat.icon className="h-10 w-10 mx-auto mb-3 text-white" />
+                    <div className="text-4xl font-bold mb-2">{stat.value}</div>
+                    <div className="text-sm text-gray-200">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredContainer>
         </div>
       </section>
 
@@ -139,7 +146,7 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="animate-slide-in-left">
+            <AnimatedSection direction="left">
               <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
                 <div className="w-2 h-2 bg-brand-red-700 rounded-full"></div>
                 <span>Nasza historia</span>
@@ -166,9 +173,9 @@ export default function AboutPage() {
                   świecie wirtualnym.
                 </p>
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="animate-slide-in-right">
+            <AnimatedSection direction="right">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-brand-red-700 to-brand-blue-700 rounded-3xl blur-2xl opacity-20"></div>
                 <img
@@ -177,7 +184,7 @@ export default function AboutPage() {
                   className="relative rounded-3xl shadow-2xl w-full hover-lift"
                 />
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -187,41 +194,48 @@ export default function AboutPage() {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
               <div className="w-2 h-2 bg-brand-blue-700 rounded-full"></div>
               <span>Nasze wartości</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Co nas wyróżnia
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-              Wszyscy posiadamy ekspercką wiedzę i długoletnie doświadczenie w
-              spedycji międzynarodowej
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Co nas wyróżnia
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                Wszyscy posiadamy ekspercką wiedzę i długoletnie doświadczenie w
+                spedycji międzynarodowej
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {values.map((value, index) => (
-              <Card
-                key={index}
-                className="group hover-lift animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <value.icon className="h-8 w-8 text-brand-red-800" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <StaggeredItem key={index} direction="up">
+                <Card className="group hover-lift h-full">
+                  <CardContent className="p-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <value.icon className="h-8 w-8 text-brand-red-800" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
+                      {value.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredContainer>
         </div>
       </section>
 
@@ -229,7 +243,7 @@ export default function AboutPage() {
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1 animate-slide-in-left">
+            <AnimatedSection direction="left" className="order-2 md:order-1">
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-brand-blue-700 to-brand-red-700 rounded-3xl blur-2xl opacity-20"></div>
                 <img
@@ -238,9 +252,9 @@ export default function AboutPage() {
                   className="relative rounded-3xl shadow-2xl w-full hover-lift"
                 />
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="order-1 md:order-2 animate-slide-in-right">
+            <AnimatedSection direction="right" className="order-1 md:order-2">
               <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
                 <Truck className="h-4 w-4" />
                 <span>Nasz tabor</span>
@@ -260,25 +274,34 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-brand-red-700 mb-2">
-                      8-10
-                    </div>
-                    <div className="text-sm text-gray-600">EPAL pojemność</div>
-                  </CardContent>
-                </Card>
-                <Card className="hover-lift">
-                  <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-brand-blue-700 mb-2">
-                      3.5T
-                    </div>
-                    <div className="text-sm text-gray-600">DMC pojazdu</div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+              <StaggeredContainer
+                staggerDelay={0.1}
+                className="grid grid-cols-2 gap-4 mt-8"
+              >
+                <StaggeredItem direction="up">
+                  <Card className="hover-lift">
+                    <CardContent className="p-6">
+                      <div className="text-3xl font-bold text-brand-red-700 mb-2">
+                        8-10
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        EPAL pojemność
+                      </div>
+                    </CardContent>
+                  </Card>
+                </StaggeredItem>
+                <StaggeredItem direction="up">
+                  <Card className="hover-lift">
+                    <CardContent className="p-6">
+                      <div className="text-3xl font-bold text-brand-blue-700 mb-2">
+                        3.5T
+                      </div>
+                      <div className="text-sm text-gray-600">DMC pojazdu</div>
+                    </CardContent>
+                  </Card>
+                </StaggeredItem>
+              </StaggeredContainer>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -290,66 +313,77 @@ export default function AboutPage() {
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-red-900/20 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
               <HeadphonesIcon className="h-5 w-5" />
               <span>Wsparcie</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Wspieramy Was
-            </h2>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-              Elementem, który wyróżnia nas spośród innych firm z branży
-              spedycyjnej jest wsparcie, które dajemy naszym klientom
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift animate-fade-in-up">
-              <CardContent className="p-8">
-                <Users className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-bold mb-4">
-                  Indywidualne podejście
-                </h3>
-                <p className="text-gray-200 leading-relaxed">
-                  Każdy klient otrzymuje dedykowanego opiekuna do kontaktu,
-                  który zapewnia wsparcie na każdym etapie realizacji projektu.
-                </p>
-              </CardContent>
-            </Card>
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Wspieramy Was
+              </h2>
+            </AnimatedSection>
 
-            <Card
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift animate-fade-in-up"
-              style={{ animationDelay: '0.1s' }}
-            >
-              <CardContent className="p-8">
-                <MapPin className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-bold mb-4">Monitoring GPS</h3>
-                <p className="text-gray-200 leading-relaxed">
-                  Dzięki ciągłemu monitoringowi aut w systemie GPS, nasi
-                  spedytorzy dbają, abyś i Ty dotrzymał swojej obietnicy.
-                </p>
-              </CardContent>
-            </Card>
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
+                Elementem, który wyróżnia nas spośród innych firm z branży
+                spedycyjnej jest wsparcie, które dajemy naszym klientom
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
 
-            <Card
-              className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift animate-fade-in-up"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <CardContent className="p-8">
-                <Clock className="h-12 w-12 mb-6 text-white" />
-                <h3 className="text-2xl font-bold mb-4">Terminowość</h3>
-                <p className="text-gray-200 leading-relaxed">
-                  Bardzo ważnym elementem budowania zaufania są szybkie i
-                  terminowe płatności. Jesteśmy stabilnym finansowo partnerem.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid md:grid-cols-3 gap-8 mb-12"
+          >
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
+                <CardContent className="p-8">
+                  <Users className="h-12 w-12 mb-6 text-white" />
+                  <h3 className="text-2xl font-bold mb-4">
+                    Indywidualne podejście
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed">
+                    Każdy klient otrzymuje dedykowanego opiekuna do kontaktu,
+                    który zapewnia wsparcie na każdym etapie realizacji
+                    projektu.
+                  </p>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
 
-          <div
-            className="text-center space-y-6 animate-fade-in-up"
-            style={{ animationDelay: '0.3s' }}
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
+                <CardContent className="p-8">
+                  <MapPin className="h-12 w-12 mb-6 text-white" />
+                  <h3 className="text-2xl font-bold mb-4">Monitoring GPS</h3>
+                  <p className="text-gray-200 leading-relaxed">
+                    Dzięki ciągłemu monitoringowi aut w systemie GPS, nasi
+                    spedytorzy dbają, abyś i Ty dotrzymał swojej obietnicy.
+                  </p>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
+                <CardContent className="p-8">
+                  <Clock className="h-12 w-12 mb-6 text-white" />
+                  <h3 className="text-2xl font-bold mb-4">Terminowość</h3>
+                  <p className="text-gray-200 leading-relaxed">
+                    Bardzo ważnym elementem budowania zaufania są szybkie i
+                    terminowe płatności. Jesteśmy stabilnym finansowo partnerem.
+                  </p>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+          </StaggeredContainer>
+
+          <AnimatedSection
+            direction="up"
+            delay={0.6}
+            className="text-center space-y-6"
           >
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Zawsze interesuje nas Twoja opinia. Jeśli chciałbyś podzielić się
@@ -365,7 +399,7 @@ export default function AboutPage() {
                 +48 570 112 512
               </Button>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -374,67 +408,76 @@ export default function AboutPage() {
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
               <MapPin className="h-4 w-4" />
               <span>Nasze lokalizacje</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Poznajmy się
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed">
-              Firma Jaqbs jest międzynarodowym dostawcą usług, posiadającym
-              biura oraz oddziały w 4 miastach Polski, świadczącym każdego dnia
-              usługi dla tysięcy klientów
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Poznajmy się
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed">
+                Firma Jaqbs jest międzynarodowym dostawcą usług, posiadającym
+                biura oraz oddziały w 4 miastach Polski, świadczącym każdego
+                dnia usługi dla tysięcy klientów
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          >
             {offices.map((office, index) => (
-              <Card
-                key={index}
-                className="group hover-lift animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`h-2 bg-gradient-to-r ${office.color}`}></div>
-                <CardContent className="p-6">
-                  <div className="text-sm font-medium text-gray-500 mb-2">
-                    {office.type}
-                  </div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
-                    {office.city}
-                  </h3>
-                  <p className="text-gray-600">{office.address}</p>
-                </CardContent>
-              </Card>
+              <StaggeredItem key={index} direction="up">
+                <Card className="group hover-lift overflow-hidden">
+                  <div className={`h-2 bg-gradient-to-r ${office.color}`}></div>
+                  <CardContent className="p-6">
+                    <div className="text-sm font-medium text-gray-500 mb-2">
+                      {office.type}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
+                      {office.city}
+                    </h3>
+                    <p className="text-gray-600">{office.address}</p>
+                  </CardContent>
+                </Card>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredContainer>
 
-          <Card className="bg-gradient-to-br from-gray-50 to-white border-2 animate-fade-in-up">
-            <CardContent className="p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-3xl font-bold mb-4">
-                    Globalny zasięg, lokalna obsługa
-                  </h3>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    Jaqbs posiada globalny zasięg, ale w codziennej pracy
-                    koncentruje się na tym, aby lokalnie być zawsze blisko
-                    potrzeb i oczekiwań swoich klientów. Wyróżniamy się na tle
-                    konkurencji wyznaczając trendy rynkowe w zakresie jakości
-                    obsługi Klienta oraz serwisu.
-                  </p>
+          <AnimatedSection direction="up" delay={0.6}>
+            <Card className="bg-gradient-to-br from-gray-50 to-white border-2">
+              <CardContent className="p-8 md:p-12">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h3 className="text-3xl font-bold mb-4">
+                      Globalny zasięg, lokalna obsługa
+                    </h3>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      Jaqbs posiada globalny zasięg, ale w codziennej pracy
+                      koncentruje się na tym, aby lokalnie być zawsze blisko
+                      potrzeb i oczekiwań swoich klientów. Wyróżniamy się na tle
+                      konkurencji wyznaczając trendy rynkowe w zakresie jakości
+                      obsługi Klienta oraz serwisu.
+                    </p>
+                  </div>
+                  <div className="relative">
+                    <img
+                      src="https://images.pexels.com/photos/27256005/pexels-photo-27256005.jpeg"
+                      alt="Mapa biur"
+                      className="rounded-2xl shadow-lg hover-lift"
+                    />
+                  </div>
                 </div>
-                <div className="relative">
-                  <img
-                    src="https://images.pexels.com/photos/27256005/pexels-photo-27256005.jpeg"
-                    alt="Mapa biur"
-                    className="rounded-2xl shadow-lg hover-lift"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -443,38 +486,45 @@ export default function AboutPage() {
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
               <FileText className="h-4 w-4" />
               <span>Dokumenty</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Dokumenty do pobrania
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-              Wszystkie niezbędne dokumenty i certyfikaty dostępne do pobrania
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Dokumenty do pobrania
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                Wszystkie niezbędne dokumenty i certyfikaty dostępne do pobrania
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid md:grid-cols-3 lg:grid-cols-5 gap-6"
+          >
             {documents.map((doc, index) => (
-              <Card
-                key={index}
-                className="group hover-lift cursor-pointer animate-bounce-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <doc.icon className="h-8 w-8 text-brand-red-800" />
-                  </div>
-                  <h3 className="font-semibold group-hover:text-brand-red-700 transition-colors">
-                    {doc.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-2">Pobierz PDF</p>
-                </CardContent>
-              </Card>
+              <StaggeredItem key={index} direction="up">
+                <Card className="group hover-lift cursor-pointer">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <doc.icon className="h-8 w-8 text-brand-red-800" />
+                    </div>
+                    <h3 className="font-semibold group-hover:text-brand-red-700 transition-colors">
+                      {doc.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 mt-2">Pobierz PDF</p>
+                  </CardContent>
+                </Card>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredContainer>
         </div>
       </section>
 
@@ -484,23 +534,34 @@ export default function AboutPage() {
         <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Gotowy na współpracę?
-          </h2>
-          <p className="text-xl text-gray-200 mb-12 text-balance leading-relaxed">
-            Skontaktuj się z nami już dziś i przekonaj się, dlaczego tysiące
-            klientów wybrało Jaqbs jako swojego partnera w transporcie
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-brand-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold">
-              Skontaktuj się z nami
-            </Button>
-            <Button className="border-2 border-white text-white hover:bg-white hover:text-brand-red-700 transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold bg-transparent">
-              Zobacz ofertę
-            </Button>
-          </div>
-        </div>
+        <AnimatedSection
+          direction="fade"
+          className="max-w-4xl mx-auto px-6 text-center relative z-10"
+        >
+          <AnimatedSection direction="up" delay={0.2}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+              Gotowy na współpracę?
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection direction="up" delay={0.4}>
+            <p className="text-xl text-gray-200 mb-12 text-balance leading-relaxed">
+              Skontaktuj się z nami już dziś i przekonaj się, dlaczego tysiące
+              klientów wybrało Jaqbs jako swojego partnera w transporcie
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection direction="up" delay={0.6}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="bg-white text-brand-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold">
+                Skontaktuj się z nami
+              </Button>
+              <Button className="border-2 border-white text-white hover:bg-white hover:text-brand-red-700 transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold bg-transparent">
+                Zobacz ofertę
+              </Button>
+            </div>
+          </AnimatedSection>
+        </AnimatedSection>
       </section>
     </div>
   );

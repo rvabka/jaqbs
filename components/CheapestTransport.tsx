@@ -1,5 +1,6 @@
 import { Package } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { AnimatedSection, StaggeredItem } from './ui/AnimatedSection';
 
 export default function CheapestTransport() {
   return (
@@ -7,12 +8,24 @@ export default function CheapestTransport() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Image placeholder */}
-          <div className="relative">
-            <div className="aspect-square bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-2xl flex items-center justify-center">
-              <Package className="h-32 w-32 text-white opacity-80" />
-            </div>
+          <AnimatedSection className="relative">
+            <StaggeredItem
+              direction="up"
+              className="aspect-square bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-2xl flex items-center justify-center shadow-md"
+            >
+              <video
+                className="w-full h-full object-cover rounded-2xl"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src="/video.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </StaggeredItem>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red-700 rounded-2xl opacity-20"></div>
-          </div>
+          </AnimatedSection>
 
           {/* Right side - Content */}
           <div className="space-y-8">
@@ -45,12 +58,14 @@ export default function CheapestTransport() {
                 </span>
               </div>
             </div>
-            <Button
-              size="lg"
-              className="bg-brand-blue-700 hover:bg-brand-blue-800"
-            >
-              Get Quote Now
-            </Button>
+            <AnimatedSection direction="up" delay={0.3}>
+              <Button
+                size="lg"
+                className="bg-brand-blue-700 hover:bg-brand-blue-800"
+              >
+                Get Quote Now
+              </Button>
+            </AnimatedSection>
           </div>
         </div>
       </div>

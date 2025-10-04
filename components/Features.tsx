@@ -18,12 +18,17 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/Card';
+import {
+  AnimatedSection,
+  StaggeredContainer,
+  StaggeredItem
+} from './ui/AnimatedSection';
 
 export default function Features() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    setIsClient(true);
   }, []);
 
   const features = [
@@ -83,65 +88,76 @@ export default function Features() {
 
   return (
     <section className="py-24 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-100/30 to-blue-100/30 rounded-full blur-3xl animate-float"></div>
-        <div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-100/30 to-red-100/30 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: '3s' }}
-        ></div>
-      </div>
+      {isClient && (
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-100/30 to-blue-100/30 rounded-full blur-3xl animate-pulse"></div>
+          <div
+            className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-blue-100/30 to-red-100/30 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: '3s' }}
+          ></div>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div
-          className={`text-center mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-        >
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6 animate-bounce-in">
+        <AnimatedSection direction="fade" className="text-center mb-20">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
             <div className="w-2 h-2 bg-red-700 rounded-full animate-pulse"></div>
             <span>Powerful Features</span>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Features <span className="gradient-text">Included</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our comprehensive platform includes all the tools you need to manage
-            your logistics operations efficiently and scale your business.
-          </p>
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <AnimatedSection direction="up" delay={0.2}>
+            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Features <span className="gradient-text">Included</span>
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection direction="up" delay={0.4}>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Our comprehensive platform includes all the tools you need to
+              manage your logistics operations efficiently and scale your
+              business.
+            </p>
+          </AnimatedSection>
+        </AnimatedSection>
+
+        <StaggeredContainer
+          staggerDelay={0.1}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {features.map((feature, index) => (
-            <Card
-              key={index}
-              className={`group hover-lift border-0 shadow-lg hover:shadow-2xl bg-white/80 backdrop-blur-sm overflow-hidden relative animate-fade-in-up`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-              ></div>
-
-              <CardHeader className="relative z-10">
+            <StaggeredItem key={index} direction="up" className="h-full">
+              <Card className="group hover:shadow-2xl border-0 shadow-lg bg-white/80 backdrop-blur-sm overflow-hidden relative h-full transition-all duration-500 hover:-translate-y-2">
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-xl animate-pulse-glow`}
-                >
-                  <feature.icon className="h-8 w-8 text-white" />
-                </div>
-                <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-red-700 transition-colors duration-300">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="relative z-10">
-                <CardDescription className="text-sm leading-relaxed text-gray-600">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
+                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+                />
 
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </Card>
+                <CardHeader className="relative z-10">
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-xl`}
+                  >
+                    <feature.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-red-700 transition-colors duration-300">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+
+                <CardContent className="relative z-10">
+                  <CardDescription className="text-sm leading-relaxed text-gray-600">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </Card>
+            </StaggeredItem>
           ))}
-        </div>
+        </StaggeredContainer>
 
-        <div
-          className={`mt-20 text-center transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        <AnimatedSection
+          direction="up"
+          delay={0.8}
+          className="mt-20 text-center"
         >
           <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-red-700 to-blue-700 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
             <span className="text-lg font-semibold">Explore All Features</span>
@@ -159,7 +175,7 @@ export default function Features() {
               />
             </svg>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

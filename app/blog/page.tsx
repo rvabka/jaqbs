@@ -207,49 +207,104 @@ export default function BlogPage() {
               nastawionych na długoterminową współpracę
             </p>
           </div>
-
-          {/* Stats */}
         </div>
       </section>
 
-      {/* Search and Filter */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50/50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            {/* Search */}
-            <div className="relative flex-1 max-w-lg">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <Input
-                type="text"
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                className="pl-10 rounded-full border-2 py-6 text-lg focus:border-brand-red-700 transition-colors"
-              />
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 bg-red-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
+              <div className="w-2 h-2 bg-red-700 rounded-full animate-pulse"></div>
+              <span>Przeszukaj artykuły</span>
             </div>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Znajdź interesujące Cię treści
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Przeglądaj nasze artykuły według kategorii lub użyj wyszukiwarki
+            </p>
+          </div>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map(category => (
-                <Button
-                  key={category}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category)}
-                  className={
-                    selectedCategory === category
-                      ? 'bg-gradient-to-r from-brand-red-700 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 rounded-full shadow-lg'
-                      : 'hover:bg-brand-red-50 hover:text-brand-red-700 rounded-full transition-all duration-300'
-                  }
-                >
-                  {category}
-                </Button>
-              ))}
+          {/* Search and Filters */}
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
+            <div className="flex flex-col space-y-6">
+              {/* Search Input */}
+              <div className="flex justify-center">
+                <div className="relative w-full max-w-md">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Szukaj artykułów..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    className="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-full text-lg focus:border-red-500 focus:ring-4 focus:ring-red-100 transition-all duration-300 outline-none bg-gray-50 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              {/* Category Filters */}
+              <div className="flex flex-wrap gap-3 justify-center">
+                {categories.map(category => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                      selectedCategory === category
+                        ? 'bg-gradient-to-r from-red-700 to-red-800 text-white shadow-lg transform scale-105'
+                        : 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-700 hover:scale-105'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
+              {/* Results Counter */}
+              <div className="text-center">
+                <span className="inline-flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-2 text-sm text-gray-600">
+                  <span className="font-medium">
+                    {searchTerm || selectedCategory !== 'All'
+                      ? `Znaleziono ${
+                          articles.filter(article => {
+                            const matchesCategory =
+                              selectedCategory === 'All' ||
+                              article.category === selectedCategory;
+                            const matchesSearch =
+                              article.title
+                                .toLowerCase()
+                                .includes(searchTerm.toLowerCase()) ||
+                              article.excerpt
+                                .toLowerCase()
+                                .includes(searchTerm.toLowerCase());
+                            return matchesCategory && matchesSearch;
+                          }).length
+                        } artykułów`
+                      : `${articles.length} wszystkich artykułów`}
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
+
+          {/* Clear Filters */}
+          {(searchTerm || selectedCategory !== 'All') && (
+            <div className="text-center mb-8">
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('All');
+                }}
+                className="inline-flex items-center space-x-2 text-red-700 hover:text-red-800 font-medium transition-colors duration-300"
+              >
+                <X className="h-4 w-4" />
+                <span>Wyczyść filtry</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Featured Articles */}
       <section className="py-16 bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-100/20 to-blue-100/20 rounded-full blur-3xl animate-float"></div>
@@ -318,7 +373,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Articles Grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-12">
@@ -397,15 +451,13 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
       <section className="py-24 bg-gradient-to-br from-brand-red-700 via-brand-red-800 to-brand-blue-800 text-white relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
             Stay Updated with Industry News
           </h2>

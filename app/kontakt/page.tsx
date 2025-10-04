@@ -23,7 +23,6 @@ import {
   Headphones
 } from 'lucide-react';
 import GoogleMap from '@/components/GoogleMap';
-import Navigation from '@/components/Navigation';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -106,7 +105,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navigation />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
