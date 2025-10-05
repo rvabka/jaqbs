@@ -87,14 +87,14 @@ export default function Services() {
 
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection direction="fade" className="text-center mb-20">
-          <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
-            <div className="w-2 h-2 bg-brand-blue-700 rounded-full animate-pulse"></div>
-            <span>Why Choose Us</span>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
+            <div className="w-2 h-2 bg-red-700 rounded-full animate-pulse"></div>
+            <span>Powerful Features</span>
           </div>
 
-          <AnimatedSection direction="left" delay={0.2}>
-            <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              Top-rated safest transport service so far
+          <AnimatedSection direction="up" delay={0.2}>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Nasze największe <span className="gradient-text">osiągnięcia</span>
             </h2>
           </AnimatedSection>
 
@@ -136,7 +136,6 @@ export default function Services() {
                     {service.description}
                   </p>
 
-                  {/* Animated progress bar */}
                   <div className="mt-6 h-1 bg-gray-100 rounded-full overflow-hidden">
                     <div
                       className={`h-full bg-gradient-to-r ${service.color} rounded-full transition-all duration-1000 ${
@@ -165,36 +164,6 @@ export default function Services() {
             </StaggeredItem>
           ))}
         </StaggeredContainer>
-
-        {/* Interactive counter */}
-        <AnimatedSection
-          direction="up"
-          delay={0.8}
-          className="mt-20 text-center"
-        >
-          <div className="inline-flex items-center space-x-8 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-brand-red-800 animate-pulse">
-                99.8%
-              </div>
-              <div className="text-sm text-gray-600">Success Rate</div>
-            </div>
-            <div className="w-px h-12 bg-gray-200"></div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-brand-blue-800 animate-pulse">
-                24/7
-              </div>
-              <div className="text-sm text-gray-600">Support</div>
-            </div>
-            <div className="w-px h-12 bg-gray-200"></div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 animate-pulse">
-                50+
-              </div>
-              <div className="text-sm text-gray-600">Countries</div>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );

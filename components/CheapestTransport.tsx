@@ -7,7 +7,6 @@ export default function CheapestTransport() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Image placeholder */}
           <AnimatedSection className="relative">
             <StaggeredItem
               direction="up"
@@ -27,11 +26,12 @@ export default function CheapestTransport() {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red-700 rounded-2xl opacity-20"></div>
           </AnimatedSection>
 
-          {/* Right side - Content */}
           <div className="space-y-8">
-            <h2 className="text-4xl font-bold text-gray-900 leading-tight">
-              Explore the cheapest logistic transport
-            </h2>
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Poznaj nasze <span className="gradient-text">zasięgi</span>
+              </h2>
+            </AnimatedSection>
             <p className="text-xl text-gray-600 leading-relaxed">
               Discover cost-effective transport solutions that don't compromise
               on quality or reliability. Our optimized logistics network ensures
@@ -61,7 +61,7 @@ export default function CheapestTransport() {
             <AnimatedSection direction="up" delay={0.3}>
               <Button
                 size="lg"
-                className="bg-brand-blue-700 hover:bg-brand-blue-800"
+                variant='primary'
               >
                 Get Quote Now
               </Button>

@@ -106,8 +106,8 @@ export default function Features() {
           </div>
 
           <AnimatedSection direction="up" delay={0.2}>
-            <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Features <span className="gradient-text">Included</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Nasze <span className="gradient-text">osiągnięcia</span>
             </h2>
           </AnimatedSection>
 

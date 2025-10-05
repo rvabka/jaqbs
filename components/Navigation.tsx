@@ -41,12 +41,10 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 z-50">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <a href="/" className="flex items-center">
               <img src="/logo_small.png" className="h-8 w-auto" alt="Logo" />
             </a>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               <div className="flex items-center space-x-8 glass rounded-full px-6 py-3 z-50">
                 {navItems.map(item => (
@@ -68,25 +66,25 @@ export default function Navigation() {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/20"
+              className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/20"
             >
               <div className="relative w-6 h-6">
+                {/* Hamburger lines */}
                 <span
-                  className={`absolute top-1 left-0 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isOpen ? 'rotate-45 top-2.5' : ''
+                  className={`absolute left-0 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                    isOpen ? 'top-2.5 rotate-45 transform' : 'top-1.5 rotate-0'
                   }`}
                 ></span>
                 <span
-                  className={`absolute top-2.5 left-0 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isOpen ? 'opacity-0' : ''
+                  className={`absolute left-0 top-2.5 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                    isOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
                   }`}
                 ></span>
                 <span
-                  className={`absolute top-4 left-0 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
-                    isOpen ? '-rotate-45 top-2.5' : ''
+                  className={`absolute left-0 w-6 h-0.5 bg-gray-700 transition-all duration-300 ${
+                    isOpen ? 'top-2.5 -rotate-45 transform' : 'top-3.5 rotate-0'
                   }`}
                 ></span>
               </div>
@@ -95,7 +93,6 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
           isOpen
@@ -103,37 +100,31 @@ export default function Navigation() {
             : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/50 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         ></div>
 
-        {/* Menu Panel */}
         <div
           className={`absolute top-0 right-0 h-full w-80 max-w-[80vw] bg-white shadow-2xl transform transition-all duration-500 ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          {/* Menu Header */}
           <div className="p-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <Truck className="h-6 w-6 text-brand-red-800" />
-                <span className="text-lg font-bold gradient-text">
-                  Moving Mountain
-                </span>
+                <span className="text-lg font-bold gradient-text">Jaqbs</span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
               >
-                <X className="h-5 w-5 text-gray-600" />
+                <X className="h-6 w-6 text-gray-600" />
               </button>
             </div>
           </div>
 
-          {/* Menu Items */}
           <div className="p-6 space-y-4">
             {navItems.map((item, index) => (
               <a

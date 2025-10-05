@@ -8,8 +8,8 @@ export default function DriverOpportunity() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <h2 className="text-4xl font-bold text-gray-900 leading-tight">
-              Opportunity is ready for you as a driver
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              Poznaj nasze <span className="gradient-text">zasięgi</span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
               Join our network of professional drivers and enjoy competitive

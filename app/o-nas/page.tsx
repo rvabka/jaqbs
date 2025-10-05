@@ -21,6 +21,7 @@ import {
   Heart,
   Zap
 } from 'lucide-react';
+import CTASection from '@/components/CTASection';
 
 export default function AboutPage() {
   const stats = [
@@ -339,7 +340,7 @@ export default function AboutPage() {
           >
             <StaggeredItem direction="up">
               <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-72">
                   <Users className="h-12 w-12 mb-6 text-white" />
                   <h3 className="text-2xl font-bold mb-4">
                     Indywidualne podejście
@@ -355,7 +356,7 @@ export default function AboutPage() {
 
             <StaggeredItem direction="up">
               <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-72">
                   <MapPin className="h-12 w-12 mb-6 text-white" />
                   <h3 className="text-2xl font-bold mb-4">Monitoring GPS</h3>
                   <p className="text-gray-200 leading-relaxed">
@@ -368,7 +369,7 @@ export default function AboutPage() {
 
             <StaggeredItem direction="up">
               <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-                <CardContent className="p-8">
+                <CardContent className="p-8 h-72">
                   <Clock className="h-12 w-12 mb-6 text-white" />
                   <h3 className="text-2xl font-bold mb-4">Terminowość</h3>
                   <p className="text-gray-200 leading-relaxed">
@@ -403,7 +404,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Offices Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
 
@@ -528,41 +528,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <AnimatedSection
-          direction="fade"
-          className="max-w-4xl mx-auto px-6 text-center relative z-10"
-        >
-          <AnimatedSection direction="up" delay={0.2}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Gotowy na współpracę?
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection direction="up" delay={0.4}>
-            <p className="text-xl text-gray-200 mb-12 text-balance leading-relaxed">
-              Skontaktuj się z nami już dziś i przekonaj się, dlaczego tysiące
-              klientów wybrało Jaqbs jako swojego partnera w transporcie
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection direction="up" delay={0.6}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-brand-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold">
-                Skontaktuj się z nami
-              </Button>
-              <Button className="border-2 border-white text-white hover:bg-white hover:text-brand-red-700 transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold bg-transparent">
-                Zobacz ofertę
-              </Button>
-            </div>
-          </AnimatedSection>
-        </AnimatedSection>
-      </section>
+      <CTASection />
     </div>
   );
 }

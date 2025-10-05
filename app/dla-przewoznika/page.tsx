@@ -3,6 +3,7 @@
 import type React from 'react';
 
 import { useState } from 'react';
+import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -10,13 +11,23 @@ import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Label } from '@/components/ui/Label';
 import {
+  AnimatedSection,
+  StaggeredContainer,
+  StaggeredItem
+} from '@/components/ui/AnimatedSection';
+import {
   Truck,
   Users,
   Clock,
   Shield,
   CheckCircle,
-  TrendingUp
+  TrendingUp,
+  Send,
+  User,
+  MessageSquare
 } from 'lucide-react';
+import CTASection from '@/components/CTASection';
+import FormSection from '@/components/FormSection';
 
 export default function CarriersPage() {
   const [formData, setFormData] = useState({
@@ -68,262 +79,329 @@ export default function CarriersPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <Navigation />
 
       <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
               <Truck className="h-5 w-5" />
               <span>Dołącz do naszej sieci</span>
             </div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-              Dla Przewoźnika
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-              Szukasz stabilnego partnera biznesowego? Dołącz do naszej sieci
-              przewoźników i rozwijaj swoją firmę z Jaqbs
-            </p>
-          </div>
 
-          {/* Stats */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-in-up"
-            style={{ animationDelay: '0.2s' }}
+            <AnimatedSection direction="up" delay={0.2}>
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
+                Dla Przewoźnika
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
+                Szukasz stabilnego partnera biznesowego? Dołącz do naszej sieci
+                przewoźników i rozwijaj swoją firmę z Jaqbs
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
           >
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-              <CardContent className="p-6 text-center">
-                <Truck className="h-10 w-10 mx-auto mb-3 text-white" />
-                <div className="text-4xl font-bold mb-2">200+</div>
-                <div className="text-sm text-gray-200">
-                  Przewoźników w sieci
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-              <CardContent className="p-6 text-center">
-                <TrendingUp className="h-10 w-10 mx-auto mb-3 text-white" />
-                <div className="text-4xl font-bold mb-2">10K+</div>
-                <div className="text-sm text-gray-200">Zleceń rocznie</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-              <CardContent className="p-6 text-center">
-                <Clock className="h-10 w-10 mx-auto mb-3 text-white" />
-                <div className="text-4xl font-bold mb-2">7 dni</div>
-                <div className="text-sm text-gray-200">Termin płatności</div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-              <CardContent className="p-6 text-center">
-                <Shield className="h-10 w-10 mx-auto mb-3 text-white" />
-                <div className="text-4xl font-bold mb-2">100%</div>
-                <div className="text-sm text-gray-200">Bezpieczeństwo</div>
-              </CardContent>
-            </Card>
-          </div>
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6 text-center">
+                  <Truck className="h-10 w-10 mx-auto mb-3 text-white" />
+                  <div className="text-4xl font-bold mb-2">200+</div>
+                  <div className="text-sm text-gray-200">
+                    Przewoźników w sieci
+                  </div>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6 text-center">
+                  <TrendingUp className="h-10 w-10 mx-auto mb-3 text-white" />
+                  <div className="text-4xl font-bold mb-2">10K+</div>
+                  <div className="text-sm text-gray-200">Zleceń rocznie</div>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6 text-center">
+                  <Clock className="h-10 w-10 mx-auto mb-3 text-white" />
+                  <div className="text-4xl font-bold mb-2">7 dni</div>
+                  <div className="text-sm text-gray-200">Termin płatności</div>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+            <StaggeredItem direction="up">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6 text-center">
+                  <Shield className="h-10 w-10 mx-auto mb-3 text-white" />
+                  <div className="text-4xl font-bold mb-2">100%</div>
+                  <div className="text-sm text-gray-200">Bezpieczeństwo</div>
+                </CardContent>
+              </Card>
+            </StaggeredItem>
+          </StaggeredContainer>
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
+          <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
-              <div className="w-2 h-2 bg-brand-red-700 rounded-full"></div>
+              <div className="w-2 h-2 bg-brand-red-700 rounded-full animate-pulse"></div>
               <span>Korzyści ze współpracy</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Dlaczego <span className="gradient-text">Jaqbs?</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-              Oferujemy najlepsze warunki współpracy dla przewoźników w branży
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Dlaczego <span className="gradient-text">Jaqbs?</span>
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                Oferujemy najlepsze warunki współpracy dla przewoźników w branży
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          <StaggeredContainer
+            staggerDelay={0.1}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {benefits.map((benefit, index) => (
-              <Card
-                key={index}
-                className="group hover-lift animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                    <benefit.icon className="h-8 w-8 text-brand-red-800" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <StaggeredItem key={index} direction="up">
+                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-72">
+                  <CardContent className="p-8">
+                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <benefit.icon className="h-8 w-8 text-brand-red-800" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </StaggeredItem>
             ))}
-          </div>
+          </StaggeredContainer>
         </div>
       </section>
 
-      {/* Requirements Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="animate-slide-in-left">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <AnimatedSection direction="left">
               <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
                 <CheckCircle className="h-4 w-4" />
                 <span>Wymagania</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Czego <span className="gradient-text">oczekujemy?</span>
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Aby dołączyć do naszej sieci przewoźników, Twoja firma powinna
-                spełniać następujące wymagania:
-              </p>
-              <div className="space-y-4">
-                {requirements.map((requirement, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start space-x-3 animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="w-6 h-6 bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-gray-700">{requirement}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="animate-slide-in-right">
-              <Card className="hover-lift shadow-2xl">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">
-                    Formularz kontaktowy
+              <AnimatedSection direction="up" delay={0.2}>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                  Czego <span className="gradient-text">oczekujemy?</span>
+                </h2>
+              </AnimatedSection>
+
+              <AnimatedSection direction="up" delay={0.4}>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Aby dołączyć do naszej sieci przewoźników, Twoja firma powinna
+                  spełniać następujące wymagania:
+                </p>
+              </AnimatedSection>
+
+              <StaggeredContainer staggerDelay={0.1} className="space-y-4">
+                {requirements.map((requirement, index) => (
+                  <StaggeredItem key={index} direction="left">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <CheckCircle className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-gray-700">{requirement}</span>
+                    </div>
+                  </StaggeredItem>
+                ))}
+              </StaggeredContainer>
+            </AnimatedSection>
+
+            <FormSection
+              title="Dołącz do naszej sieci"
+              description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy"
+            >
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <User className="h-5 w-5 mr-2 text-brand-red-700" />
+                    Dane kontaktowe
                   </h3>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Label htmlFor="name">Imię i nazwisko *</Label>
+                  <div className="grid gap-4">
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="name"
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        Imię i nazwisko{' '}
+                        <span className="text-brand-red-600">*</span>
+                      </Label>
                       <Input
                         id="name"
                         required
+                        placeholder="Jan Kowalski"
                         value={formData.name}
                         onChange={e =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        className="mt-2"
+                        className="h-12"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="email">Email *</Label>
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="email"
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        Email <span className="text-brand-red-600">*</span>
+                      </Label>
                       <Input
                         id="email"
                         type="email"
                         required
+                        placeholder="jan.kowalski@example.com"
                         value={formData.email}
                         onChange={e =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="mt-2"
+                        className="h-12"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="phone">Telefon *</Label>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4 mt-4">
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="phone"
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        Telefon <span className="text-brand-red-600">*</span>
+                      </Label>
                       <Input
                         id="phone"
                         type="tel"
                         required
+                        placeholder="+48 123 456 789"
                         value={formData.phone}
                         onChange={e =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="mt-2"
+                        className="h-12"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="company">Nazwa firmy *</Label>
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="company"
+                        className="text-sm font-semibold text-gray-700"
+                      >
+                        Nazwa firmy{' '}
+                        <span className="text-brand-red-600">*</span>
+                      </Label>
                       <Input
                         id="company"
                         required
+                        placeholder="Transport ABC Sp. z o.o."
                         value={formData.company}
                         onChange={e =>
                           setFormData({ ...formData, company: e.target.value })
                         }
-                        className="mt-2"
+                        className="h-12"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="fleet">Liczba pojazdów</Label>
-                      <Input
-                        id="fleet"
-                        value={formData.fleet}
-                        onChange={e =>
-                          setFormData({ ...formData, fleet: e.target.value })
-                        }
-                        className="mt-2"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">Wiadomość</Label>
-                      <Textarea
-                        id="message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={e =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        className="mt-2"
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-brand-red-700 to-brand-blue-700 hover:from-brand-red-800 hover:to-brand-blue-800 text-white py-6 text-lg font-semibold"
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 pt-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <Truck className="h-5 w-5 mr-2 text-brand-red-700" />
+                    Informacje o flocie
+                  </h3>
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="fleet"
+                      className="text-sm font-semibold text-gray-700"
                     >
-                      Wyślij zgłoszenie
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
+                      Liczba pojazdów
+                    </Label>
+                    <Input
+                      id="fleet"
+                      placeholder="np. 5 pojazdów dostawczych"
+                      value={formData.fleet}
+                      onChange={e =>
+                        setFormData({ ...formData, fleet: e.target.value })
+                      }
+                      className="h-12"
+                    />
+                  </div>
+                </div>
+
+                {/* Dodatkowe informacje */}
+                <div className="border-t border-gray-200 pt-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <MessageSquare className="h-5 w-5 mr-2 text-brand-red-700" />
+                    Dodatkowe informacje
+                  </h3>
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="message"
+                      className="text-sm font-semibold text-gray-700"
+                    >
+                      Wiadomość
+                    </Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Opisz swoją firmę, doświadczenie w transporcie, główne trasy, specjalizację..."
+                      rows={6}
+                      value={formData.message}
+                      onChange={e =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
+                      className="resize-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 pt-8">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full h-14 text-lg"
+                  >
+                    <Send className="w-5 h-5 mr-2" />
+                    Wyślij zgłoszenie
+                  </Button>
+                  <p className="text-center text-gray-600 text-sm mt-4">
+                    Skontaktujemy się z Tobą w ciągu 24 godzin roboczych
+                  </p>
+                </div>
+              </form>
+            </FormSection>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-geometric-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-            Gotowy na współpracę?
-          </h2>
-          <p className="text-xl text-gray-200 mb-12 text-balance leading-relaxed">
-            Skontaktuj się z nami już dziś i dołącz do grona zadowolonych
-            przewoźników współpracujących z Jaqbs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-brand-red-700 hover:bg-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold">
-              Zadzwoń: +48 570 112 512
-            </Button>
-            <Button className="border-2 border-white text-white hover:bg-white hover:text-brand-red-700 transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold bg-transparent">
-              Napisz: biuro@jaqbs.eu
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      <CTASection />
       <Footer />
     </div>
   );
