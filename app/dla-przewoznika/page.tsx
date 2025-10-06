@@ -4,7 +4,6 @@ import type React from 'react';
 
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -402,7 +401,6 @@ export default function CarriersPage() {
       </section>
 
       <CTASection />
-      <Footer />
     </div>
   );
 }

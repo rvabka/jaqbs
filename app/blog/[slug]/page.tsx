@@ -15,11 +15,8 @@ import {
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/Card';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import {
   AnimatedSection,
-  StaggeredContainer,
-  StaggeredItem
 } from '@/components/ui/AnimatedSection';
 
 // Mock data - zastąpisz to danymi z Sanity CMS
@@ -443,7 +440,6 @@ export default function ArticlePage({ params }: PageProps) {
         </div>
       </article>
 
-      <Footer />
     </div>
   );
 }

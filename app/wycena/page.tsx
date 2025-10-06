@@ -26,7 +26,6 @@ import {
   MessageSquare
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
-import Footer from '@/components/Footer';
 import FormSection from '@/components/FormSection';
 
 export default function WycenaPage() {
