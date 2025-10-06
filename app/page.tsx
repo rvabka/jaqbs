@@ -14,13 +14,13 @@ export default function Home() {
     <main className="min-h-screen">
       <Hero />
       <Partners />
-      <Services />
-      {/* <Solutions /> */}
       <CheapestTransport />
-      <Features />
+      <GlobalService />
       <DriverOpportunity />
       <Faq />
-      <GlobalService />
+      <Services />
+      {/* <Solutions /> */}
+      <Features />
     </main>
   );
 }
