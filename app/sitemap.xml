@@ -1,0 +1,60 @@
+import { MetadataRoute } from 'next';
+import { client } from '@/lib/sanity/client';
+import { groq } from 'next-sanity';
+
+interface SitemapPost {
+  slug: string;
+  publishedAt: string;
+  updatedAt?: string;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await client.fetch<SitemapPost[]>(
+    groq`*[_type == "post" && status == "published"] {
+      "slug": slug.current,
+      publishedAt,
+      updatedAt
+    }`
+  );
+
+  const blogPosts = posts.map(post => ({
+    url: `https://jaqbs.pl/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7
+  }));
+
+  return [
+    {
+      url: 'https://jaqbs.pl',
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 1
+    },
+    {
+      url: 'https://jaqbs.pl/blog',
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.9
+    },
+    {
+      url: 'https://jaqbs.pl/o-nas',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8
+    },
+    {
+      url: 'https://jaqbs.pl/uslugi',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8
+    },
+    {
+      url: 'https://jaqbs.pl/kontakt',
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8
+    },
+    ...blogPosts
+  ];
+}
