@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button } from './ui/Button';
-import { Truck, Menu, X } from 'lucide-react';
+import { Truck, X, Instagram, Facebook } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -55,6 +54,31 @@ export default function Navigation() {
     { href: '/blog', label: 'Blog' }
   ];
 
+  const socialMedia = [
+    {
+      name: 'Instagram',
+      href: 'https://instagram.com/jaqbs',
+      icon: Instagram,
+      color: 'hover:text-pink-600'
+    },
+    {
+      name: 'Facebook',
+      href: 'https://facebook.com/jaqbs',
+      icon: Facebook,
+      color: 'hover:text-blue-600'
+    },
+    {
+      name: 'TikTok',
+      href: 'https://tiktok.com/@jaqbs',
+      icon: () => (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+        </svg>
+      ),
+      color: 'hover:text-black'
+    }
+  ];
+
   return (
     <>
       <nav
@@ -62,23 +86,23 @@ export default function Navigation() {
         role="navigation"
         aria-label="Główna nawigacja"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 z-50">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 lg:py-4 z-50">
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="flex items-center focus:outline-none focus:ring-2 focus:ring-brand-red-800 focus:ring-offset-2 rounded-lg"
+              className="flex items-center outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2 rounded-lg transition-shadow"
               aria-label="Strona główna Jaqbs"
             >
               <img
                 src="/logo_small.png"
-                className="h-8 w-auto"
+                className="h-7 lg:h-8 w-auto"
                 alt="Logo Jaqbs"
               />
             </Link>
 
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-6">
               <ul
-                className="flex items-center space-x-8 glass rounded-full px-6 py-3 z-50"
+                className="flex items-center space-x-2 xl:space-x-6 glass rounded-full px-3 xl:px-6 py-2 xl:py-3 z-50"
                 role="menubar"
               >
                 {navItems.map(item => (
@@ -86,7 +110,7 @@ export default function Navigation() {
                     <Link
                       href={item.href}
                       role="menuitem"
-                      className={`relative font-medium transition-all duration-300 hover:text-brand-red-800 focus:outline-none focus:ring-2 focus:ring-brand-red-800 focus:ring-offset-2 rounded px-2 py-1 ${
+                      className={`relative font-medium text-sm xl:text-base transition-all duration-300 hover:text-brand-red-800 outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2 rounded px-1.5 xl:px-2 py-1 whitespace-nowrap ${
                         pathname === item.href
                           ? 'text-brand-red-800'
                           : 'text-gray-600'
@@ -104,11 +128,29 @@ export default function Navigation() {
                   </li>
                 ))}
               </ul>
+
+              <div className="flex items-center space-x-2 xl:space-x-3">
+                {socialMedia.map(social => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-gray-600 transition-all duration-300 ${social.color} outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2 rounded-lg p-1.5 hover:scale-110`}
+                      aria-label={`Odwiedź nas na ${social.name}`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-brand-red-800 focus:ring-offset-2"
+              className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/20 outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2"
               aria-label={isOpen ? 'Zamknij menu' : 'Otwórz menu'}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -139,15 +181,19 @@ export default function Navigation() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${
           isOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}
+        style={{ willChange: isOpen ? 'opacity' : 'auto' }}
         aria-hidden={!isOpen}
       >
         <div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-all duration-300 ${
+            isOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ willChange: isOpen ? 'opacity, backdrop-filter' : 'auto' }}
           onClick={() => setIsOpen(false)}
           role="button"
           tabIndex={-1}
@@ -156,9 +202,10 @@ export default function Navigation() {
 
         <div
           id="mobile-menu"
-          className={`absolute top-0 right-0 h-full w-80 max-w-[80vw] bg-white shadow-2xl transform transition-all duration-500 ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[80vw] bg-white shadow-2xl transform transition-transform duration-500 ease-in-out flex flex-col ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
+          style={{ willChange: isOpen ? 'transform' : 'auto' }}
           role="dialog"
           aria-label="Menu mobilne"
         >
@@ -173,7 +220,7 @@ export default function Navigation() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-red-800 focus:ring-offset-2"
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2"
                 aria-label="Zamknij menu"
               >
                 <X className="h-6 w-6 text-gray-600" aria-hidden="true" />
@@ -181,14 +228,17 @@ export default function Navigation() {
             </div>
           </div>
 
-          <nav className="p-6 space-y-4" aria-label="Menu mobilne">
+          <nav
+            className="flex-1 p-6 space-y-4 overflow-y-auto"
+            aria-label="Menu mobilne"
+          >
             <ul role="menu">
               {navItems.map((item, index) => (
                 <li key={item.href} role="none">
                   <Link
                     href={item.href}
                     role="menuitem"
-                    className={`block py-3 px-4 rounded-xl font-medium transition-all duration-300 hover:bg-gradient-to-r hover:from-brand-red-50 hover:to-brand-blue-50 hover:text-brand-red-800 focus:outline-none focus:ring-2 focus:ring-brand-red-800 focus:ring-offset-2 ${
+                    className={`block py-3 px-4 rounded-xl font-medium transition-all duration-300 hover:bg-gradient-to-r hover:from-brand-red-50 hover:to-brand-blue-50 hover:text-brand-red-800 outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2 ${
                       pathname === item.href
                         ? 'bg-gradient-to-r from-brand-red-50 to-brand-blue-50 text-brand-red-800'
                         : 'text-gray-700'
@@ -207,6 +257,29 @@ export default function Navigation() {
               ))}
             </ul>
           </nav>
+
+          <div className="p-6 border-t border-gray-100">
+            <p className="text-base font-bold text-center text-gray-500 mb-4">
+              Obserwuj nas
+            </p>
+            <div className="flex items-center justify-center space-x-6">
+              {socialMedia.map(social => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-gray-600 transition-all duration-300 ${social.color} hover:scale-110 outline-none focus-visible:ring-2 focus-visible:ring-brand-red-800 focus-visible:ring-offset-2 rounded-lg p-2`}
+                    aria-label={`Odwiedź nas na ${social.name}`}
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
