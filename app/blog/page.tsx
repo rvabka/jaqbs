@@ -30,6 +30,7 @@ import {
 } from '@/lib/sanity/queries';
 import { Post, Category } from '@/lib/sanity/types';
 import BlogContent from '@/components/blog/BlogContent';
+import { PageHero } from '@/components/PageHero';
 
 const stats = [
   { label: 'Lat doświadczenia', value: '15+', icon: Award },
@@ -80,45 +81,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <AnimatedSection direction="fade" className="text-center">
-            <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-                Blog
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-                Najnowsze wiadomości, porady i trendy z branży transportowej
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          >
-            {stats.map((stat, index) => (
-              <StaggeredItem key={index} direction="up">
-                <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
-                  <CardContent className="p-6 text-center">
-                    <stat.icon className="h-10 w-10 mx-auto mb-3 text-white" />
-                    <div className="text-4xl font-bold mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-200">{stat.label}</div>
-                  </CardContent>
-                </Card>
-              </StaggeredItem>
-            ))}
-          </StaggeredContainer>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <PageHero
+        title="Blog"
+        description="Najnowsze wiadomości, porady i trendy z branży transportowej"
+      />
 
       {currentPage === 1 && featuredPosts.length > 0 && (
         <section className="py-16 bg-gradient-to-b from-slate-50/50 to-white relative overflow-hidden">

@@ -13,10 +13,8 @@ import {
   StaggeredItem
 } from '@/components/ui/AnimatedSection';
 import {
-  Truck,
   MapPin,
   Package,
-  Phone,
   User,
   CheckCircle2,
   Clock,
@@ -27,6 +25,7 @@ import {
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
+import { PageHero } from '@/components/PageHero';
 
 export default function WycenaPage() {
   const [formData, setFormData] = useState({
@@ -96,54 +95,11 @@ export default function WycenaPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navigation />
-
-      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <AnimatedSection direction="fade" className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
-              <Truck className="h-5 w-5" />
-              <span>Bezpłatna wycena transportu</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-                Wycena transportu
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-                Sprawdź koszty transportu Twojej przesyłki. To nic nie kosztuje
-                i do niczego nie zobowiązuje!
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.6}>
-              <div className="mt-8 flex flex-col lg:flex-row items-center justify-center lg:space-x-6 space-y-4 lg:space-y-0 text-lg">
-                <Button className="flex items-center space-x-2">
-                  <Phone className="h-5 w-5" />
-                  <a
-                    href="tel:570112512"
-                    className="hover:text-red-200 transition-colors"
-                  >
-                    570 112 512
-                  </a>
-                </Button>
-                <span className="text-gray-400">lub</span>
-                <a href="#form" className="text-red-200 font-semibold">
-                  wypełnij formularz poniżej
-                </a>
-              </div>
-            </AnimatedSection>
-          </AnimatedSection>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <PageHero
+        title="Wycena transportu"
+        description="Sprawdź koszty transportu Twojej przesyłki. To nic nie kosztuje i do niczego nie zobowiązuje!"
+      />
 
       <section className="py-16 relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>

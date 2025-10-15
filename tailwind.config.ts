@@ -24,14 +24,14 @@ const config: Config = {
         foreground: 'hsl(var(--foreground))',
         brand: {
           red: {
-            900: '#800016',
+            900: '#F92929',
             800: '#A0001C',
             700: '#F92929'
           },
           blue: {
             700: '#084C89',
             800: '#002962',
-            900: '#00043A'
+            900: '#084C89'
           }
         },
         card: {

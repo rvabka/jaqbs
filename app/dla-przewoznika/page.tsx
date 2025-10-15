@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
+import { PageHero } from '@/components/PageHero';
 
 export default function CarriersPage() {
   const [formData, setFormData] = useState({
@@ -78,80 +79,11 @@ export default function CarriersPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navigation />
-
-      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <AnimatedSection direction="fade" className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
-              <Truck className="h-5 w-5" />
-              <span>Dołącz do naszej sieci</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-                Dla Przewoźnika
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-                Szukasz stabilnego partnera biznesowego? Dołącz do naszej sieci
-                przewoźników i rozwijaj swoją firmę z Jaqbs
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          >
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Truck className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">200+</div>
-                  <div className="text-sm text-gray-200">
-                    Przewoźników w sieci
-                  </div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <TrendingUp className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">10K+</div>
-                  <div className="text-sm text-gray-200">Zleceń rocznie</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Clock className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">7 dni</div>
-                  <div className="text-sm text-gray-200">Termin płatności</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Shield className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">100%</div>
-                  <div className="text-sm text-gray-200">Bezpieczeństwo</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-          </StaggeredContainer>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <PageHero
+        title="Dla Przewoźnika"
+        description="Szukasz stabilnego partnera biznesowego? Dołącz do naszej sieci przewoźników i rozwijaj swoją firmę z Jaqbs"
+      />
 
       <section className="py-24 relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>

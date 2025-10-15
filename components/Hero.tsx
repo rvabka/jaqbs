@@ -96,10 +96,7 @@ export default function Hero() {
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-wide">
               <span className="block mb-3 text-white">
-                Twój Partner w{' '}
-                <span className="text-transparent bg-clip-text font-semibold leading-[1.1] bg-gradient-to-r from-red-300 to-blue-300">
-                  Logistyce
-                </span>
+                Twój Partner w Logistyce
               </span>
             </h1>
 

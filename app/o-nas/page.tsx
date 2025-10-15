@@ -22,6 +22,7 @@ import {
   Zap
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
+import { PageHero } from '@/components/PageHero';
 
 export default function AboutPage() {
   const stats = [
@@ -93,46 +94,27 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <PageHero
+        title="O nas"
+        description="Stanowimy doskonale zgrany zespół młodych i dynamicznych ludzi, nastawionych na długoterminową współpracę"
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <AnimatedSection direction="fade" className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
-              <Building2 className="h-5 w-5" />
-              <span>Od 2010 roku w branży spedycyjnej</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-                O nas
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-                Stanowimy doskonale zgrany zespół młodych i dynamicznych ludzi,
-                nastawionych na długoterminową współpracę
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          {/* Stats */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
           <StaggeredContainer
             staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
             {stats.map((stat, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover-lift">
+                <Card className="bg-gradient-to-br from-gray-50 to-white border-2 hover-lift">
                   <CardContent className="p-6 text-center">
-                    <stat.icon className="h-10 w-10 mx-auto mb-3 text-white" />
-                    <div className="text-4xl font-bold mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-200">{stat.label}</div>
+                    <stat.icon className="h-10 w-10 mx-auto mb-3 text-brand-blue-700" />
+                    <div className="text-4xl font-bold mb-2 text-black">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
                   </CardContent>
                 </Card>
               </StaggeredItem>
@@ -141,8 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Main Story Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-white">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -190,7 +171,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
 
@@ -240,8 +220,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Fleet Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left" className="order-2 md:order-1">
@@ -282,7 +261,7 @@ export default function AboutPage() {
                 <StaggeredItem direction="up">
                   <Card className="hover-lift">
                     <CardContent className="p-6">
-                      <div className="text-3xl font-bold text-brand-red-700 mb-2">
+                      <div className="text-3xl font-bold text-brand-red-800 mb-2">
                         8-10
                       </div>
                       <div className="text-sm text-gray-600">
@@ -307,7 +286,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Support Section */}
       <section className="py-24 bg-gradient-to-br from-brand-red-700 via-brand-red-800 to-brand-blue-800 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/abstract-network.png')] opacity-5"></div>
         <div className="absolute top-20 right-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
@@ -404,7 +382,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-white">
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -481,7 +459,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Documents Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
 

@@ -34,6 +34,7 @@ import {
   Phone
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
+import { PageHero } from '@/components/PageHero';
 
 const onboardingSteps = [
   {
@@ -156,77 +157,11 @@ export default function CareerPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <section className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <AnimatedSection direction="fade" className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
-              <Building2 className="h-5 w-5" />
-              <span>Dołącz do naszego zespołu</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-6xl md:text-7xl font-bold mb-6 text-balance">
-                Kariera
-              </h1>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto text-balance leading-relaxed">
-                Rozwijaj swoją karierę w dynamicznej firmie transportowej.
-                Oferujemy stabilne zatrudnienie i możliwości rozwoju.
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          {/* Stats */}
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          >
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Users className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">150+</div>
-                  <div className="text-sm text-gray-200">Pracowników</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Building2 className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">4</div>
-                  <div className="text-sm text-gray-200">Biura w Polsce</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Calendar className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">15+</div>
-                  <div className="text-sm text-gray-200">Lat na rynku</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-            <StaggeredItem direction="up">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 text-center">
-                  <Heart className="h-10 w-10 mx-auto mb-3 text-white" />
-                  <div className="text-4xl font-bold mb-2">95%</div>
-                  <div className="text-sm text-gray-200">Zadowolenia</div>
-                </CardContent>
-              </Card>
-            </StaggeredItem>
-          </StaggeredContainer>
-        </div>
-      </section>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <PageHero
+        title="Kariera"
+        description="Rozwijaj swoją karierę w dynamicznej firmie transportowej. Oferujemy stabilne zatrudnienie i możliwości rozwoju."
+      />
 
       <section className="py-24 bg-gradient-to-b from-white to-slate-50/50">
         <div className="max-w-7xl mx-auto px-6">
