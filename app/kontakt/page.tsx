@@ -205,7 +205,6 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
