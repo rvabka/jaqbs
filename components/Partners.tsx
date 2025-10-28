@@ -80,7 +80,7 @@ export default function Partners() {
         <AnimatedSection direction="fade" className="text-center mb-20">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
             <div className="w-2 h-2 bg-red-700 rounded-full animate-pulse"></div>
-            <span>Trusted Partners</span>
+            <span>Partnerzy</span>
           </div>
 
           <AnimatedSection direction="up" delay={0.2}>

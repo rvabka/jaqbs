@@ -1,10 +1,6 @@
-import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Partners from '@/components/Partners';
-import Services from '@/components/Services';
-import Solutions from '@/components/Solutions';
 import CheapestTransport from '@/components/CheapestTransport';
-import Features from '@/components/Features';
 import DriverOpportunity from '@/components/DriverOpportunity';
 import GlobalService from '@/components/GlobalService';
 import Faq from '@/components/Faq';
@@ -29,9 +25,6 @@ export default async function Home() {
       <DriverOpportunity />
       <Faq />
       <RecentBlogPosts posts={recentPosts} />
-      {/* <Services /> */}
-      {/* <Solutions /> */}
-      {/* <Features /> */}
     </main>
   );
 }

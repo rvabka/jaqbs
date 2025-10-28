@@ -28,7 +28,7 @@ export default function CTASection({
 }: CTASectionProps) {
   return (
     <section
-      className={`py-24 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white relative overflow-hidden px-3 ${className}`}
+      className={`py-24 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-900 text-white relative overflow-hidden px-3 ${className}`}
     >
       <div className="absolute inset-0 opacity-5"></div>
       <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse"></div>

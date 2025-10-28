@@ -33,37 +33,18 @@ export default function CheapestTransport() {
               </h2>
             </AnimatedSection>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Discover cost-effective transport solutions that don't compromise
-              on quality or reliability. Our optimized logistics network ensures
-              competitive pricing while maintaining the highest service
-              standards.
+              Nasze zasięgi obejmują całą Europę – jesteśmy obecni m.in. w
+              <span className='font-bold'>
+                {' '}
+                Austrii, Belgii, Czechach, Danii, Francji, Hiszpanii, Holandii,
+                Irlandii, Luksemburgu, Niemczech, Polsce, Portugalii, Słowacji,
+                Słowenii, Szwajcarii, Szwecji, na Węgrzech, we Włoszech oraz w
+                Wielkiej Brytanii.
+              </span>
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-brand-red-800 rounded-full"></div>
-                <span className="text-gray-700">
-                  Competitive pricing across all services
-                </span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-brand-red-800 rounded-full"></div>
-                <span className="text-gray-700">
-                  No hidden fees or surprise charges
-                </span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-brand-red-800 rounded-full"></div>
-                <span className="text-gray-700">
-                  Flexible payment options available
-                </span>
-              </div>
-            </div>
             <AnimatedSection direction="up" delay={0.3}>
-              <Button
-                size="lg"
-                variant='primary'
-              >
-                Get Quote Now
+              <Button size="lg" variant="primary">
+                <a href="/o-nas">Dowiedz się więcej</a>
               </Button>
             </AnimatedSection>
           </div>

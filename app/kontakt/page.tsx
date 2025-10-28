@@ -25,8 +25,6 @@ import {
   Truck,
   DollarSign,
   MessageSquare,
-  Clock,
-  Headphones,
   User
 } from 'lucide-react';
 import GoogleMap from '@/components/GoogleMap';
@@ -52,7 +50,7 @@ export default function ContactPage() {
     {
       name: 'SIEDZIBA',
       icon: Building2,
-      color: 'from-brand-red-800 to-brand-red-900',
+      color: 'from-brand-red-900 to-brand-red-800',
       contacts: [
         { type: 'address', value: 'ul. Zemborzycka 53B, 20-445 Lublin' },
         { type: 'phone', value: '+48 570 112 512' },
@@ -62,7 +60,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ WINDYKACJI',
       icon: DollarSign,
-      color: 'from-brand-blue-800 to-brand-blue-900',
+      color: 'from-brand-blue-900 to-brand-blue-800',
       contacts: [
         { type: 'phone', value: '+48 510 850 604' },
         { type: 'email', value: 'payments@jaqbs.eu' }
@@ -71,7 +69,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ SPEDYCJI I TRANSPORTU',
       icon: Truck,
-      color: 'from-brand-red-800 to-brand-red-900',
+      color: 'from-brand-red-900 to-brand-red-800',
       contacts: [
         { type: 'phone', value: '+48 570 112 512' },
         { type: 'email', value: 'spedycja@jaqbs.eu' }
@@ -80,7 +78,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ REKLAMACJI',
       icon: AlertCircle,
-      color: 'from-brand-blue-800 to-brand-blue-900',
+      color: 'from-brand-blue-900 to-brand-blue-800',
       contacts: [
         { type: 'phone', value: '+48 573 400 639' },
         { type: 'email', value: 'reklamacje@jaqbs.eu' }
@@ -89,7 +87,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ DOKUMENTACJI',
       icon: FileText,
-      color: 'from-brand-red-800 to-brand-red-900',
+      color: 'from-brand-red-900 to-brand-red-800',
       contacts: [
         { type: 'phone', value: '+48 510 850 630' },
         { type: 'email', value: 'cmr@jaqbs.eu' }
@@ -98,7 +96,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ PŁATNOŚCI',
       icon: CreditCard,
-      color: 'from-brand-blue-800 to-brand-blue-900',
+      color: 'from-brand-blue-900 to-brand-blue-800',
       contacts: [
         { type: 'phone', value: '+48 510 850 739' },
         { type: 'email', value: 'platnosci@jaqbs.eu' }
@@ -106,27 +104,20 @@ export default function ContactPage() {
     }
   ];
 
-  const stats = [
-    { label: 'Czas odpowiedzi', value: '<24h', icon: Clock },
-    { label: 'Dostępność', value: '24/7', icon: Headphones },
-    { label: 'Biur w Polsce', value: '4', icon: Building2 },
-    { label: 'Kanałów kontaktu', value: '6', icon: MessageSquare }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="Kontakt"
-        description="Odpowiemy na wszystkie Twoje pytania i pomożemy w realizacji Twoich potrzeb transportowych"
+        description="Masz pytania? Napisz lub zadzwoń – z przyjemnością doradzimy i znajdziemy najlepsze rozwiązanie dla Twoich potrzeb transportowych."
       />
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
-              <div className="w-2 h-2 bg-brand-red-700 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-brand-red-900 rounded-full animate-pulse"></div>
               <span>Nasze działy</span>
             </div>
 
@@ -138,7 +129,8 @@ export default function ContactPage() {
 
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Wybierz odpowiedni dział, aby szybko uzyskać pomoc
+                Wybierz dział, z którym chcesz się skontaktować, aby sprawnie
+                uzyskać potrzebne informacje i wsparcie
               </p>
             </AnimatedSection>
           </AnimatedSection>
@@ -160,7 +152,7 @@ export default function ContactPage() {
                         >
                           <Icon className="w-6 h-6 text-white" />
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900 flex-1 pt-2 group-hover:text-brand-red-700 transition-colors">
+                        <h3 className="text-lg font-bold text-gray-900 flex-1 pt-2 group-hover:text-brand-red-900 transition-colors">
                           {dept.name}
                         </h3>
                       </div>
@@ -172,10 +164,10 @@ export default function ContactPage() {
                           >
                             {contact.type === 'phone' && (
                               <>
-                                <Phone className="w-4 h-4 text-brand-red-600 mt-0.5 flex-shrink-0" />
+                                <Phone className="w-4 h-4 text-brand-red-900 mt-0.5 flex-shrink-0" />
                                 <a
                                   href={`tel:${contact.value}`}
-                                  className="text-gray-700 hover:text-brand-red-600 transition-colors"
+                                  className="text-gray-700 hover:text-brand-red-900 transition-colors"
                                 >
                                   {contact.value}
                                 </a>
@@ -183,10 +175,10 @@ export default function ContactPage() {
                             )}
                             {contact.type === 'email' && (
                               <>
-                                <Mail className="w-4 h-4 text-brand-blue-600 mt-0.5 flex-shrink-0" />
+                                <Mail className="w-4 h-4 text-brand-blue-900 mt-0.5 flex-shrink-0" />
                                 <a
                                   href={`mailto:${contact.value}`}
-                                  className="text-gray-700 hover:text-brand-blue-600 transition-colors break-all"
+                                  className="text-gray-700 hover:text-brand-blue-900 transition-colors break-all"
                                 >
                                   {contact.value}
                                 </a>
@@ -194,7 +186,7 @@ export default function ContactPage() {
                             )}
                             {contact.type === 'address' && (
                               <>
-                                <MapPin className="w-4 h-4 text-brand-red-600 mt-0.5 flex-shrink-0" />
+                                <MapPin className="w-4 h-4 text-brand-red-900 mt-0.5 flex-shrink-0" />
                                 <span className="text-gray-700">
                                   {contact.value}
                                 </span>
@@ -213,7 +205,7 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
@@ -248,7 +240,7 @@ export default function ContactPage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-              <User className="h-5 w-5 mr-2 text-brand-red-700" />
+              <User className="h-5 w-5 mr-2 text-brand-red-900" />
               Dane kontaktowe
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -257,7 +249,7 @@ export default function ContactPage() {
                   htmlFor="name"
                   className="text-sm font-semibold text-gray-700"
                 >
-                  Imię i nazwisko <span className="text-brand-red-600">*</span>
+                  Imię i nazwisko <span className="text-brand-red-900">*</span>
                 </Label>
                 <Input
                   id="name"
@@ -275,7 +267,7 @@ export default function ContactPage() {
                   htmlFor="email"
                   className="text-sm font-semibold text-gray-700"
                 >
-                  Email <span className="text-brand-red-600">*</span>
+                  Email <span className="text-brand-red-900">*</span>
                 </Label>
                 <Input
                   id="email"
@@ -311,7 +303,7 @@ export default function ContactPage() {
 
           <div className="border-t border-gray-200 pt-8">
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-              <MessageSquare className="h-5 w-5 mr-2 text-brand-red-700" />
+              <MessageSquare className="h-5 w-5 mr-2 text-brand-red-900" />
               Treść wiadomości
             </h3>
             <div className="space-y-2">
@@ -335,13 +327,14 @@ export default function ContactPage() {
           </div>
 
           <div className="border-t border-gray-200 pt-8">
-            <Button type="submit" size="lg" className="w-full h-14 text-lg">
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900"
+            >
               <Send className="w-5 h-5 mr-2" />
               Wyślij wiadomość
             </Button>
-            <p className="text-center text-gray-600 text-sm mt-4">
-              Skontaktujemy się z Tobą w ciągu 24 godzin roboczych
-            </p>
           </div>
         </form>
       </FormSection>

@@ -3,7 +3,6 @@
 import type React from 'react';
 
 import { useState } from 'react';
-import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -81,29 +80,31 @@ export default function CarriersPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
-        title="Dla Przewoźnika"
-        description="Szukasz stabilnego partnera biznesowego? Dołącz do naszej sieci przewoźników i rozwijaj swoją firmę z Jaqbs"
+        title="Dla przewoźnika"
+        description="Rozwijaj swój biznes z pewnym partnerem! Dołącz do nas i jedź razem z nami po sukces."
       />
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
-              <div className="w-2 h-2 bg-brand-red-700 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-brand-red-900 rounded-full animate-pulse"></div>
               <span>Korzyści ze współpracy</span>
             </div>
 
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Dlaczego <span className="gradient-text">Jaqbs?</span>
+                Dlaczego warto współpracować z{' '}
+                <span className="gradient-text">Jaqbs?</span>
               </h2>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
                 Oferujemy najlepsze warunki współpracy dla przewoźników w branży
+                TSL
               </p>
             </AnimatedSection>
           </AnimatedSection>
@@ -114,12 +115,12 @@ export default function CarriersPage() {
           >
             {benefits.map((benefit, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-72">
+                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <benefit.icon className="h-8 w-8 text-brand-red-800" />
+                      <benefit.icon className="h-8 w-8 text-brand-red-900" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-700 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -134,7 +135,7 @@ export default function CarriersPage() {
       </section>
 
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -145,40 +146,49 @@ export default function CarriersPage() {
               </div>
 
               <AnimatedSection direction="up" delay={0.2}>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                  Czego <span className="gradient-text">oczekujemy?</span>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 text-balance">
+                  Podstawowe wymagania dla przewoźników
                 </h2>
-              </AnimatedSection>
-
-              <AnimatedSection direction="up" delay={0.4}>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Aby dołączyć do naszej sieci przewoźników, Twoja firma powinna
-                  spełniać następujące wymagania:
-                </p>
               </AnimatedSection>
 
               <StaggeredContainer staggerDelay={0.1} className="space-y-4">
                 {requirements.map((requirement, index) => (
                   <StaggeredItem key={index} direction="left">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="flex items-start space-x-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                      <div className="w-6 h-6 bg-gradient-to-br from-brand-blue-900 to-brand-blue-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                         <CheckCircle className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-gray-700">{requirement}</span>
+                      <span className="text-gray-700 font-medium">
+                        {requirement}
+                      </span>
                     </div>
                   </StaggeredItem>
                 ))}
               </StaggeredContainer>
+
+              <AnimatedSection direction="up" delay={0.6} className="mt-8">
+                <Card className="bg-gradient-to-br from-brand-red-50 to-brand-blue-50 border-0">
+                  <CardContent className="p-6">
+                    <p className="text-gray-700 leading-relaxed">
+                      <strong className="text-brand-red-900">
+                        Spełniasz wymagania?
+                      </strong>{' '}
+                      Wypełnij formularz obok, a nasz zespół skontaktuje się z
+                      Tobą, aby omówić szczegóły współpracy.
+                    </p>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
             </AnimatedSection>
 
             <FormSection
-              title="Dołącz do naszej sieci"
+              title="Dołącz do naszej sieci przewoźników"
               description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy"
             >
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                    <User className="h-5 w-5 mr-2 text-brand-red-700" />
+                    <User className="h-5 w-5 mr-2 text-brand-red-900" />
                     Dane kontaktowe
                   </h3>
                   <div className="grid gap-4">
@@ -188,7 +198,7 @@ export default function CarriersPage() {
                         className="text-sm font-semibold text-gray-700"
                       >
                         Imię i nazwisko{' '}
-                        <span className="text-brand-red-600">*</span>
+                        <span className="text-brand-red-900">*</span>
                       </Label>
                       <Input
                         id="name"
@@ -206,7 +216,7 @@ export default function CarriersPage() {
                         htmlFor="email"
                         className="text-sm font-semibold text-gray-700"
                       >
-                        Email <span className="text-brand-red-600">*</span>
+                        Email <span className="text-brand-red-900">*</span>
                       </Label>
                       <Input
                         id="email"
@@ -227,7 +237,7 @@ export default function CarriersPage() {
                         htmlFor="phone"
                         className="text-sm font-semibold text-gray-700"
                       >
-                        Telefon <span className="text-brand-red-600">*</span>
+                        Telefon <span className="text-brand-red-900">*</span>
                       </Label>
                       <Input
                         id="phone"
@@ -247,7 +257,7 @@ export default function CarriersPage() {
                         className="text-sm font-semibold text-gray-700"
                       >
                         Nazwa firmy{' '}
-                        <span className="text-brand-red-600">*</span>
+                        <span className="text-brand-red-900">*</span>
                       </Label>
                       <Input
                         id="company"
@@ -265,7 +275,7 @@ export default function CarriersPage() {
 
                 <div className="border-t border-gray-200 pt-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                    <Truck className="h-5 w-5 mr-2 text-brand-red-700" />
+                    <Truck className="h-5 w-5 mr-2 text-brand-red-900" />
                     Informacje o flocie
                   </h3>
                   <div className="space-y-2">
@@ -287,10 +297,9 @@ export default function CarriersPage() {
                   </div>
                 </div>
 
-                {/* Dodatkowe informacje */}
                 <div className="border-t border-gray-200 pt-8">
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                    <MessageSquare className="h-5 w-5 mr-2 text-brand-red-700" />
+                    <MessageSquare className="h-5 w-5 mr-2 text-brand-red-900" />
                     Dodatkowe informacje
                   </h3>
                   <div className="space-y-2">
@@ -317,14 +326,11 @@ export default function CarriersPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full h-14 text-lg"
+                    className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900"
                   >
                     <Send className="w-5 h-5 mr-2" />
                     Wyślij zgłoszenie
                   </Button>
-                  <p className="text-center text-gray-600 text-sm mt-4">
-                    Skontaktujemy się z Tobą w ciągu 24 godzin roboczych
-                  </p>
                 </div>
               </form>
             </FormSection>

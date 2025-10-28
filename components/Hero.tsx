@@ -4,22 +4,18 @@ import { useState, useEffect } from 'react';
 import {
   PhoneCall,
   FileText,
-  TrendingUp,
   MapPin,
-  Clock,
   Shield,
-  Truck,
-  Award,
   Zap,
   Building2,
-  CircleCheck as CheckCircle2
+  Coffee
 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const deliverySteps = [
     {
@@ -28,12 +24,12 @@ export default function Hero() {
       description: 'Ubezpieczenie każdej przesyłki'
     },
     { icon: Zap, label: 'Szybkość', description: 'Ekspresowa dostawa 24/7' },
+    { icon: MapPin, label: 'Zasięg', description: 'Wszystkie kraje w Unii Europejskiej' },
     {
-      icon: Award,
-      label: 'Jakość',
-      description: '99.9% zadowolonych klientów'
-    },
-    { icon: MapPin, label: 'Zasięg', description: '50+ krajów na świecie' }
+      icon: Coffee,
+      label: 'Zawsze na czas',
+      description: 'Nawet przed poranną kawą'
+    }
   ];
 
   useEffect(() => {
@@ -71,9 +67,9 @@ export default function Hero() {
       </div>
 
       <div className="absolute inset-0 overflow-hidden z-[1]">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-red-900/20 rounded-full blur-3xl animate-pulse-glow"></div>
         <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl animate-float-glow"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue-900/20 rounded-full blur-3xl animate-float-glow"
           style={{ animationDelay: '2s' }}
         ></div>
         <div
@@ -124,105 +120,57 @@ export default function Hero() {
           </div>
 
           <div
-            className={`w-full max-w-5xl transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`w-full max-w-2xl transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
-            <div className="relative glass backdrop-blur-xl rounded-3xl p-8 border border-white/30 shadow-2xl">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="space-y-6">
-                  <div className="text-center md:text-left">
-                    <h3 className="text-3xl font-bold text-white mb-2">
-                      Twoje Korzyści
-                    </h3>
-                    <p className="text-white/80 text-sm">
-                      Dlaczego warto nam zaufać
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-center md:justify-start space-x-4">
-                    <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-white/30">
-                      <Truck className="w-10 h-10 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-white">
-                        Nowoczesna Flota
-                      </h4>
-                      <p className="text-red-400 text-sm font-semibold">
-                        Ponad 100 pojazdów
+            <div className="relative glass backdrop-blur-xl rounded-3xl p-6 border border-white/30 shadow-2xl">
+              <div className="grid grid-cols-2 gap-4">
+                {deliverySteps.map((step, index) => {
+                  const isActive = index === currentStep;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex flex-col items-center text-center p-4 rounded-2xl transition-all duration-500 ${
+                        isActive
+                          ? 'bg-gradient-to-br from-brand-red-900/30 to-brand-red-800/30 border-2 border-brand-red-900/50 scale-105'
+                          : 'bg-white/5 border-2 border-white/10'
+                      }`}
+                    >
+                      <div
+                        className={`w-14 h-14 rounded-xl flex items-center justify-center mb-3 transition-all duration-500 ${
+                          isActive
+                            ? 'bg-gradient-to-br from-brand-red-900 to-brand-red-800 shadow-lg shadow-brand-red-900/50'
+                            : 'bg-white/10'
+                        }`}
+                      >
+                        <step.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3
+                        className={`font-bold mb-1 transition-all duration-500 ${
+                          isActive
+                            ? 'text-brand-red-900 text-lg'
+                            : 'text-white text-base'
+                        }`}
+                      >
+                        {step.label}
+                      </h3>
+                      <p
+                        className={`text-sm transition-colors duration-500 ${
+                          isActive ? 'text-gray-200' : 'text-white/70'
+                        }`}
+                      >
+                        {step.description}
                       </p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                      <div className="text-3xl font-bold text-white mb-1">
-                        10K+
-                      </div>
-                      <div className="text-xs text-white/70">
-                        Dostaw rocznie
-                      </div>
-                    </div>
-                    <div className="bg-gradient-to-br from-red-500/20 to-red-500/20 backdrop-blur-sm rounded-xl p-4 border border-red-400/30">
-                      <div className="text-3xl font-bold text-white mb-1">
-                        24/7
-                      </div>
-                      <div className="text-xs text-white">Wsparcie klienta</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {deliverySteps.map((step, index) => {
-                    const status =
-                      index === currentStep
-                        ? 'active'
-                        : index < currentStep
-                          ? 'completed'
-                          : 'pending';
-                    return (
-                      <div key={index} className="flex items-start space-x-4">
-                        <div
-                          className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
-                            status === 'active'
-                              ? 'bg-gradient-to-br from-red-500 to-red-700 text-white shadow-lg shadow-red-500/50 scale-110'
-                              : 'bg-white/10 backdrop-blur-sm border-2 border-blue-400/20'
-                          }`}
-                        >
-                          <step.icon className="w-6 h-6 transition-colors duration-500 text-white" />
+                      {isActive && (
+                        <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden mt-3">
+                          <div
+                            className="h-full bg-gradient-to-r from-brand-red-900 to-brand-red-800 transition-all duration-300"
+                            style={{ width: `${progress}%` }}
+                          ></div>
                         </div>
-                        <div className="flex-1">
-                          <div className="mb-1">
-                            <span
-                              className={`font-semibold transition-all duration-500 ${
-                                status === 'active'
-                                  ? 'text-red-400 text-lg font-bold'
-                                  : 'text-white'
-                              }`}
-                            >
-                              {step.label}
-                            </span>
-                          </div>
-                          <p
-                            className={`text-sm transition-colors duration-500 ${
-                              status === 'active'
-                                ? 'text-cyan-100'
-                                : 'text-white'
-                            }`}
-                          >
-                            {step.description}
-                          </p>
-                          {status === 'active' && (
-                            <div className="h-1 bg-white/20 rounded-full overflow-hidden mt-2">
-                              <div
-                                className="h-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-300 shadow-[0_0_10px_rgba(248,113,113,0.8)]"
-                                style={{ width: `${progress}%` }}
-                              ></div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

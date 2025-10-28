@@ -7,9 +7,9 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Moving Mountain - Global Transport Solutions',
+  title: 'Transport i spedycja - Jaqbs',
   description:
-    'Professional transportation and logistics services worldwide. Reliable, efficient, and cost-effective solutions for your business needs.'
+    'Profesjonalne usługi transportowe i logistyczne w całej Europie. Niezawodne, efektywne i opłacalne rozwiązania dla Twoich potrzeb biznesowych.'
 };
 
 export default function RootLayout({
