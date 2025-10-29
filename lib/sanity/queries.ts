@@ -109,3 +109,54 @@ export const recentPostsQuery = groq`
     "mainImageAlt": mainImage.alt
   }
 `;
+
+export const jobsQuery = `*[_type == "job" && active == true] | order(featured desc, publishedAt desc) {
+  _id,
+  title,
+  slug,
+  location,
+  type,
+  salary,
+  description,
+  requirements,
+  responsibilities,
+  benefits,
+  category,
+  featured,
+  active,
+  publishedAt
+}`;
+
+export const featuredJobsQuery = `*[_type == "job" && active == true && featured == true] | order(publishedAt desc)[0...3] {
+  _id,
+  title,
+  slug,
+  location,
+  type,
+  salary,
+  description,
+  requirements,
+  responsibilities,
+  benefits,
+  category,
+  featured,
+  active,
+  publishedAt
+}`;
+
+export const jobBySlugQuery = `*[_type == "job" && slug.current == $slug][0] {
+  _id,
+  title,
+  slug,
+  location,
+  type,
+  salary,
+  description,
+  requirements,
+  responsibilities,
+  benefits,
+  category,
+  featured,
+  active,
+  publishedAt
+}`;

@@ -16,11 +16,6 @@ import {
   Truck,
   MapPin
 } from 'lucide-react';
-import {
-  AnimatedSection,
-  StaggeredContainer,
-  StaggeredItem
-} from '@/components/ui/AnimatedSection';
 import { client } from '@/lib/sanity/client';
 import {
   postsQuery,

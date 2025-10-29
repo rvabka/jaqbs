@@ -207,9 +207,9 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-brand-red-900 to-brand-blue-900 rounded-3xl blur-2xl opacity-20"></div>
                 <img
-                  src="https://images.pexels.com/photos/27256005/pexels-photo-27256005.jpeg"
+                  src="team.webp"
                   alt="Zespół Jaqbs - firma transportowo-spedycyjna"
-                  className="relative rounded-3xl shadow-2xl w-full hover-lift"
+                  className="relative rounded-3xl shadow-2xl w-full hover-lift aspect-square object-cover"
                 />
               </div>
             </AnimatedSection>
@@ -271,9 +271,9 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-brand-blue-900 to-brand-red-900 rounded-3xl blur-2xl opacity-20"></div>
                 <img
-                  src="https://images.pexels.com/photos/27256005/pexels-photo-27256005.jpeg"
+                  src="ciezarowka1.webp"
                   alt="Zespół spedytorów Jaqbs"
-                  className="relative rounded-3xl shadow-2xl w-full hover-lift"
+                  className="relative rounded-3xl shadow-2xl w-full hover-lift aspect-square object-cover"
                 />
               </div>
             </AnimatedSection>
@@ -384,7 +384,6 @@ export default function AboutPage() {
       </section>
 
       <section className="py-24 bg-gradient-to-br from-brand-red-900 via-brand-red-800 to-brand-blue-900 text-white relative overflow-hidden">
-
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
@@ -519,7 +518,7 @@ export default function AboutPage() {
                   </div>
                   <div className="relative">
                     <img
-                      src="https://images.pexels.com/photos/27256005/pexels-photo-27256005.jpeg"
+                      src="dostawczak.webp"
                       alt="Mapa oddziałów Jaqbs w Polsce"
                       className="rounded-2xl shadow-lg hover-lift"
                     />

@@ -20,12 +20,13 @@ import {
   Send,
   MessageSquare,
   Handshake,
-  Building2
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { PageHero } from '@/components/PageHero';
-import { Metadata } from 'next';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 export default function WspolpracaPage() {
   const [formData, setFormData] = useState({
@@ -37,14 +38,35 @@ export default function WspolpracaPage() {
     email: '',
     additionalInfo: ''
   });
-  
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'idle' | 'success' | 'error';
+    message?: string;
+  }>({ type: 'idle' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { getToken } = useRecaptcha();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: 'idle' });
+
+    try {
+      const recaptchaToken = await getToken();
+
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Wystąpił błąd');
+      }
+
+      setSubmitStatus({ type: 'success', message: data.message });
       setFormData({
         firstName: '',
         lastName: '',
@@ -54,7 +76,19 @@ export default function WspolpracaPage() {
         email: '',
         additionalInfo: ''
       });
-    }, 3000);
+
+      setTimeout(() => {
+        setSubmitStatus({ type: 'idle' });
+      }, 5000);
+    } catch (error: any) {
+      console.error('Error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: error.message || 'Wystąpił błąd podczas wysyłania zapytania'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
@@ -118,194 +152,235 @@ export default function WspolpracaPage() {
 
       <section id="form">
         <FormSection
-          title="Formularz współpracy"
-          description="Wypełnij formularz i wyślij, a nasi specjaliści skontaktują się z Tobą"
+          title="Formularz wyceny"
+          description="Wypełnij formularz, a nasi specjaliści skontaktują się z Tobą z ofertą"
         >
-          {isSubmitted ? (
-            <AnimatedSection direction="fade" className="text-center py-12">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 className="h-12 w-12 text-green-600" />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {submitStatus.type === 'success' && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+                <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+                <p className="text-green-800 font-medium">
+                  {submitStatus.message}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Dziękujemy za przesłanie formularza!
-              </h3>
-              <p className="text-gray-600 text-lg">
-                Nasz zespół skontaktuje się z Tobą wkrótce.
-              </p>
-            </AnimatedSection>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <User className="h-5 w-5 mr-2 text-brand-red-900" />
-                  Dane kontaktowe
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="firstName"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      Imię <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="firstName"
-                      placeholder="Jan"
-                      value={formData.firstName}
-                      onChange={e =>
-                        setFormData({ ...formData, firstName: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="lastName"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      Nazwisko <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Kowalski"
-                      value={formData.lastName}
-                      onChange={e =>
-                        setFormData({ ...formData, lastName: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4 mt-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="company"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      Firma <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="company"
-                      placeholder="Nazwa firmy"
-                      value={formData.company}
-                      onChange={e =>
-                        setFormData({ ...formData, company: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="nip"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      NIP <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="nip"
-                      placeholder="1234567890"
-                      value={formData.nip}
-                      onChange={e =>
-                        setFormData({ ...formData, nip: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4 mt-4">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="phone"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      Numer telefonu{' '}
-                      <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+48 123 456 789"
-                      value={formData.phone}
-                      onChange={e =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="email"
-                      className="text-sm font-semibold text-gray-700"
-                    >
-                      Email <span className="text-brand-red-900">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="email@example.com"
-                      value={formData.email}
-                      onChange={e =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                </div>
-              </div>
+            )}
 
-              <div className="border-t border-gray-200 pt-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <MessageSquare className="h-5 w-5 mr-2 text-brand-red-900" />
-                  Dodatkowe informacje o trasie transportu i szczegółach
-                  przesyłki
-                </h3>
+            {submitStatus.type === 'error' && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
+                <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                <p className="text-red-800 font-medium">
+                  {submitStatus.message}
+                </p>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <User className="h-5 w-5 mr-2 text-brand-red-900" />
+                Dane kontaktowe
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label
-                    htmlFor="additionalInfo"
+                    htmlFor="firstName"
                     className="text-sm font-semibold text-gray-700"
                   >
-                    Opisz swoją ofertę współpracy
+                    Imię <span className="text-brand-red-900">*</span>
                   </Label>
-                  <Textarea
-                    id="additionalInfo"
-                    placeholder="Opisz, w jaki sposób chciałbyś z nami współpracować. Możesz podać informacje o trasach, których szukasz, dostępnych pojazdach, doświadczeniu w branży TSL, itp."
-                    rows={6}
-                    value={formData.additionalInfo}
+                  <Input
+                    id="firstName"
+                    placeholder="Jan"
+                    value={formData.firstName}
                     onChange={e =>
-                      setFormData({
-                        ...formData,
-                        additionalInfo: e.target.value
-                      })
+                      setFormData({ ...formData, firstName: e.target.value })
                     }
-                    className="resize-none"
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="lastName"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    Nazwisko <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Input
+                    id="lastName"
+                    placeholder="Kowalski"
+                    value={formData.lastName}
+                    onChange={e =>
+                      setFormData({ ...formData, lastName: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
-
-              <div className="border-t border-gray-200 pt-8">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900"
-                >
-                  <Send className="w-5 h-5 mr-2" />
-                  Wyślij zapytanie a my skontaktujemy się z Tobą
-                </Button>
+              <div className="grid md:grid-cols-2 gap-4 mt-4">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="company"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    Firma <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Input
+                    id="company"
+                    placeholder="Nazwa firmy"
+                    value={formData.company}
+                    onChange={e =>
+                      setFormData({ ...formData, company: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="nip"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    NIP <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Input
+                    id="nip"
+                    placeholder="1234567890"
+                    value={formData.nip}
+                    onChange={e =>
+                      setFormData({ ...formData, nip: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
+                  />
+                </div>
               </div>
-            </form>
-          )}
+              <div className="grid md:grid-cols-2 gap-4 mt-4">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="phone"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    Numer telefonu <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+48 123 456 789"
+                    value={formData.phone}
+                    onChange={e =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="email"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    Email <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="email@example.com"
+                    value={formData.email}
+                    onChange={e =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 pt-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                <MessageSquare className="h-5 w-5 mr-2 text-brand-red-900" />
+                Szczegóły zapytania
+              </h3>
+              <div className="space-y-2">
+                <Label
+                  htmlFor="additionalInfo"
+                  className="text-sm font-semibold text-gray-700"
+                >
+                  Opisz trasę transportu i szczegóły przesyłki
+                </Label>
+                <Textarea
+                  id="additionalInfo"
+                  placeholder="Podaj informacje o trasie (skąd-dokąd), rodzaju przesyłki, wymiarach, wadze, terminie realizacji, itp."
+                  rows={6}
+                  value={formData.additionalInfo}
+                  onChange={e =>
+                    setFormData({
+                      ...formData,
+                      additionalInfo: e.target.value
+                    })
+                  }
+                  className="resize-none"
+                  disabled={isSubmitting}
+                />
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 pt-8">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={isSubmitting}
+                className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Wysyłanie...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Wyślij zapytanie o wycenę
+                  </>
+                )}
+              </Button>
+
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-red-900 hover:underline"
+                >
+                  Polityka prywatności
+                </a>{' '}
+                i{' '}
+                <a
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-red-900 hover:underline"
+                >
+                  Warunki usługi
+                </a>
+                .
+              </p>
+            </div>
+          </form>
         </FormSection>
       </section>
 
       <CTASection
         title="Wolisz porozmawiać bezpośrednio?"
-        description="Zadzwoń do nas lub napisz e-mail – chętnie odpowiemy na wszystkie pytania dotyczące współpracy"
+        description="Zadzwoń do nas lub napisz e-mail – chętnie odpowiemy na wszystkie pytania dotyczące wyceny"
         primaryButtonText="Skontaktuj się z nami"
         primaryButtonHref="/kontakt"
         showSecondaryButton={false}

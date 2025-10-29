@@ -24,7 +24,11 @@ export default function Hero() {
       description: 'Ubezpieczenie każdej przesyłki'
     },
     { icon: Zap, label: 'Szybkość', description: 'Ekspresowa dostawa 24/7' },
-    { icon: MapPin, label: 'Zasięg', description: 'Wszystkie kraje w Unii Europejskiej' },
+    {
+      icon: MapPin,
+      label: 'Zasięg',
+      description: 'Wszystkie kraje w Unii Europejskiej'
+    },
     {
       icon: Coffee,
       label: 'Zawsze na czas',
@@ -58,10 +62,19 @@ export default function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
-          style={{ filter: 'blur(4px)' }}
+          style={{
+            filter: 'blur(8px)',
+            transform: 'scale(1.05)',
+            transformOrigin: 'center center'
+          }}
+          onLoadedData={e => {
+            const video = e.currentTarget;
+            video.play().catch(() => {});
+          }}
         >
-          <source src="/background.webm" type="video/webm" />
+          <source src="/background-original.webm" type="video/webm" />
         </video>
         <div className="absolute inset-0 bg-black/65"></div>
       </div>

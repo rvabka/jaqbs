@@ -22,11 +22,16 @@ import {
   TrendingUp,
   Send,
   User,
-  MessageSquare
+  MessageSquare,
+  CheckCircle2,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { PageHero } from '@/components/PageHero';
+import Image from 'next/image';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 export default function CarriersPage() {
   const [formData, setFormData] = useState({
@@ -37,11 +42,56 @@ export default function CarriersPage() {
     fleet: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'idle' | 'success' | 'error';
+    message?: string;
+  }>({ type: 'idle' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { getToken } = useRecaptcha();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
+    setIsSubmitting(true);
+    setSubmitStatus({ type: 'idle' });
+
+    try {
+      const recaptchaToken = await getToken();
+
+      const response = await fetch('/api/carrier', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Wystąpił błąd');
+      }
+
+      setSubmitStatus({ type: 'success', message: data.message });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        fleet: '',
+        message: ''
+      });
+
+      setTimeout(() => {
+        setSubmitStatus({ type: 'idle' });
+      }, 5000);
+    } catch (error: any) {
+      console.error('Error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: error.message || 'Wystąpił błąd podczas wysyłania zgłoszenia'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const benefits = [
@@ -84,7 +134,62 @@ export default function CarriersPage() {
         description="Rozwijaj swój biznes z pewnym partnerem! Dołącz do nas i jedź razem z nami po sukces."
       />
 
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
+
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <AnimatedSection direction="right">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-brand-red-900 to-brand-blue-900 rounded-3xl blur-2xl opacity-20"></div>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/kierowca.webp"
+                    alt="Flota pojazdów Jaqbs - profesjonalny transport"
+                    width={800}
+                    height={600}
+                    className="relative rounded-3xl shadow-2xl w-full hover-lift aspect-square object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="left">
+              <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
+                <div className="w-2 h-2 bg-brand-red-900 rounded-full"></div>
+                <span>Współpraca z Jaqbs</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Stabilny partner dla przewoźników
+              </h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>
+                  Jako firma transportowo-spedycyjna z{' '}
+                  <strong>15-letnim doświadczeniem</strong>, wiemy jak ważne
+                  jest partnerstwo oparte na zaufaniu i wzajemnym wsparciu.
+                </p>
+                <p>
+                  Oferujemy przewoźnikom <strong>stałe zlecenia</strong>,{' '}
+                  <strong>terminowe płatności</strong> i pełne wsparcie
+                  operacyjne. Dołącz do naszej sieci i rozwijaj swój biznes z
+                  pewnym partnerem.
+                </p>
+                <div className="bg-gradient-to-r from-brand-red-50 to-brand-blue-50 p-6 rounded-2xl border-l-4 border-brand-red-900">
+                  <p className="font-semibold text-brand-red-900">
+                    Dla nas transport to nie tylko logistyka - to partnerstwo,
+                    zaufanie i wspólny sukces.
+                  </p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       <section className="py-24 relative overflow-hidden">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-red-900/5 to-brand-blue-900/5 rounded-full blur-3xl"></div>
+
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
@@ -133,6 +238,8 @@ export default function CarriersPage() {
       </section>
 
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
+
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <AnimatedSection direction="left">
@@ -182,6 +289,24 @@ export default function CarriersPage() {
               description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy"
             >
               <form onSubmit={handleSubmit} className="space-y-8">
+                {submitStatus.type === 'success' && (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+                    <p className="text-green-800 font-medium">
+                      {submitStatus.message}
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus.type === 'error' && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
+                    <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                    <p className="text-red-800 font-medium">
+                      {submitStatus.message}
+                    </p>
+                  </div>
+                )}
+
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                     <User className="h-5 w-5 mr-2 text-brand-red-900" />
@@ -205,6 +330,7 @@ export default function CarriersPage() {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         className="h-12"
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
@@ -224,6 +350,7 @@ export default function CarriersPage() {
                           setFormData({ ...formData, email: e.target.value })
                         }
                         className="h-12"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -245,6 +372,7 @@ export default function CarriersPage() {
                           setFormData({ ...formData, phone: e.target.value })
                         }
                         className="h-12"
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
@@ -264,6 +392,7 @@ export default function CarriersPage() {
                           setFormData({ ...formData, company: e.target.value })
                         }
                         className="h-12"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -289,6 +418,7 @@ export default function CarriersPage() {
                         setFormData({ ...formData, fleet: e.target.value })
                       }
                       className="h-12"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -303,10 +433,11 @@ export default function CarriersPage() {
                       htmlFor="message"
                       className="text-sm font-semibold text-gray-700"
                     >
-                      Wiadomość
+                      Wiadomość <span className="text-brand-red-900">*</span>
                     </Label>
                     <Textarea
                       id="message"
+                      required
                       placeholder="Opisz swoją firmę, doświadczenie w transporcie, główne trasy, specjalizację..."
                       rows={6}
                       value={formData.message}
@@ -314,6 +445,7 @@ export default function CarriersPage() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       className="resize-none"
+                      disabled={isSubmitting}
                     />
                   </div>
                 </div>
@@ -322,11 +454,43 @@ export default function CarriersPage() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900"
+                    disabled={isSubmitting}
+                    className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-5 h-5 mr-2" />
-                    Wyślij zgłoszenie
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Wysyłanie...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        Wyślij zgłoszenie
+                      </>
+                    )}
                   </Button>
+
+                  <p className="text-xs text-gray-500 mt-4 text-center">
+                    Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+                    <a
+                      href="https://policies.google.com/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-red-900 hover:underline"
+                    >
+                      Polityka prywatności
+                    </a>{' '}
+                    i{' '}
+                    <a
+                      href="https://policies.google.com/terms"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-red-900 hover:underline"
+                    >
+                      Warunki usługi
+                    </a>
+                    .
+                  </p>
                 </div>
               </form>
             </FormSection>

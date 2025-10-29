@@ -25,12 +25,15 @@ import {
   Truck,
   DollarSign,
   MessageSquare,
-  User
+  User,
+  CheckCircle2,
+  Loader2
 } from 'lucide-react';
 import GoogleMap from '@/components/GoogleMap';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { PageHero } from '@/components/PageHero';
+import { useRecaptcha } from '@/hooks/useRecaptcha';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -39,11 +42,49 @@ export default function ContactPage() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'idle' | 'success' | 'error';
+    message?: string;
+  }>({ type: 'idle' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { getToken } = useRecaptcha();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission
+    setIsSubmitting(true);
+    setSubmitStatus({ type: 'idle' });
+
+    try {
+      const recaptchaToken = await getToken();
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Wystąpił błąd');
+      }
+
+      setSubmitStatus({ type: 'success', message: data.message });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+
+      setTimeout(() => {
+        setSubmitStatus({ type: 'idle' });
+      }, 5000);
+    } catch (error: any) {
+      console.error('Error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: error.message || 'Wystąpił błąd podczas wysyłania wiadomości'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const departments = [
@@ -139,7 +180,7 @@ export default function ContactPage() {
             staggerDelay={0.1}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {departments.map((dept, index) => {
+            {departments.map(dept => {
               const Icon = dept.icon;
               return (
                 <StaggeredItem key={dept.name} direction="up">
@@ -205,7 +246,6 @@ export default function ContactPage() {
       </section>
 
       <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
@@ -237,6 +277,22 @@ export default function ContactPage() {
         description="Wypełnij formularz, a my skontaktujemy się z Tobą jak najszybciej"
       >
         <form onSubmit={handleSubmit} className="space-y-8">
+          {submitStatus.type === 'success' && (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+              <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
+              <p className="text-green-800 font-medium">
+                {submitStatus.message}
+              </p>
+            </div>
+          )}
+
+          {submitStatus.type === 'error' && (
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
+              <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+              <p className="text-red-800 font-medium">{submitStatus.message}</p>
+            </div>
+          )}
+
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
               <User className="h-5 w-5 mr-2 text-brand-red-900" />
@@ -259,6 +315,7 @@ export default function ContactPage() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   className="h-12"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -278,6 +335,7 @@ export default function ContactPage() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   className="h-12"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -296,6 +354,7 @@ export default function ContactPage() {
                   setFormData({ ...formData, subject: e.target.value })
                 }
                 className="h-12"
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -310,10 +369,11 @@ export default function ContactPage() {
                 htmlFor="message"
                 className="text-sm font-semibold text-gray-700"
               >
-                Wiadomość
+                Wiadomość <span className="text-brand-red-900">*</span>
               </Label>
               <Textarea
                 id="message"
+                required
                 placeholder="Twoja wiadomość..."
                 value={formData.message}
                 onChange={e =>
@@ -321,6 +381,7 @@ export default function ContactPage() {
                 }
                 className="min-h-[150px] resize-none"
                 rows={6}
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -329,11 +390,43 @@ export default function ContactPage() {
             <Button
               type="submit"
               size="lg"
-              className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900"
+              disabled={isSubmitting}
+              className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Send className="w-5 h-5 mr-2" />
-              Wyślij wiadomość
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Wysyłanie...
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5 mr-2" />
+                  Wyślij wiadomość
+                </>
+              )}
             </Button>
+
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-red-900 hover:underline"
+              >
+                Polityka prywatności
+              </a>{' '}
+              i{' '}
+              <a
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-red-900 hover:underline"
+              >
+                Warunki usługi
+              </a>
+              .
+            </p>
           </div>
         </form>
       </FormSection>

@@ -5,7 +5,7 @@ export interface Post {
     current: string;
   };
   excerpt: string;
-  body?: any[]; 
+  body?: any[];
   publishedAt: string;
   updatedAt?: string;
   readTime?: number;
@@ -48,4 +48,23 @@ export interface Category {
   };
   description?: string;
   color: string;
+}
+
+export interface Job {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  location: string;
+  type: string;
+  salary: string;
+  description: string;
+  requirements: string[];
+  responsibilities?: string[];
+  benefits?: string[];
+  category: string;
+  featured: boolean;
+  active: boolean;
+  publishedAt: string;
 }

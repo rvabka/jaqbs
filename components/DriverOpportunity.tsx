@@ -57,9 +57,13 @@ export default function DriverOpportunity() {
           <AnimatedSection className="relative">
             <StaggeredItem
               direction="up"
-              className="aspect-square bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-2xl flex items-center justify-center"
+              className="aspect-square rounded-2xl flex items-center justify-center"
             >
-              <Truck className="h-32 w-32 text-white opacity-80" />
+              <img
+                src="ciezarowka3.webp"
+                alt="Zespół Jaqbs - firma transportowo-spedycyjna"
+                className="relative rounded-3xl shadow-2xl w-full hover-lift aspect-square object-cover"
+              />
             </StaggeredItem>
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-red-700 rounded-2xl opacity-20"></div>
           </AnimatedSection>
