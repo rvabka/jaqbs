@@ -4,7 +4,7 @@ import { AnimatedSection, StaggeredItem } from './ui/AnimatedSection';
 
 export default function DriverOpportunity() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -65,7 +65,6 @@ export default function DriverOpportunity() {
                 className="relative rounded-3xl shadow-2xl w-full hover-lift aspect-square object-cover"
               />
             </StaggeredItem>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-red-700 rounded-2xl opacity-20"></div>
           </AnimatedSection>
         </div>
       </div>

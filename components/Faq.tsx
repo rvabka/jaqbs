@@ -51,7 +51,7 @@ export default function Faq() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
+    <section className="py-12 g-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl animate-float"></div>
         <div
@@ -130,7 +130,10 @@ export default function Faq() {
           className="mt-16 text-center animate-fade-in-up"
           style={{ animationDelay: '400ms' }}
         >
-          <Card className="bg-gradient-to-br from-brand-red-700 to-brand-blue-700 border-0 text-white hover-lift">
+          <Card
+            hover={false}
+            className="bg-brand-blue-700 border-0 text-white hover-lift"
+          >
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-3">
                 Nie znalazłeś odpowiedzi?

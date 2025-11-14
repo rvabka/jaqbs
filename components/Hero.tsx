@@ -65,7 +65,6 @@ export default function Hero() {
           preload="auto"
           className="w-full h-full object-cover"
           style={{
-            filter: 'blur(8px)',
             transform: 'scale(1.05)',
             transformOrigin: 'center center'
           }}

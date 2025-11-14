@@ -43,7 +43,7 @@ export default function RecentBlogPosts({ posts }: RecentBlogPostsProps) {
   if (!posts || posts.length === 0) return null;
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {isClient && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-red-100/20 to-blue-100/20 rounded-full blur-3xl animate-pulse"></div>
@@ -148,7 +148,7 @@ export default function RecentBlogPosts({ posts }: RecentBlogPostsProps) {
                     </div>
                   </CardContent>
 
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-700 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-brand-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </Card>
               </Link>
             </StaggeredItem>
@@ -156,7 +156,7 @@ export default function RecentBlogPosts({ posts }: RecentBlogPostsProps) {
         </StaggeredContainer>
 
         <AnimatedSection direction="up" delay={1.0} className="text-center">
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-red-700 to-blue-700 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
+          <div className="inline-flex items-center space-x-4 bg-brand-blue-700 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
             <Link href="/blog" className="text-lg font-semibold">
               Zobacz wszystkie artykuły
             </Link>

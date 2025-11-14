@@ -134,7 +134,7 @@ export default function CarriersPage() {
         description="Rozwijaj swój biznes z pewnym partnerem! Dołącz do nas i jedź razem z nami po sukces."
       />
 
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-12 bg-white relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -187,7 +187,7 @@ export default function CarriersPage() {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-red-900/5 to-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -221,9 +221,9 @@ export default function CarriersPage() {
                 <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <benefit.icon className="h-8 w-8 text-brand-red-900" />
+                      <benefit.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
                       {benefit.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -237,7 +237,7 @@ export default function CarriersPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -455,7 +455,7 @@ export default function CarriersPage() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>

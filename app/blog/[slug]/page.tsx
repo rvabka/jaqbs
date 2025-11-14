@@ -181,7 +181,7 @@ export default async function ArticlePage({ params }: PageProps) {
       />
 
       <article>
-        <header className="relative bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-red-800 text-white py-20 overflow-hidden">
+        <header className="relative bg-brand-blue-700 text-white py-20 overflow-hidden">
           <div className="absolute inset-0 bg-[url('/abstract-logistics-pattern.png')] opacity-5"></div>
           <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-700/20 rounded-full blur-3xl"></div>
@@ -308,7 +308,7 @@ export default async function ArticlePage({ params }: PageProps) {
             <aside className="lg:col-span-1">
               <div className="sticky top-24 space-y-8">
                 {filteredRecentPosts.length > 0 && (
-                  <Card className="shadow-lg border-0 overflow-hidden bg-gradient-to-br from-white to-gray-50">
+                  <Card hover={false} className="shadow-lg border-0 overflow-hidden bg-gradient-to-br from-white to-gray-50">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-2 mb-6">
                         <div className="w-1 h-6 bg-gradient-to-b from-brand-red-700 to-brand-blue-700 rounded-full"></div>
@@ -374,7 +374,7 @@ export default async function ArticlePage({ params }: PageProps) {
                       </div>
                       <Link
                         href="/blog"
-                        className="mt-6 block text-center px-4 py-2 bg-gradient-to-r from-brand-red-700 to-brand-blue-700 text-white rounded-lg font-semibold hover:from-brand-red-800 hover:to-brand-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
+                        className="mt-6 block text-center px-4 py-2 bg-brand-blue-700 text-white rounded-lg font-semibold hover:bg-brand-blue-800 transition-all duration-300 shadow-md hover:shadow-lg"
                       >
                         Zobacz wszystkie artykuły
                       </Link>
@@ -431,7 +431,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   </Card>
                 )}
 
-                <Card className="bg-gradient-to-br from-brand-blue-900 to-brand-red-800 text-white shadow-lg border-0">
+                <Card  hover={false} className="bg-brand-blue-700 text-white shadow-lg border-0">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-xl mb-3">
                       Potrzebujesz wsparcia?

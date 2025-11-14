@@ -261,17 +261,11 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #f92929, #084c89);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #0b4073;
 }
 
 .gradient-text-h1 {
-  background: linear-gradient(135deg, #f92929, #084c89);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #0b4073;
 }
 
 @keyframes float {

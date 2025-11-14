@@ -121,7 +121,7 @@ export default function WspolpracaPage() {
         description="Współpracuj z nami i rozwijaj swój biznes w branży TSL. Profesjonalne partnerstwo oparte na zaufaniu i wzajemnym wsparciu."
       />
 
-      <section className="py-16 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -134,7 +134,7 @@ export default function WspolpracaPage() {
                 <Card className="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg">
                   <CardContent className="pt-8 pb-8 h-52">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                      <benefit.icon className="h-8 w-8 text-brand-red-900" />
+                      <benefit.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {benefit.title}
@@ -337,7 +337,7 @@ export default function WspolpracaPage() {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

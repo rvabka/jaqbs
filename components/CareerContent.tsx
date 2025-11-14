@@ -239,7 +239,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
 
   return (
     <>
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
@@ -292,7 +292,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
@@ -323,9 +323,9 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                 <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <item.icon className="h-8 w-8 text-brand-red-900" />
+                      <item.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -345,9 +345,9 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                 <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <item.icon className="h-8 w-8 text-brand-red-900" />
+                      <item.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -361,7 +361,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
@@ -469,7 +469,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                           setFormData({ ...formData, position: job.title });
                           scrollToForm();
                         }}
-                        className="w-full bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 shadow-lg hover:shadow-xl transition-all duration-300 h-12 mt-auto"
+                        className="w-full bg-brand-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12 mt-auto"
                       >
                         Aplikuj teraz
                         <ArrowDown className="ml-2 h-4 w-4" />
@@ -661,7 +661,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

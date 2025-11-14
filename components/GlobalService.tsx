@@ -26,7 +26,7 @@ export default function GlobalService() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <AnimatedSection direction="fade" className="mb-16">
           <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
@@ -80,7 +80,7 @@ export default function GlobalService() {
         <AnimatedSection direction="up" delay={1.2} className="mt-20">
           <Link
             href={'/o-nas'}
-            className="inline-flex items-center space-x-4 bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer group"
+            className="inline-flex items-center space-x-4 bg-brand-blue-700 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group"
           >
             <Globe className="w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
             <span className="text-lg font-semibold">

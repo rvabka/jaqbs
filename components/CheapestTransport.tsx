@@ -4,7 +4,7 @@ import { AnimatedSection, StaggeredItem } from './ui/AnimatedSection';
 
 export default function CheapestTransport() {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-12 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedSection className="relative">
@@ -23,7 +23,6 @@ export default function CheapestTransport() {
                 Your browser does not support the video tag.
               </video>
             </StaggeredItem>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red-700 rounded-2xl opacity-20"></div>
           </AnimatedSection>
 
           <div className="space-y-8">

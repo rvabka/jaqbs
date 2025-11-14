@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
+import GoogleReviews from '@/components/GoogleReviews';
 
 export default function AboutPage() {
   const stats = [
@@ -135,11 +136,11 @@ export default function AboutPage() {
         description="Profesjonalna firma transportowo-spedycyjna z 15-letnim doświadczeniem. Partnerstwo, terminowość i indywidualne podejście do każdego klienta."
       />
 
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              <span className="gradient-text">Jaqbs</span> w liczbach
+              <span className="text-brand-blue-700">Jaqbs</span> w liczbach
             </h2>
             <p className="text-lg text-gray-600">
               Zaufało nam ponad 1000 klientów w całej Polsce i Europie
@@ -154,7 +155,7 @@ export default function AboutPage() {
                 <Card className="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg">
                   <CardContent className="pt-8 pb-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                      <stat.icon className="h-8 w-8 text-brand-red-900" />
+                      <stat.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
                     <div className="text-3xl md:text-4xl font-bold mb-3 text-black whitespace-nowrap">
                       {stat.value}
@@ -170,7 +171,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-white">
+      <section className="py-12 relative overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
@@ -217,7 +218,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
@@ -247,10 +248,10 @@ export default function AboutPage() {
               <StaggeredItem key={index} direction="up">
                 <Card className="group hover-lift cursor-pointer h-52">
                   <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <doc.icon className="h-8 w-8 text-brand-red-900" />
+                    <div className="w-16 h-16 bg-gradient-to-br from-brand-blue-50 to-brand-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <doc.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
-                    <h3 className="font-semibold group-hover:text-brand-red-900 transition-colors">
+                    <h3 className="font-semibold group-hover:text-brand-blue-700 transition-colors">
                       {doc.name}
                     </h3>
                     <p className="text-sm text-gray-500 mt-2">
@@ -264,7 +265,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left" className="order-2 md:order-1">
@@ -334,7 +335,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-12 bg-white relative overflow-hidden">
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -367,9 +368,9 @@ export default function AboutPage() {
                 <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
                   <CardContent className="p-8">
                     <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <value.icon className="h-8 w-8 text-brand-red-900" />
+                      <value.icon className="h-8 w-8 text-brand-blue-700" />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
                       {value.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -383,7 +384,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-brand-red-900 via-brand-red-800 to-brand-blue-900 text-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-blue-700 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">
@@ -452,85 +453,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection direction="fade" className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-brand-red-50 rounded-full px-4 py-2 text-sm font-medium text-brand-red-800 mb-6">
-              <MapPin className="h-4 w-4" />
-              <span>Jesteśmy blisko</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                6 oddziałów w całej Polsce
-              </h2>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed">
-                Nieustannie rozwijamy się, aby być jeszcze bliżej naszych
-                Klientów – zarówno w Polsce, jak i za granicą
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-          >
-            {offices.map((office, index) => (
-              <StaggeredItem key={index} direction="up">
-                <Card className="group hover-lift overflow-hidden">
-                  <div className={`h-2 bg-gradient-to-r ${office.color}`}></div>
-                  <CardContent className="p-6">
-                    <div className="text-sm font-medium text-gray-500 mb-2">
-                      {office.type}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-brand-red-900 transition-colors">
-                      {office.city}
-                    </h3>
-                    <p className="text-gray-600">{office.address}</p>
-                  </CardContent>
-                </Card>
-              </StaggeredItem>
-            ))}
-          </StaggeredContainer>
-
-          <AnimatedSection direction="up" delay={0.6}>
-            <Card className="bg-gradient-to-br from-gray-50 to-white border-2">
-              <CardContent className="p-8 md:p-12">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h3 className="text-3xl font-bold mb-4">
-                      Globalny zasięg, lokalna obsługa
-                    </h3>
-                    <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                      Jaqbs posiada <strong>globalny zasięg</strong>, ale w
-                      codziennej pracy koncentrujemy się na tym, by lokalnie
-                      rozumieć potrzeby naszych Klientów, jednocześnie oferując
-                      międzynarodowy standard obsługi.
-                    </p>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      Wyróżniamy się na tle konkurencji, wyznaczając nowe
-                      standardy jakości obsługi i serwisu w branży
-                      transportowo-spedycyjnej.
-                    </p>
-                  </div>
-                  <div className="relative">
-                    <img
-                      src="dostawczak.webp"
-                      alt="Mapa oddziałów Jaqbs w Polsce"
-                      className="rounded-2xl shadow-lg hover-lift"
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      <CTASection />
+      <GoogleReviews />
     </div>
   );
 }

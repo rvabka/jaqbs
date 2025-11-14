@@ -152,7 +152,7 @@ export default function ContactPage() {
         description="Masz pytania? Napisz lub zadzwoń – z przyjemnością doradzimy i znajdziemy najlepsze rozwiązanie dla Twoich potrzeb transportowych."
       />
 
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 relative overflow-hidden">
         <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-900/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-7xl mx-auto px-6">
@@ -245,7 +245,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
@@ -391,7 +391,7 @@ export default function ContactPage() {
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full h-14 text-lg bg-gradient-to-r from-brand-red-900 to-brand-red-800 hover:from-brand-red-800 hover:to-brand-red-900 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 text-lg bg-brand-blue-700disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

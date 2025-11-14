@@ -38,7 +38,7 @@ export default function Partners() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50/50 relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-b from-gray-50 via-white to-gray-50/50 relative overflow-hidden">
       {isClient && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-red-100/20 to-brand-blue-100/20 rounded-full blur-3xl animate-pulse"></div>
@@ -167,10 +167,10 @@ export default function Partners() {
         <AnimatedSection
           direction="up"
           delay={1.0}
-          className="mt-20 text-center"
+          className="mt-10 text-center"
         >
           <Link href={'/dla-przewoznika'}>
-            <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-brand-red-900 to-brand-blue-900 text-white rounded-full px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer">
+            <div className="inline-flex items-center space-x-4 bg-brand-blue-700 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <span className="text-lg font-semibold">
                 Zostań naszym partnerem
               </span>
