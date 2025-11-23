@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Truck, X, Instagram, Facebook } from 'lucide-react';
+import { Truck, X, Instagram, Facebook, Linkedin } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -65,6 +65,12 @@ export default function Navigation() {
       name: 'Facebook',
       href: 'https://www.facebook.com/jaqbs.lublin',
       icon: Facebook,
+      color: 'hover:text-blue-600'
+    },
+    {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/jaqbs-sp-z-o-o-sp-k/',
+      icon: Linkedin,
       color: 'hover:text-blue-600'
     },
     {

@@ -2,7 +2,7 @@
 
 import type React from 'react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -32,8 +32,15 @@ import FormSection from '@/components/FormSection';
 import { PageHero } from '@/components/PageHero';
 import Image from 'next/image';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import FlipCard from '@/components/FlipCard';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
 
 export default function CarriersPage() {
+  const [isClient, setIsClient] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,6 +56,10 @@ export default function CarriersPage() {
   }>({ type: 'idle' });
 
   const { getToken } = useRecaptcha();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,6 +138,17 @@ export default function CarriersPage() {
     'System GPS w pojazdach'
   ];
 
+  const vehicles = [
+    { id: 1, image: '/1.webp' },
+    { id: 2, image: '/2.webp' },
+    { id: 3, image: '/3.webp' },
+    { id: 4, image: '/4.webp' },
+    { id: 5, image: '/5.webp' },
+    { id: 6, image: '/6.webp' },
+    { id: 7, image: '/7.webp' },
+    { id: 8, image: '/8.webp' }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
@@ -165,15 +187,17 @@ export default function CarriersPage() {
               </h2>
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  Jako firma transportowo-spedycyjna z{' '}
-                  <strong>15-letnim doświadczeniem</strong>, wiemy jak ważne
-                  jest partnerstwo oparte na zaufaniu i wzajemnym wsparciu.
+                  Partner gwarantujący stabilność i bezpieczeństwo współpracy
+                  dla przewoźników
                 </p>
                 <p>
-                  Oferujemy przewoźnikom <strong>stałe zlecenia</strong>,{' '}
-                  <strong>terminowe płatności</strong> i pełne wsparcie
-                  operacyjne. Dołącz do naszej sieci i rozwijaj swój biznes z
-                  pewnym partnerem.
+                  Firma powstała w <strong>2010</strong> roku, jednak jest to
+                  jedynie ułamek naszego wieloletniego doświadczenia w branży
+                  spedycyjnej. Od początku kierujemy się zasadą partnerstwa
+                  biznesowego – relacji opartej na zaufaniu, bezpieczeństwie i
+                  wzajemnym wsparciu. Stawiamy na długoterminową współpracę i
+                  dokładamy wszelkich starań,{' '}
+                  <strong>aby nigdy nie zawieść naszych Partnerów.</strong>
                 </p>
                 <div className="bg-gradient-to-r from-brand-red-50 to-brand-blue-50 p-6 rounded-2xl border-l-4 border-brand-red-900">
                   <p className="font-semibold text-brand-red-900">
@@ -206,35 +230,136 @@ export default function CarriersPage() {
 
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Oferujemy najlepsze warunki współpracy dla przewoźników w branży
-                TSL
+                Zapewniamy najlepsze warunki współpracy w zakresie kompleksowych
+                usług transportowo-spedycyjnych, oferując niezawodne
+                rozwiązania, pełne wsparcie operacyjne oraz najwyższy standard
+                obsługi.
               </p>
             </AnimatedSection>
           </AnimatedSection>
 
           <StaggeredContainer
             staggerDelay={0.1}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {benefits.map((benefit, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <benefit.icon className="h-8 w-8 text-brand-blue-700" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <FlipCard
+                  icon={benefit.icon}
+                  title={benefit.title}
+                  description={benefit.description}
+                />
               </StaggeredItem>
             ))}
           </StaggeredContainer>
         </div>
+      </section>
+
+      <section className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-red-900/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <AnimatedSection direction="fade" className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
+              <Truck className="h-4 w-4" />
+              <span>Nasza flota</span>
+            </div>
+
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Nowoczesne <span className="text-brand-blue-900">pojazdy</span>{' '}
+                w naszej flocie
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                Profesjonalny transport z najwyższej klasy pojazdami dostawczymi
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
+          {isClient && (
+            <AnimatedSection direction="up" delay={0.6}>
+              <div className="relative">
+                <Swiper
+                  modules={[Autoplay, Pagination, EffectCoverflow]}
+                  effect="coverflow"
+                  grabCursor={true}
+                  centeredSlides={true}
+                  slidesPerView="auto"
+                  coverflowEffect={{
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 2.5,
+                    slideShadows: false
+                  }}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                  }}
+                  pagination={{
+                    clickable: true,
+                    bulletActiveClass: 'swiper-pagination-bullet-active-fleet'
+                  }}
+                  loop={true}
+                  className="fleet-swiper pb-16"
+                >
+                  {vehicles.map(vehicle => (
+                    <SwiperSlide
+                      key={vehicle.id}
+                      className="!w-auto h-auto mb-10"
+                    >
+                      <div className="relative group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-900/10 to-brand-red-900/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                        <div className="relative bg-white rounded-2xl p-8 border-2 border-gray-100 group-hover:border-brand-blue-900 transition-all duration-500">
+                          <div className="w-[400px] h-[300px] flex items-center justify-center">
+                            <img
+                              src={vehicle.image}
+                              alt="truck"
+                              className="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+
+                <div className="absolute top-1/2 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+                <div className="absolute top-1/2 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+              </div>
+            </AnimatedSection>
+          )}
+        </div>
+
+        <style jsx global>{`
+          .fleet-swiper .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .fleet-swiper .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1;
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+
+          .fleet-swiper .swiper-pagination-bullet-active-fleet {
+            background: #0b4073;
+            width: 28px;
+            border-radius: 5px;
+          }
+        `}</style>
       </section>
 
       <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -268,20 +393,6 @@ export default function CarriersPage() {
                   </StaggeredItem>
                 ))}
               </StaggeredContainer>
-
-              <AnimatedSection direction="up" delay={0.6} className="mt-8">
-                <Card className="bg-gradient-to-br from-brand-red-50 to-brand-blue-50 border-0">
-                  <CardContent className="p-6">
-                    <p className="text-gray-700 leading-relaxed">
-                      <strong className="text-brand-red-900">
-                        Spełniasz wymagania?
-                      </strong>{' '}
-                      Wypełnij formularz obok, a nasz zespół skontaktuje się z
-                      Tobą, aby omówić szczegóły współpracy.
-                    </p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
             </AnimatedSection>
 
             <FormSection

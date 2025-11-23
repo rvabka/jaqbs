@@ -17,8 +17,8 @@ interface CTASectionProps {
 }
 
 export default function CTASection({
-  title = 'Gotowy na współpracę?',
-  description = 'Skontaktuj się z nami już dziś i przekonaj się, dlaczego tysiące klientów wybrało Jaqbs jako swojego partnera w transporcie',
+  title = 'Gotowy do współpracy?',
+  description = 'Skontaktuj się z nami już dziś i przekonaj się, dlaczego warto z nami współpracować',
   primaryButtonText = 'Skontaktuj się z nami',
   primaryButtonHref = '/kontakt',
   secondaryButtonText = 'Zobacz ofertę',

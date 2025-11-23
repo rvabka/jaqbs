@@ -24,6 +24,7 @@ import {
 import CTASection from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
 import GoogleReviews from '@/components/GoogleReviews';
+import FlipCard from '@/components/FlipCard';
 
 export default function AboutPage() {
   const stats = [
@@ -58,45 +59,6 @@ export default function AboutPage() {
       title: 'Profesjonalizm',
       description:
         'Ekspercka wiedza i wieloletnie doświadczenie naszych spedytorów w spedycji międzynarodowej.'
-    }
-  ];
-
-  const offices = [
-    {
-      city: 'Lublin',
-      type: 'Centrala',
-      address: 'ul. Przykładowa 1',
-      color: 'from-brand-red-900 to-brand-red-800'
-    },
-    {
-      city: 'Warszawa',
-      type: 'Oddział',
-      address: 'ul. Przykładowa 2',
-      color: 'from-brand-blue-900 to-brand-blue-800'
-    },
-    {
-      city: 'Słupsk',
-      type: 'Oddział',
-      address: 'ul. Przykładowa 3',
-      color: 'from-brand-red-800 to-brand-red-700'
-    },
-    {
-      city: 'Zielona Góra',
-      type: 'Oddział',
-      address: 'ul. Przykładowa 4',
-      color: 'from-brand-blue-800 to-brand-blue-700'
-    },
-    {
-      city: 'Gdańsk',
-      type: 'Oddział',
-      address: 'ul. Przykładowa 5',
-      color: 'from-brand-red-800 to-brand-red-700'
-    },
-    {
-      city: 'Poznań',
-      type: 'Oddział',
-      address: 'ul. Przykładowa 6',
-      color: 'from-brand-blue-800 to-brand-blue-700'
     }
   ];
 
@@ -136,35 +98,41 @@ export default function AboutPage() {
         description="Profesjonalna firma transportowo-spedycyjna z 15-letnim doświadczeniem. Partnerstwo, terminowość i indywidualne podejście do każdego klienta."
       />
 
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white relative overflow-hidden">
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
+
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              <span className="text-brand-blue-700">Jaqbs</span> w liczbach
-            </h2>
-            <p className="text-lg text-gray-600">
-              Zaufało nam ponad 1000 klientów w całej Polsce i Europie
-            </p>
-          </div>
+          <AnimatedSection direction="fade" className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
+              <div className="w-2 h-2 bg-brand-blue-900 rounded-full"></div>
+              <span>Nasze wartości</span>
+            </div>
+
+            <AnimatedSection direction="up" delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Co wyróżnia firmę <span className="gradient-text">Jaqbs</span>
+              </h2>
+            </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.4}>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                Wyznaczamy nowe standardy jakości obsługi i serwisu w branży
+                transportowo-spedycyjnej
+              </p>
+            </AnimatedSection>
+          </AnimatedSection>
+
           <StaggeredContainer
             staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {stats.map((stat, index) => (
+            {values.map((value, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg">
-                  <CardContent className="pt-8 pb-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                      <stat.icon className="h-8 w-8 text-brand-blue-700" />
-                    </div>
-                    <div className="text-3xl md:text-4xl font-bold mb-3 text-black whitespace-nowrap">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-gray-600 leading-tight min-h-[2.5rem] flex items-center justify-center">
-                      {stat.label}
-                    </div>
-                  </CardContent>
-                </Card>
+                <FlipCard
+                  icon={value.icon}
+                  title={value.title}
+                  description={value.description}
+                />
               </StaggeredItem>
             ))}
           </StaggeredContainer>
@@ -335,49 +303,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-white relative overflow-hidden">
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
-
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection direction="fade" className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
-              <div className="w-2 h-2 bg-brand-blue-900 rounded-full"></div>
-              <span>Nasze wartości</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Co wyróżnia firmę <span className="gradient-text">Jaqbs</span>
-              </h2>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Wyznaczamy nowe standardy jakości obsługi i serwisu w branży
-                transportowo-spedycyjnej
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+              <span className="text-brand-blue-700">Jaqbs</span> w liczbach
+            </h2>
+            <p className="text-lg text-gray-600">
+              Zaufało nam ponad 1000 klientów w całej Polsce i Europie
+            </p>
+          </div>
           <StaggeredContainer
             staggerDelay={0.1}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
           >
-            {values.map((value, index) => (
+            {stats.map((stat, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
-                  <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <value.icon className="h-8 w-8 text-brand-blue-700" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
-                      {value.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <FlipCard
+                  icon={stat.icon}
+                  title={stat.value}
+                  description={stat.label}
+                />
               </StaggeredItem>
             ))}
           </StaggeredContainer>

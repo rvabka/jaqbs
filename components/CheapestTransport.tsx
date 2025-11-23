@@ -33,7 +33,7 @@ export default function CheapestTransport() {
             </AnimatedSection>
             <p className="text-xl text-gray-600 leading-relaxed">
               Nasze zasięgi obejmują całą Europę – jesteśmy obecni m.in. w
-              <span className='font-bold'>
+              <span className="font-bold">
                 {' '}
                 Austrii, Belgii, Czechach, Danii, Francji, Hiszpanii, Holandii,
                 Irlandii, Luksemburgu, Niemczech, Polsce, Portugalii, Słowacji,

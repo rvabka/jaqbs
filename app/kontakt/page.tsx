@@ -27,7 +27,11 @@ import {
   MessageSquare,
   User,
   CheckCircle2,
-  Loader2
+  Loader2,
+  Clock,
+  Facebook,
+  Instagram,
+  Linkedin
 } from 'lucide-react';
 import GoogleMap from '@/components/GoogleMap';
 import CTASection from '@/components/CTASection';
@@ -91,7 +95,7 @@ export default function ContactPage() {
     {
       name: 'SIEDZIBA',
       icon: Building2,
-      color: 'from-brand-red-900 to-brand-red-800',
+      color: 'blue',
       contacts: [
         { type: 'address', value: 'ul. Zemborzycka 53B, 20-445 Lublin' },
         { type: 'phone', value: '+48 570 112 512' },
@@ -101,7 +105,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ WINDYKACJI',
       icon: DollarSign,
-      color: 'from-brand-blue-900 to-brand-blue-800',
+      color: 'red',
       contacts: [
         { type: 'phone', value: '+48 510 850 604' },
         { type: 'email', value: 'payments@jaqbs.eu' }
@@ -110,7 +114,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ SPEDYCJI I TRANSPORTU',
       icon: Truck,
-      color: 'from-brand-red-900 to-brand-red-800',
+      color: 'blue',
       contacts: [
         { type: 'phone', value: '+48 570 112 512' },
         { type: 'email', value: 'spedycja@jaqbs.eu' }
@@ -119,7 +123,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ REKLAMACJI',
       icon: AlertCircle,
-      color: 'from-brand-blue-900 to-brand-blue-800',
+      color: 'red',
       contacts: [
         { type: 'phone', value: '+48 573 400 639' },
         { type: 'email', value: 'reklamacje@jaqbs.eu' }
@@ -128,7 +132,7 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ DOKUMENTACJI',
       icon: FileText,
-      color: 'from-brand-red-900 to-brand-red-800',
+      color: 'blue',
       contacts: [
         { type: 'phone', value: '+48 510 850 630' },
         { type: 'email', value: 'cmr@jaqbs.eu' }
@@ -137,11 +141,70 @@ export default function ContactPage() {
     {
       name: 'DZIAŁ PŁATNOŚCI',
       icon: CreditCard,
-      color: 'from-brand-blue-900 to-brand-blue-800',
+      color: 'red',
       contacts: [
         { type: 'phone', value: '+48 510 850 739' },
         { type: 'email', value: 'platnosci@jaqbs.eu' }
       ]
+    }
+  ];
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: 'Adres',
+      content: 'ul. Zemborzycka 53B, 20-445 Lublin, Poland',
+      link: 'https://maps.google.com/?q=Zemborzycka+53B+Lublin'
+    },
+    {
+      icon: Phone,
+      title: 'Telefon',
+      content: '+48 570 112 512',
+      link: 'tel:+48570112512'
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      content: 'office@jaqbs.eu',
+      link: 'mailto:office@jaqbs.eu'
+    },
+    {
+      icon: Clock,
+      title: 'Godziny otwarcia',
+      content: 'Biuro: pon-pt 07:30-15:30'
+    }
+  ];
+
+  const companyInfo = [
+    { label: 'NIP', value: 'PL9462667921' },
+    { label: 'REGON', value: '366670731' },
+    { label: 'KRS', value: '0001082037' }
+  ];
+
+  const socialMedia = [
+    {
+      name: 'Facebook',
+      icon: Facebook,
+      url: 'https://www.facebook.com/jaqbs.lublin'
+    },
+    {
+      name: 'Instagram',
+      icon: Instagram,
+      url: 'https://www.instagram.com/jaqbs.eu/'
+    },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      url: 'https://www.linkedin.com/company/jaqbs-sp-z-o-o-sp-k/'
+    },
+    {
+      name: 'TikTok',
+      icon: () => (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+        </svg>
+      ),
+      url: 'https://www.tiktok.com/@jaqbstransportispedycja'
     }
   ];
 
@@ -176,72 +239,206 @@ export default function ContactPage() {
             </AnimatedSection>
           </AnimatedSection>
 
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {departments.map(dept => {
-              const Icon = dept.icon;
-              return (
-                <StaggeredItem key={dept.name} direction="up">
-                  <Card className="hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden group h-[200px]">
-                    <div className={`h-2 bg-gradient-to-r ${dept.color}`} />
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div
-                          className={`p-3 rounded-xl bg-gradient-to-br ${dept.color} shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-                        >
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 flex-1 pt-2 group-hover:text-brand-red-900 transition-colors">
-                          {dept.name}
-                        </h3>
-                      </div>
-                      <div className="space-y-3">
-                        {dept.contacts.map((contact, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-start gap-3 text-sm"
-                          >
-                            {contact.type === 'phone' && (
-                              <>
-                                <Phone className="w-4 h-4 text-brand-red-900 mt-0.5 flex-shrink-0" />
-                                <a
-                                  href={`tel:${contact.value}`}
-                                  className="text-gray-700 hover:text-brand-red-900 transition-colors"
-                                >
-                                  {contact.value}
-                                </a>
-                              </>
-                            )}
-                            {contact.type === 'email' && (
-                              <>
-                                <Mail className="w-4 h-4 text-brand-blue-900 mt-0.5 flex-shrink-0" />
-                                <a
-                                  href={`mailto:${contact.value}`}
-                                  className="text-gray-700 hover:text-brand-blue-900 transition-colors break-all"
-                                >
-                                  {contact.value}
-                                </a>
-                              </>
-                            )}
-                            {contact.type === 'address' && (
-                              <>
-                                <MapPin className="w-4 h-4 text-brand-red-900 mt-0.5 flex-shrink-0" />
-                                <span className="text-gray-700">
-                                  {contact.value}
-                                </span>
-                              </>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <StaggeredContainer
+                staggerDelay={0.1}
+                className="grid grid-cols-1 gap-6"
+              >
+                {departments.map(dept => {
+                  const Icon = dept.icon;
+                  return (
+                    <StaggeredItem key={dept.name} direction="up">
+                      <Card
+                        hover={false}
+                        className={`border-2 transition-all duration-300 ${
+                          dept.color === 'blue'
+                            ? 'border-brand-blue-100 hover:border-brand-blue-900'
+                            : 'border-brand-red-100 hover:border-brand-red-900'
+                        }`}
+                      >
+                        <CardContent className="p-6">
+                          <div className="flex items-start gap-4 mb-4">
+                            <div
+                              className={`p-3 rounded-xl ${
+                                dept.color === 'blue'
+                                  ? 'bg-brand-blue-100'
+                                  : 'bg-brand-red-100'
+                              }`}
+                            >
+                              <Icon
+                                className={`w-6 h-6 ${
+                                  dept.color === 'blue'
+                                    ? 'text-brand-blue-900'
+                                    : 'text-brand-red-900'
+                                }`}
+                              />
+                            </div>
+                            <h3 className="text-lg font-bold text-gray-900 flex-1 pt-2">
+                              {dept.name}
+                            </h3>
+                          </div>
+                          <div className="space-y-3">
+                            {dept.contacts.map((contact, idx) => (
+                              <div
+                                key={idx}
+                                className="flex items-start gap-3 text-sm"
+                              >
+                                {contact.type === 'phone' && (
+                                  <>
+                                    <Phone
+                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                                        dept.color === 'blue'
+                                          ? 'text-brand-blue-900'
+                                          : 'text-brand-red-900'
+                                      }`}
+                                    />
+                                    <a
+                                      href={`tel:${contact.value}`}
+                                      className={`transition-colors ${
+                                        dept.color === 'blue'
+                                          ? 'text-gray-700 hover:text-brand-blue-900'
+                                          : 'text-gray-700 hover:text-brand-red-900'
+                                      }`}
+                                    >
+                                      {contact.value}
+                                    </a>
+                                  </>
+                                )}
+                                {contact.type === 'email' && (
+                                  <>
+                                    <Mail
+                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                                        dept.color === 'blue'
+                                          ? 'text-brand-blue-900'
+                                          : 'text-brand-red-900'
+                                      }`}
+                                    />
+                                    <a
+                                      href={`mailto:${contact.value}`}
+                                      className={`transition-colors break-all ${
+                                        dept.color === 'blue'
+                                          ? 'text-gray-700 hover:text-brand-blue-900'
+                                          : 'text-gray-700 hover:text-brand-red-900'
+                                      }`}
+                                    >
+                                      {contact.value}
+                                    </a>
+                                  </>
+                                )}
+                                {contact.type === 'address' && (
+                                  <>
+                                    <MapPin
+                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
+                                        dept.color === 'blue'
+                                          ? 'text-brand-blue-900'
+                                          : 'text-brand-red-900'
+                                      }`}
+                                    />
+                                    <span className="text-gray-700">
+                                      {contact.value}
+                                    </span>
+                                  </>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </StaggeredItem>
+                  );
+                })}
+              </StaggeredContainer>
+            </div>
+
+            <AnimatedSection direction="right">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+                Dane kontaktowe
+              </h2>
+
+              <StaggeredContainer staggerDelay={0.1} className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <StaggeredItem key={index} direction="right">
+                    <Card hover={false} className="transition-shadow">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-brand-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <info.icon className="h-6 w-6 text-brand-blue-900" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-bold text-gray-900 mb-1">
+                              {info.title}
+                            </h3>
+                            {info.link ? (
+                              <a
+                                href={info.link}
+                                target={
+                                  info.link.startsWith('http')
+                                    ? '_blank'
+                                    : undefined
+                                }
+                                rel={
+                                  info.link.startsWith('http')
+                                    ? 'noopener noreferrer'
+                                    : undefined
+                                }
+                                className="text-brand-blue-900 hover:text-brand-blue-700 transition-colors"
+                              >
+                                {info.content}
+                              </a>
+                            ) : (
+                              <p className="text-gray-600">{info.content}</p>
                             )}
                           </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </StaggeredItem>
-              );
-            })}
-          </StaggeredContainer>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </StaggeredItem>
+                ))}
+              </StaggeredContainer>
+
+              <div className="mt-8 p-6 bg-gradient-to-br from-brand-blue-50 to-brand-red-50 rounded-2xl">
+                <h3 className="font-bold text-gray-900 mb-4">
+                  Dane rejestrowe
+                </h3>
+                <div className="space-y-2">
+                  {companyInfo.map((info, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center"
+                    >
+                      <span className="text-gray-600 font-medium">
+                        {info.label}:
+                      </span>
+                      <span className="text-gray-900 font-semibold">
+                        {info.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h3 className="font-bold text-gray-900 mb-4">Obserwuj nas</h3>
+                <div className="flex gap-4">
+                  {socialMedia.map((social, index) => {
+                    const Icon = social.icon as React.ComponentType<any>;
+                    return (
+                      <a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-white border-2 border-gray-200 hover:border-brand-blue-900 rounded-xl flex items-center justify-center transition-all group"
+                      >
+                        <Icon className="h-5 w-5 text-gray-700 group-hover:text-brand-blue-900 transition-colors" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
@@ -391,7 +588,7 @@ export default function ContactPage() {
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full h-14 text-lg bg-brand-blue-700disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

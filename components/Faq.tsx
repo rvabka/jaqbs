@@ -132,15 +132,15 @@ export default function Faq() {
         >
           <Card
             hover={false}
-            className="bg-brand-blue-700 border-0 text-white hover-lift"
+            className="bg-brand-blue-700 border-0 text-white"
           >
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-3">
                 Nie znalazłeś odpowiedzi?
               </h3>
               <p className="text-white/90 mb-6 leading-relaxed">
-                Nasz zespół jest dostępny 24/7, aby odpowiedzieć na wszystkie
-                Twoje pytania
+                Nasz zespół jest dostępny 24 godziny na dobę, 7 dni w tygodniu,
+                aby odpowiedzieć na wszystkie Twoje pytania
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

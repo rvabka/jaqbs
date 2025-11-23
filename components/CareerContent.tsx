@@ -81,19 +81,19 @@ const workCulture = [
     icon: MessageCircle,
     title: 'Brak sztucznych barier',
     description:
-      'Mówimy sobie po imieniu, a w biurze nie obowiązuje sztywny dress code. Atmosfera jest partnerska i otwarta dla każdego.'
+      'W JAQBS stawiamy na naturalną komunikację — mówimy sobie po imieniu, a w biurze nie obowiązuje sztywny dress code. Atmosfera jest partnerska i otwarta dla każdego.'
   },
   {
     icon: Clock3,
     title: 'Elastyczne godziny pracy',
     description:
-      'Każdy może dopasować swój start do rytmu dnia — pracę można zacząć w godzinach 7:00–9:00. Elastyczność pomaga nam być bardziej produktywnymi.'
+      'Każdy może dopasować swój start do rytmu dnia — pracę można zacząć w godzinach 7:00–9:00. Elastyczność pomaga nam być bardziej produktywnymi i kreatywnymi.'
   },
   {
     icon: Leaf,
     title: 'Dbałość o środowisko',
     description:
-      'Ekologia i zrównoważony rozwój to dla nas ważne kwestie — zarówno w codziennym funkcjonowaniu, jak i w realizowanych projektach.'
+      'Ekologia i zrównoważony rozwój to dla nas ważne kwestie — zarówno w codziennym funkcjonowaniu biura, jak i w projektach, które realizujemy dla naszych klientów.'
   },
   {
     icon: Wrench,
@@ -249,10 +249,6 @@ export default function CareerContent({ jobs }: CareerContentProps) {
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
               Twoja droga do sukcesu
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Od aplikacji do pierwszego dnia pracy - nasz uproszczony proces w
-              4 krokach pozwala Ci rozpocząć pracę w ciągu zaledwie 2 tygodni.
-            </p>
           </div>
           <div className="relative max-w-7xl mx-auto">
             <div className="absolute top-24 left-0 right-0 h-2 bg-gray-100 rounded-full transform z-0 hidden md:block mt-4"></div>
@@ -280,11 +276,6 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                   >
                     {step.title}
                   </h3>
-                  <p
-                    className={`text-sm leading-relaxed px-2 ${index <= activeStep ? 'text-gray-600' : 'text-gray-400'} transition-colors duration-300`}
-                  >
-                    {step.description}
-                  </p>
                 </div>
               ))}
             </div>
@@ -304,13 +295,6 @@ export default function CareerContent({ jobs }: CareerContentProps) {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Jak się pracuje w <span className="gradient-text">Jaqbs?</span>
               </h2>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Stawiamy na otwartą komunikację, elastyczność i rozwój. Poznaj
-                wartości, które wyróżniają nas na rynku TSL.
-              </p>
             </AnimatedSection>
           </AnimatedSection>
 

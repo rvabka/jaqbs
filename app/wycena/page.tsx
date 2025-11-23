@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Label } from '@/components/ui/Label';
-import { Card, CardContent } from '@/components/ui/Card';
 import {
   AnimatedSection,
   StaggeredContainer,
@@ -27,6 +26,7 @@ import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { PageHero } from '@/components/PageHero';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import FlipCard from '@/components/FlipCard';
 
 export default function WspolpracaPage() {
   const [formData, setFormData] = useState({
@@ -118,7 +118,7 @@ export default function WspolpracaPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="Wycena"
-        description="Współpracuj z nami i rozwijaj swój biznes w branży TSL. Profesjonalne partnerstwo oparte na zaufaniu i wzajemnym wsparciu."
+        description="Współpracuj z nami i rozwijaj swój biznes w branży TSL. Profesjonalne partnerstwo oparte na zaufaniu i wzajemnym szacunku."
       />
 
       <section className="py-12 relative overflow-hidden">
@@ -131,19 +131,11 @@ export default function WspolpracaPage() {
           >
             {benefits.map((benefit, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg">
-                  <CardContent className="pt-8 pb-8 h-52">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                      <benefit.icon className="h-8 w-8 text-brand-blue-700" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <FlipCard
+                  icon={benefit.icon}
+                  title={benefit.title}
+                  description={benefit.description}
+                />
               </StaggeredItem>
             ))}
           </StaggeredContainer>
@@ -379,8 +371,8 @@ export default function WspolpracaPage() {
       </section>
 
       <CTASection
-        title="Wolisz porozmawiać bezpośrednio?"
-        description="Zadzwoń do nas lub napisz e-mail – chętnie odpowiemy na wszystkie pytania dotyczące wyceny"
+        title="Wolisz kontakt bezpośredni?"
+        description="Zadzwoń do nas – chętnie odpowiemy na wszystkie pytania."
         primaryButtonText="Skontaktuj się z nami"
         primaryButtonHref="/kontakt"
         showSecondaryButton={false}

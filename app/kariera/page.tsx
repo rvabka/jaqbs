@@ -18,7 +18,7 @@ export default async function CareerPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="Kariera"
-        description="Rozwijaj swoją karierę w dynamicznej firmie transportowej. Oferujemy stabilne zatrudnienie i możliwości rozwoju w branży TSL."
+        description="Dołącz do naszego zespołu i rozwijaj swoją przyszłość z Jaqbs."
       />
 
       <Suspense
