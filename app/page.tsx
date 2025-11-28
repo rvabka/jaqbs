@@ -8,6 +8,7 @@ import { client } from '@/lib/sanity/client';
 import { recentPostsQuery } from '@/lib/sanity/queries';
 import { Post } from '@/lib/sanity/types';
 import RecentBlogPosts from '@/components/RecentBlogPosts';
+import GoogleReviews from '@/components/GoogleReviews';
 
 export default async function Home() {
   async function getRecentPosts() {
@@ -22,8 +23,8 @@ export default async function Home() {
       <Partners />
       <CheapestTransport />
       <GlobalService />
-      <DriverOpportunity />
-      <Faq />
+      <GoogleReviews />
+      {/* <DriverOpportunity /> */}
       <RecentBlogPosts posts={recentPosts} />
     </main>
   );

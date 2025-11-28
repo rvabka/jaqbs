@@ -23,15 +23,14 @@ import {
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
-import GoogleReviews from '@/components/GoogleReviews';
 import FlipCard from '@/components/FlipCard';
+import CompanyName from '@/components/CompanyName';
 
 export default function AboutPage() {
   const stats = [
     { label: 'Lat doświadczenia', value: '15+', icon: Award },
     { label: 'Zadowolonych klientów', value: '1000+', icon: Users },
     { label: 'Wykonanych zleceń', value: '200k+', icon: TrendingUp },
-    { label: 'Oddziałów w Polsce', value: '6', icon: MapPin },
     { label: 'Pracowników', value: '150+', icon: Users }
   ];
 
@@ -94,7 +93,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
-        title="O firmie Jaqbs"
+        title="O firmie"
         description="Profesjonalna firma transportowo-spedycyjna z 15-letnim doświadczeniem. Partnerstwo, terminowość i indywidualne podejście do każdego klienta."
       />
 
@@ -110,7 +109,10 @@ export default function AboutPage() {
 
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Co wyróżnia firmę <span className="gradient-text">Jaqbs</span>
+                Co wyróżnia firmę{' '}
+                <span className="gradient-text">
+                  <CompanyName />
+                </span>
               </h2>
             </AnimatedSection>
 
@@ -186,53 +188,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection direction="fade" className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">
-              <FileText className="h-4 w-4" />
-              <span>Dokumenty</span>
-            </div>
-
-            <AnimatedSection direction="up" delay={0.2}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Licencje i certyfikaty
-              </h2>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Wszystkie niezbędne dokumenty, licencje i certyfikaty dostępne
-                do pobrania
-              </p>
-            </AnimatedSection>
-          </AnimatedSection>
-
-          <StaggeredContainer
-            staggerDelay={0.1}
-            className="grid md:grid-cols-3 lg:grid-cols-5 gap-6"
-          >
-            {documents.map((doc, index) => (
-              <StaggeredItem key={index} direction="up">
-                <Card className="group hover-lift cursor-pointer h-52">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-blue-50 to-brand-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <doc.icon className="h-8 w-8 text-brand-blue-700" />
-                    </div>
-                    <h3 className="font-semibold group-hover:text-brand-blue-700 transition-colors">
-                      {doc.name}
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Kliknij, aby pobrać <span className="font-bold">PDF</span>
-                    </p>
-                  </CardContent>
-                </Card>
-              </StaggeredItem>
-            ))}
-          </StaggeredContainer>
-        </div>
-      </section>
-
       <section className="py-12 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -278,20 +233,20 @@ export default function AboutPage() {
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
-                  <Card className="hover-lift">
+                  <Card className="bg-brand-blue-900 text-white">
                     <CardContent className="p-6">
-                      <CheckCircle className="h-8 w-8 text-brand-blue-900 mb-3" />
+                      <CheckCircle className="h-8 w-8  text-brand-red-900 mb-3" />
                       <h3 className="font-bold mb-2">Cyfrowi natywni</h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm">
                         Wykorzystujemy nowoczesne technologie
                       </p>
                     </CardContent>
                   </Card>
-                  <Card className="hover-lift">
+                  <Card className="bg-brand-blue-900 text-white">
                     <CardContent className="p-6">
                       <CheckCircle className="h-8 w-8 text-brand-red-900 mb-3" />
                       <h3 className="font-bold mb-2">Doświadczeni</h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm">
                         Wieloletnia praktyka w branży TSL
                       </p>
                     </CardContent>
@@ -307,7 +262,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              <span className="text-brand-blue-700">Jaqbs</span> w liczbach
+              <span className="text-brand-blue-700 mr-1">
+                <CompanyName />{' '}
+              </span>
+              {'  '}w liczbach
             </h2>
             <p className="text-lg text-gray-600">
               Zaufało nam ponad 1000 klientów w całej Polsce i Europie
@@ -315,7 +273,7 @@ export default function AboutPage() {
           </div>
           <StaggeredContainer
             staggerDelay={0.1}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {stats.map((stat, index) => (
               <StaggeredItem key={index} direction="up">
@@ -398,8 +356,6 @@ export default function AboutPage() {
           </AnimatedSection>
         </div>
       </section>
-
-      <GoogleReviews />
     </div>
   );
 }

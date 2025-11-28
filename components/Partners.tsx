@@ -139,8 +139,9 @@ export default function Partners() {
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  Wszystkie nasze partnerstwa są certyfikowane i regularnie
-                  audytowane pod kątem jakości i niezawodności usług.
+                  Wszystkie nasze partnerstwa posiadają wymagane certyfikaty i
+                  podlegają regularnym audytom, które gwarantują najwyższe
+                  standardy jakości oraz niezawodność świadczonych usług.
                 </p>
               </CardContent>
             </Card>
@@ -156,8 +157,9 @@ export default function Partners() {
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  Dzięki sprawdzonym partnerom gwarantujemy terminowość,
-                  bezpieczeństwo i najwyższą jakość obsługi.
+                  Dzięki ścisłej współpracy ze sprawdzonymi partnerami
+                  zapewniamy niezawodność, bezpieczeństwo i najwyższy standard
+                  obsługi.
                 </p>
               </CardContent>
             </Card>

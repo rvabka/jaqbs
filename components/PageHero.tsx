@@ -84,9 +84,10 @@ export function PageHero({ title, description }: PageHeroProps) {
           >
             <div className="relative inline-block">
               <div className="absolute -inset-4 bg-brand-red-700/10 blur-xl rounded-full" />
-              <p className="relative text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-2 font-light">
-                {description}
-              </p>
+              <p
+                className="relative text-xl md:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-2 font-light"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             </div>
           </motion.div>
 

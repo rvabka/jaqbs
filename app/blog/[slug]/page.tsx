@@ -430,23 +430,6 @@ export default async function ArticlePage({ params }: PageProps) {
                     </CardContent>
                   </Card>
                 )}
-
-                <Card  hover={false} className="bg-brand-blue-700 text-white shadow-lg border-0">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-xl mb-3">
-                      Potrzebujesz wsparcia?
-                    </h3>
-                    <p className="text-sm text-gray-200 mb-4">
-                      Skontaktuj się z naszym zespołem ekspertów
-                    </p>
-                    <Link
-                      href="/kontakt"
-                      className="block w-full text-center px-6 py-3 bg-white text-brand-blue-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
-                    >
-                      Skontaktuj się
-                    </Link>
-                  </CardContent>
-                </Card>
               </div>
             </aside>
           </div>

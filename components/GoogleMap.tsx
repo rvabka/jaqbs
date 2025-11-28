@@ -7,7 +7,7 @@ export default function GoogleMap() {
     <Card className="overflow-hidden shadow-2xl border-0 hover-lift">
       <div className="relative w-full h-[500px] md:h-[600px]">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2398.6514410949903!2d22.567172976292337!3d51.20904413245581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472257b471996b53%3A0x4e88c40ced9de42a!2sJAQBS%20BIS%20Transport%20i%20Spedycja!5e1!3m2!1spl!2spl!4v1759576592846!5m2!1spl!2spl"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2398.6514410949903!2d22.567172976292337!3d51.20904413245581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spl!2spl"
           width="100%"
           height="100%"
           style={{ border: 0 }}

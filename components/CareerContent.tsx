@@ -44,6 +44,7 @@ import {
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
+import CompanyName from './CompanyName';
 
 const onboardingSteps = [
   {
@@ -258,14 +259,14 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                 width: `${((activeStep + 1) / onboardingSteps.length) * 100}%`
               }}
             ></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 relative z-20">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-20">
               {onboardingSteps.map((step, index) => (
                 <div
                   key={step.id}
                   className={`text-center transform transition-all duration-700 ${index <= activeStep ? 'scale-105 md:scale-110 -translate-y-2' : 'scale-100'}`}
                 >
                   <div
-                    className={`w-24 h-24 mx-auto ${index <= activeStep ? step.color : 'bg-gray-200'} rounded-full flex items-center justify-center mb-14 transition-all duration-700 shadow-xl hover:shadow-2xl ${index <= activeStep ? 'animate-pulse-glow' : ''}`}
+                    className={`w-24 h-24 mx-auto ${index <= activeStep ? step.color : 'bg-gray-200'} rounded-full flex items-center justify-center mb-4 lg:mb-14 transition-all duration-700 shadow-xl hover:shadow-2xl ${index <= activeStep ? 'animate-pulse-glow' : ''}`}
                   >
                     <step.icon
                       className={`h-12 w-12 ${index <= activeStep ? 'text-white' : 'text-gray-400'} transition-all duration-300`}
@@ -293,7 +294,10 @@ export default function CareerContent({ jobs }: CareerContentProps) {
 
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Jak się pracuje w <span className="gradient-text">Jaqbs?</span>
+                Jak się pracuje w{' '}
+                <span className="gradient-text">
+                  <CompanyName /> ?
+                </span>
               </h2>
             </AnimatedSection>
           </AnimatedSection>
@@ -304,17 +308,15 @@ export default function CareerContent({ jobs }: CareerContentProps) {
           >
             {workCulture.slice(0, 3).map((item, index) => (
               <StaggeredItem key={index} direction="up">
-                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
+                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full bg-brand-blue-900 text-white">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <item.icon className="h-8 w-8 text-brand-blue-700" />
+                    <div className="w-16 h-16 bg-brand-red-900 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <item.icon className="h-8 w-8 " />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
+                    <p className="leading-relaxed">{item.description}</p>
                   </CardContent>
                 </Card>
               </StaggeredItem>
@@ -326,17 +328,15 @@ export default function CareerContent({ jobs }: CareerContentProps) {
           >
             {workCulture.slice(3).map((item, index) => (
               <StaggeredItem key={index + 3} direction="up">
-                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full">
+                <Card className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg h-full bg-brand-blue-900 text-white">
                   <CardContent className="p-8">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-red-50 to-brand-red-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      <item.icon className="h-8 w-8 text-brand-blue-700" />
+                    <div className="w-16 h-16 bg-brand-red-900 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      <item.icon className="h-8 w-8 " />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-brand-blue-700 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
+                    <p className="leading-relaxed">{item.description}</p>
                   </CardContent>
                 </Card>
               </StaggeredItem>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Truck, MapPin, Phone, Mail, Linkedin } from 'lucide-react';
+import { MapPin, Phone, Mail, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,18 +21,36 @@ export default function Footer() {
               bezpieczeństwa i terminowości
             </p>
 
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Phone className="h-4 w-4" />
-                <span className="text-sm">+48 123 456 789</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold text-gray-400 mb-2">
+                  Dane kontaktowe
+                </p>
+                <div className="flex items-center space-x-2 text-gray-400">
+                  <Phone className="h-4 w-4 flex-shrink-0" />
+                  <a href="tel:+48570112512" className="text-sm">
+                    +48 570 112 512
+                  </a>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-400">
+                  <Mail className="h-4 w-4 flex-shrink-0" />
+                  <a href="mailto:office@jaqbs.eu" className="text-sm">
+                    office@jaqbs.eu
+                  </a>
+                </div>
+                <div className="flex items-center space-x-2 text-gray-400">
+                  <MapPin className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm">Lublin, Polska</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <Mail className="h-4 w-4" />
-                <span className="text-sm">kontakt@jaqbs.pl</span>
-              </div>
-              <div className="flex items-center space-x-2 text-gray-400">
-                <MapPin className="h-4 w-4" />
-                <span className="text-sm">Warszawa, Polska</span>
+
+              <div className="space-y-2 text-xs text-gray-400">
+                <p className="text-sm font-semibold text-gray-400 mb-2">
+                  Dane firmy
+                </p>
+                <p className="text-sm">NIP: PL9462667921</p>
+                <p className="text-sm">REGON: 366670731</p>
+                <p className="text-sm">KRS: 0001082037</p>
               </div>
             </div>
           </div>
@@ -156,18 +174,6 @@ export default function Footer() {
               className="text-xs text-gray-500 hover:text-gray-400 transition-colors duration-300"
             >
               Polityka prywatności
-            </Link>
-            <Link
-              href="/regulamin"
-              className="text-xs text-gray-500 hover:text-gray-400 transition-colors duration-300"
-            >
-              Regulamin
-            </Link>
-            <Link
-              href="/rodo"
-              className="text-xs text-gray-500 hover:text-gray-400 transition-colors duration-300"
-            >
-              RODO
             </Link>
             <Link
               href="/cookies"

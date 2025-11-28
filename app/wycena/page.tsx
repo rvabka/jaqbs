@@ -118,7 +118,7 @@ export default function WspolpracaPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="Wycena"
-        description="Współpracuj z nami i rozwijaj swój biznes w branży TSL. Profesjonalne partnerstwo oparte na zaufaniu i wzajemnym szacunku."
+        description="Współpracuj z nami i rozwijaj swój biznes w branży TSL. <br /> Profesjonalne partnerstwo oparte na zaufaniu i wzajemnym szacunku."
       />
 
       <section className="py-12 relative overflow-hidden">
@@ -145,7 +145,7 @@ export default function WspolpracaPage() {
       <section id="form">
         <FormSection
           title="Formularz wyceny"
-          description="Wypełnij formularz, a nasi specjaliści skontaktują się z Tobą z ofertą"
+          description="Wypełnij formularz, a nasi specjaliści skontaktują się z Tobą."
         >
           <form onSubmit={handleSubmit} className="space-y-8">
             {submitStatus.type === 'success' && (

@@ -95,7 +95,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <span>Wyróżnione</span>
               </div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Najważniejsze artykuły
+                Wyróżnione artykuły
               </h2>
             </div>
 

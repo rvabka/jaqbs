@@ -359,14 +359,17 @@ export default function ContactPage() {
               <StaggeredContainer staggerDelay={0.1} className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <StaggeredItem key={index} direction="right">
-                    <Card hover={false} className="transition-shadow">
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
+                    <Card
+                      hover={false}
+                      className="transition-shadow bg-brand-blue-900 text-white"
+                    >
+                      <CardContent className="p-6 ">
+                        <div className="flex items-start gap-4 ">
                           <div className="w-12 h-12 bg-brand-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <info.icon className="h-6 w-6 text-brand-blue-900" />
+                            <info.icon className="h-6 w-6 text-brand-red-900" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-bold text-gray-900 mb-1">
+                            <h3 className="font-bold mb-1">
                               {info.title}
                             </h3>
                             {info.link ? (
@@ -382,12 +385,12 @@ export default function ContactPage() {
                                     ? 'noopener noreferrer'
                                     : undefined
                                 }
-                                className="text-brand-blue-900 hover:text-brand-blue-700 transition-colors"
+                                className="text-white hover:text-gray-300 transition-colors"
                               >
                                 {info.content}
                               </a>
                             ) : (
-                              <p className="text-gray-600">{info.content}</p>
+                              <p className="">{info.content}</p>
                             )}
                           </div>
                         </div>

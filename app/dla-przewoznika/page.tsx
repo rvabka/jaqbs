@@ -38,6 +38,7 @@ import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import CompanyName from '@/components/CompanyName';
 
 export default function CarriersPage() {
   const [isClient, setIsClient] = useState(false);
@@ -153,7 +154,7 @@ export default function CarriersPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="Dla przewoźnika"
-        description="Rozwijaj swój biznes z pewnym partnerem! Dołącz do nas i jedź razem z nami po sukces."
+        description="Rozwijaj swój biznes z pewnym partnerem! <br /> Dołącz do nas i jedź razem z nami po sukces."
       />
 
       <section className="py-12 bg-white relative overflow-hidden">
@@ -224,7 +225,7 @@ export default function CarriersPage() {
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Dlaczego warto współpracować z{' '}
-                <span className="gradient-text">Jaqbs?</span>
+                <span className="gradient-text"><CompanyName /> ?</span>
               </h2>
             </AnimatedSection>
 
@@ -397,7 +398,7 @@ export default function CarriersPage() {
 
             <FormSection
               title="Dołącz do naszej sieci przewoźników"
-              description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy"
+              description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy."
             >
               <form onSubmit={handleSubmit} className="space-y-8">
                 {submitStatus.type === 'success' && (
