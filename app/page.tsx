@@ -3,7 +3,6 @@ import Partners from '@/components/Partners';
 import CheapestTransport from '@/components/CheapestTransport';
 import DriverOpportunity from '@/components/DriverOpportunity';
 import GlobalService from '@/components/GlobalService';
-import Faq from '@/components/Faq';
 import { client } from '@/lib/sanity/client';
 import { recentPostsQuery } from '@/lib/sanity/queries';
 import { Post } from '@/lib/sanity/types';
