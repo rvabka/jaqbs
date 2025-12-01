@@ -242,7 +242,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+      <div className=" absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
         <div className="w-6 h-10 md:w-7 md:h-12 border-2 border-white/40 rounded-full flex justify-center">
           <div className="w-1.5 h-3 md:h-4 bg-white/60 rounded-full mt-2 md:mt-2.5 animate-pulse"></div>
         </div>
