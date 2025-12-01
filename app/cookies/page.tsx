@@ -40,7 +40,7 @@ export default function CookiesPage() {
                     href="https://policies.google.com/privacy"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Polityce prywatności Google
                   </a>{' '}
@@ -49,7 +49,7 @@ export default function CookiesPage() {
                     href="https://policies.google.com/terms"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Warunkom usługi Google
                   </a>
@@ -107,7 +107,7 @@ export default function CookiesPage() {
                     href="https://support.google.com/chrome/answer/95647?hl=pl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Google Chrome
                   </a>
@@ -117,7 +117,7 @@ export default function CookiesPage() {
                     href="https://support.mozilla.org/pl/kb/ciasteczka"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Mozilla Firefox
                   </a>
@@ -127,7 +127,7 @@ export default function CookiesPage() {
                     href="https://support.apple.com/pl-pl/guide/safari/sfri11471/mac"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Safari
                   </a>
@@ -137,7 +137,7 @@ export default function CookiesPage() {
                     href="https://support.microsoft.com/pl-pl/microsoft-edge/usuwanie-plik%C3%B3w-cookie-w-przegl%C4%85darce-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-blue-700 hover:underline"
+                    className="text-brand-blue-900 hover:underline"
                   >
                     Microsoft Edge
                   </a>
@@ -149,7 +149,7 @@ export default function CookiesPage() {
                 W sprawach związanych z polityką cookies prosimy o kontakt:{' '}
                 <a
                   href="mailto:office@jaqbs.eu"
-                  className="text-brand-blue-700 hover:underline"
+                  className="text-brand-blue-900 hover:underline"
                 >
                   office@jaqbs.eu
                 </a>

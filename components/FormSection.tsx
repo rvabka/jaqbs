@@ -20,7 +20,7 @@ export default function FormSection({
 }: FormSectionProps) {
   return (
     <section className={`pb-8 ${className}`}>
-      <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-red-700/5 to-brand-blue-700/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-red-700/5 to-brand-blue-900/5 rounded-full blur-3xl"></div>
 
       <div className="max-w-4xl mx-auto">
         <AnimatedSection direction="fade" className="text-center mb-16 px-6">

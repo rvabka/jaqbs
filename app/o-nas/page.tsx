@@ -21,7 +21,6 @@ import {
   TrendingUp,
   CheckCircle
 } from 'lucide-react';
-import CTASection from '@/components/CTASection';
 import { PageHero } from '@/components/PageHero';
 import FlipCard from '@/components/FlipCard';
 import CompanyName from '@/components/CompanyName';
@@ -94,7 +93,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <PageHero
         title="O firmie"
-        description="Profesjonalna firma transportowo-spedycyjna z 15-letnim doświadczeniem. Partnerstwo, terminowość i indywidualne podejście do każdego klienta."
+        description="Profesjonalna firma transportowo-spedycyjna z 15-letnim doświadczeniem. <br /> Partnerstwo, terminowość i indywidualne podejście do każdego klienta."
       />
 
       <section className="py-12 bg-white relative overflow-hidden">
@@ -117,7 +116,7 @@ export default function AboutPage() {
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+              <p className="text-xl text-gray-600 mx-auto text-balance">
                 Wyznaczamy nowe standardy jakości obsługi i serwisu w branży
                 transportowo-spedycyjnej
               </p>
@@ -262,7 +261,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              <span className="text-brand-blue-700 mr-1">
+              <span className="text-brand-blue-900 mr-1">
                 <CompanyName />{' '}
               </span>
               {'  '}w liczbach
@@ -288,7 +287,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-12 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-blue-700 text-white relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-blue-900 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection direction="fade" className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-sm font-medium mb-8">

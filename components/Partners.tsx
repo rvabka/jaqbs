@@ -34,7 +34,8 @@ export default function Partners() {
     { id: 9, name: 'Plastic Omnium', image: '/sponsor9.webp' },
     { id: 10, name: 'Bugatti', image: '/sponsor10.webp' },
     { id: 11, name: 'Faurecia', image: '/sponsor11.png' },
-    { id: 12, name: 'Michelin', image: '/sponsor12.webp' }
+    { id: 12, name: 'Michelin', image: '/sponsor12.webp' },
+    { id: 13, name: 'Schenker', image: '/sponsor13.webp' }
   ];
 
   return (
@@ -128,17 +129,17 @@ export default function Partners() {
 
         <AnimatedSection direction="up" delay={0.8} className="mt-16">
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-gradient-to-br from-brand-red-50 to-brand-red-100 border-brand-red-200 hover:shadow-xl transition-all duration-300">
+            <Card className="bg-brand-blue-900 hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-brand-red-900 rounded-xl flex items-center justify-center">
                     <Award className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-xl font-bold text-white">
                     Certyfikowane partnerstwa
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-white leading-relaxed">
                   Wszystkie nasze partnerstwa posiadają wymagane certyfikaty i
                   podlegają regularnym audytom, które gwarantują najwyższe
                   standardy jakości oraz niezawodność świadczonych usług.
@@ -146,17 +147,17 @@ export default function Partners() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-brand-blue-50 to-brand-blue-100 border-brand-blue-200 hover:shadow-xl transition-all duration-300">
+            <Card className="bg-brand-blue-900 hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-brand-blue-900 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-brand-red-900 rounded-xl flex items-center justify-center">
                     <CheckCircle className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-xl font-bold text-white">
                     Gwarancja jakości
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-white leading-relaxed">
                   Dzięki ścisłej współpracy ze sprawdzonymi partnerami
                   zapewniamy niezawodność, bezpieczeństwo i najwyższy standard
                   obsługi.
@@ -172,7 +173,7 @@ export default function Partners() {
           className="mt-10 text-center"
         >
           <Link href={'/dla-przewoznika'}>
-            <div className="inline-flex items-center space-x-4 bg-brand-blue-700 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
+            <div className="inline-flex items-center space-x-4 bg-brand-blue-900 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
               <span className="text-lg font-semibold">
                 Zostań naszym partnerem
               </span>

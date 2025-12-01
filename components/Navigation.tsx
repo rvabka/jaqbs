@@ -127,7 +127,7 @@ export default function Navigation() {
                       {item.label}
                       {pathname === item.href && (
                         <div
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-red-700 to-brand-blue-700 rounded-full"
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-red-700 to-brand-blue-900 rounded-full"
                           aria-hidden="true"
                         ></div>
                       )}

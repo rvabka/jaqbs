@@ -10,7 +10,7 @@ export default function CheapestTransport() {
           <AnimatedSection className="relative">
             <StaggeredItem
               direction="up"
-              className="aspect-square bg-gradient-to-br from-brand-blue-700 to-brand-blue-800 rounded-2xl flex items-center justify-center shadow-md"
+              className="aspect-square bg-gradient-to-br from-brand-blue-900 to-brand-blue-800 rounded-2xl flex items-center justify-center shadow-md"
             >
               <video
                 className="w-full h-full object-cover rounded-2xl"

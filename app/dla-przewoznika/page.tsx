@@ -147,7 +147,9 @@ export default function CarriersPage() {
     { id: 5, image: '/5.webp' },
     { id: 6, image: '/6.webp' },
     { id: 7, image: '/7.webp' },
-    { id: 8, image: '/8.webp' }
+    { id: 8, image: '/9.webp' },
+    { id: 9, image: '/10.webp' },
+    { id: 10, image: '/11.webp' },
   ];
 
   return (
@@ -225,7 +227,9 @@ export default function CarriersPage() {
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Dlaczego warto współpracować z{' '}
-                <span className="gradient-text"><CompanyName /> ?</span>
+                <span className="gradient-text">
+                  <CompanyName /> ?
+                </span>
               </h2>
             </AnimatedSection>
 
@@ -567,7 +571,7 @@ export default function CarriersPage() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full h-14 text-lg bg-brand-blue-900 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>

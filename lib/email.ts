@@ -41,8 +41,9 @@ export interface CareerFormData {
   email: string;
   phone: string;
   position: string;
-  message?: string;
-  cvFileName?: string;
+  region: string;
+  message: string;
+  cvFileName: string;
 }
 
 export async function sendContactEmail(data: ContactFormData) {

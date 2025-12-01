@@ -69,22 +69,24 @@ export default function GlobalService() {
         >
           {documents.map((doc, index) => (
             <StaggeredItem key={index} direction="up" duration={0.6}>
-              <a href={doc.file} download className="group relative block">
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 hover:border-brand-blue-200 relative overflow-hidden h-[190px] flex-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-50 to-brand-red-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <a
+                href={doc.file}
+                download
+                className="group relative block h-full"
+              >
+                <div className="bg-brand-blue-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 relative overflow-hidden h-[200px] flex flex-col">
+                  <div className="absolute inset-0 transition-opacity duration-500"></div>
 
-                  <div className="relative z-10 flex flex-col items-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-brand-blue-100 to-brand-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                      <doc.icon className="w-8 h-8 text-brand-blue-700" />
+                  <div className="relative z-10 flex flex-col items-center h-full">
+                    <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                      <doc.icon className="w-8 h-8 text-brand-red-900" />
                     </div>
-                    <div className="text-center">
-                      <span className="text-sm font-semibold text-gray-900 group-hover:text-brand-blue-700 transition-colors duration-300 leading-tight block">
-                        {doc.name}
-                      </span>
-                      <div className="flex items-center justify-center gap-1 mt-2 text-xs text-gray-500 group-hover:text-brand-red-700 transition-all duration-300">
-                        <Download className="w-3 h-3" />
-                        <span>Pobierz PDF</span>
-                      </div>
+                    <span className="text-sm font-semibold text-white block mt-4">
+                      {doc.name}
+                    </span>
+                    <div className="flex items-center justify-center gap-1 mt-auto text-xs text-white group-hover:text-brand-red-700 transition-all duration-300">
+                      <Download className="w-3 h-3" />
+                      <span className="font-bold">Pobierz PDF</span>
                     </div>
                   </div>
                 </div>
@@ -96,7 +98,7 @@ export default function GlobalService() {
         <AnimatedSection direction="up" delay={1.2} className="mt-16">
           <Link
             href={'/o-nas'}
-            className="inline-flex items-center space-x-4 bg-brand-blue-700 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group"
+            className="inline-flex items-center space-x-4 bg-brand-blue-900 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group"
           >
             <Award className="w-5 h-5 group-hover:rotate-12 transition-transform duration-500" />
             <span className="text-lg font-semibold">

@@ -98,7 +98,7 @@ export default function GoogleReviews() {
     <section className="py-8 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection direction="fade" className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-700 mb-6">
+          <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-900 mb-6">
             <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
             <span>Opinie Google</span>
           </div>
@@ -106,7 +106,7 @@ export default function GoogleReviews() {
           <AnimatedSection direction="up" delay={0.2}>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
               Co mówią o nas{' '}
-              <span className="text-brand-blue-700">nasi klienci</span>
+              <span className="text-brand-blue-900">nasi klienci</span>
             </h2>
           </AnimatedSection>
 
@@ -147,10 +147,13 @@ export default function GoogleReviews() {
           >
             {reviews.map(review => (
               <SwiperSlide key={review.id} className="h-auto mb-10">
-                <Card hover={false} className="border border-gray-200 h-full flex flex-col">
+                <Card
+                  hover={false}
+                  className="border border-gray-200 h-full flex flex-col"
+                >
                   <CardContent className="p-8 flex flex-col flex-1">
                     <div className="mb-6">
-                      <Quote className="h-10 w-10 text-brand-blue-700 mb-4" />
+                      <Quote className="h-10 w-10 text-brand-blue-900 mb-4" />
                       <div className="flex items-center justify-between mb-4">
                         {renderStars(review.rating)}
                         <span className="text-sm text-gray-500">
@@ -164,7 +167,7 @@ export default function GoogleReviews() {
                     </p>
 
                     <div className="flex items-center gap-3 pt-4 border-t border-gray-100 mt-auto">
-                      <div className="w-10 h-10 bg-brand-blue-100 rounded-full flex items-center justify-center font-bold text-brand-blue-700">
+                      <div className="w-10 h-10 bg-brand-blue-100 rounded-full flex items-center justify-center font-bold text-brand-blue-900">
                         {review.author.charAt(0)}
                       </div>
                       <div>
@@ -182,11 +185,11 @@ export default function GoogleReviews() {
         </AnimatedSection>
 
         <AnimatedSection direction="up" delay={0.8} className="mt-12">
-          <div className="bg-brand-blue-50 rounded-2xl p-8 text-center border border-brand-blue-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-brand-blue-900 text-white rounded-2xl p-8 text-center border border-brand-blue-100">
+            <h3 className="text-2xl font-bold mb-4">
               Współpraca przebiegła pomyślnie?
             </h3>
-            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+            <p className="mb-6 max-w-2xl mx-auto">
               Mamy nadzieję, że współpraca przebiegła zgodnie z Państwa
               oczekiwaniami i była w pełni satysfakcjonująca. Będziemy wdzięczni
               za podzielenie się opinią w Google – każde słowo jest dla nas
@@ -197,7 +200,7 @@ export default function GoogleReviews() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="bg-brand-blue-700 hover:bg-brand-blue-800 text-white transition-all duration-300 px-8 py-6 text-lg rounded-full">
+              <Button className="bg-brand-blue-900 hover:bg-brand-blue-800 border-2 border-white text-white transition-all duration-300 px-8 py-6 text-lg rounded-full">
                 <Star className="w-5 h-5 mr-2 fill-yellow-400 text-yellow-400" />
                 Zostaw opinię na Google
                 <ExternalLink className="w-5 h-5 ml-2" />

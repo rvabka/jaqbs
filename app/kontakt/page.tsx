@@ -251,30 +251,14 @@ export default function ContactPage() {
                     <StaggeredItem key={dept.name} direction="up">
                       <Card
                         hover={false}
-                        className={`border-2 transition-all duration-300 ${
-                          dept.color === 'blue'
-                            ? 'border-brand-blue-100 hover:border-brand-blue-900'
-                            : 'border-brand-red-100 hover:border-brand-red-900'
-                        }`}
+                        className="transition-shadow bg-brand-blue-900 text-white"
                       >
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4 mb-4">
-                            <div
-                              className={`p-3 rounded-xl ${
-                                dept.color === 'blue'
-                                  ? 'bg-brand-blue-100'
-                                  : 'bg-brand-red-100'
-                              }`}
-                            >
-                              <Icon
-                                className={`w-6 h-6 ${
-                                  dept.color === 'blue'
-                                    ? 'text-brand-blue-900'
-                                    : 'text-brand-red-900'
-                                }`}
-                              />
+                            <div className="w-12 h-12 bg-brand-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                              <Icon className="h-6 w-6 text-brand-red-900" />
                             </div>
-                            <h3 className="text-lg font-bold text-gray-900 flex-1 pt-2">
+                            <h3 className="text-lg font-bold text-white flex-1 pt-2">
                               {dept.name}
                             </h3>
                           </div>
@@ -286,20 +270,10 @@ export default function ContactPage() {
                               >
                                 {contact.type === 'phone' && (
                                   <>
-                                    <Phone
-                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                                        dept.color === 'blue'
-                                          ? 'text-brand-blue-900'
-                                          : 'text-brand-red-900'
-                                      }`}
-                                    />
+                                    <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-red-400" />
                                     <a
                                       href={`tel:${contact.value}`}
-                                      className={`transition-colors ${
-                                        dept.color === 'blue'
-                                          ? 'text-gray-700 hover:text-brand-blue-900'
-                                          : 'text-gray-700 hover:text-brand-red-900'
-                                      }`}
+                                      className="text-white hover:text-gray-300 transition-colors"
                                     >
                                       {contact.value}
                                     </a>
@@ -307,20 +281,10 @@ export default function ContactPage() {
                                 )}
                                 {contact.type === 'email' && (
                                   <>
-                                    <Mail
-                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                                        dept.color === 'blue'
-                                          ? 'text-brand-blue-900'
-                                          : 'text-brand-red-900'
-                                      }`}
-                                    />
+                                    <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-red-400" />
                                     <a
                                       href={`mailto:${contact.value}`}
-                                      className={`transition-colors break-all ${
-                                        dept.color === 'blue'
-                                          ? 'text-gray-700 hover:text-brand-blue-900'
-                                          : 'text-gray-700 hover:text-brand-red-900'
-                                      }`}
+                                      className="text-white hover:text-gray-300 transition-colors break-all"
                                     >
                                       {contact.value}
                                     </a>
@@ -328,14 +292,8 @@ export default function ContactPage() {
                                 )}
                                 {contact.type === 'address' && (
                                   <>
-                                    <MapPin
-                                      className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                                        dept.color === 'blue'
-                                          ? 'text-brand-blue-900'
-                                          : 'text-brand-red-900'
-                                      }`}
-                                    />
-                                    <span className="text-gray-700">
+                                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-red-400" />
+                                    <span className="text-white">
                                       {contact.value}
                                     </span>
                                   </>
@@ -369,9 +327,7 @@ export default function ContactPage() {
                             <info.icon className="h-6 w-6 text-brand-red-900" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-bold mb-1">
-                              {info.title}
-                            </h3>
+                            <h3 className="font-bold mb-1">{info.title}</h3>
                             {info.link ? (
                               <a
                                 href={info.link}
@@ -591,7 +547,7 @@ export default function ContactPage() {
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-14 text-lg bg-brand-blue-900 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

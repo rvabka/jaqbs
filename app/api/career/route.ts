@@ -16,11 +16,12 @@ export async function POST(req: NextRequest) {
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
     const position = formData.get('position') as string;
+    const region = formData.get('region') as string;
     const message = formData.get('message') as string;
     const recaptchaToken = formData.get('recaptchaToken') as string;
     const cvFile = formData.get('cv') as File;
 
-    if (!name || !email || !phone || !position || !cvFile) {
+    if (!name || !email || !phone || !position || !region || !cvFile) {
       return NextResponse.json(
         { error: 'Wszystkie wymagane pola muszą być wypełnione' },
         { status: 400 }
@@ -44,6 +45,7 @@ export async function POST(req: NextRequest) {
         email,
         phone,
         position,
+        region,
         message,
         cvFileName: cvFile.name
       },

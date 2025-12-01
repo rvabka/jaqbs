@@ -29,7 +29,7 @@ export function PageHero({ title, description }: PageHeroProps) {
   return (
     <section
       ref={ref}
-      className="relative overflow-visible bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-blue-700 pb-32"
+      className="relative overflow-visible bg-gradient-to-br from-brand-blue-900 via-brand-blue-800 to-brand-blue-900 pb-32"
     >
       {isMounted && (
         <div className="absolute inset-0 opacity-8">
@@ -52,7 +52,7 @@ export function PageHero({ title, description }: PageHeroProps) {
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse" />
 
       <div className="relative container mx-auto px-4 pt-32">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export function PageHero({ title, description }: PageHeroProps) {
             <div className="relative inline-block">
               <div className="absolute -inset-4 bg-brand-red-700/10 blur-xl rounded-full" />
               <p
-                className="relative text-xl md:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto mb-2 font-light"
+                className="relative text-xl md:text-2xl text-white/90 leading-relaxed max-w-6xl mx-auto mb-2 font-light"
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>

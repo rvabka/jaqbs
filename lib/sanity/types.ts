@@ -53,10 +53,9 @@ export interface Category {
 export interface Job {
   _id: string;
   title: string;
-  slug: {
-    current: string;
-  };
+  slug: { current: string };
   location: string;
+  region: string;
   type: string;
   salary: string;
   description: string;

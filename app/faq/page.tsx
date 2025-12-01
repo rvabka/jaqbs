@@ -124,18 +124,18 @@ export default function Faq() {
     <>
       <PageHero
         title="FAQ"
-        description="Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług transportowych."
+        description="Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usługach transportowych"
       />
       <section className="py-12 g-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-700/5 to-brand-red-700/5 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-brand-blue-900/5 to-brand-red-700/5 rounded-full blur-3xl animate-float"></div>
           <div
-            className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-red-700/5 to-brand-blue-700/5 rounded-full blur-3xl animate-float"
+            className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-brand-red-700/5 to-brand-blue-900/5 rounded-full blur-3xl animate-float"
             style={{ animationDelay: '3s' }}
           ></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-red-50 to-blue-50 rounded-full px-4 py-2 text-sm font-medium text-red-800 mb-6">
               <div className="w-2 h-2 bg-red-700 rounded-full animate-pulse"></div>
@@ -157,7 +157,7 @@ export default function Faq() {
                 className={`group hover-lift border-2 transition-all duration-300 animate-fade-in-up ${
                   openIndex === index
                     ? 'border-brand-red-700 shadow-lg shadow-brand-red-700/10'
-                    : 'border-gray-100 hover:border-brand-blue-700/30'
+                    : 'border-gray-100 hover:border-brand-blue-900/30'
                 }`}
                 style={{ animationDelay: `${index * 50}ms` }}
               >
@@ -172,7 +172,7 @@ export default function Faq() {
                       className={`font-bold text-lg transition-colors ${
                         openIndex === index
                           ? 'text-brand-red-700'
-                          : 'text-gray-900 group-hover:text-brand-blue-700'
+                          : 'text-gray-900 group-hover:text-brand-blue-900'
                       }`}
                     >
                       {faq.question}
@@ -181,7 +181,7 @@ export default function Faq() {
                       className={`w-6 h-6 transition-all duration-300 flex-shrink-0 ml-4 ${
                         openIndex === index
                           ? 'rotate-180 text-brand-red-700'
-                          : 'text-gray-400 group-hover:text-brand-blue-700'
+                          : 'text-gray-400 group-hover:text-brand-blue-900'
                       }`}
                     />
                   </button>
@@ -207,7 +207,7 @@ export default function Faq() {
           >
             <Card
               hover={false}
-              className="bg-brand-blue-700 border-0 text-white"
+              className="bg-brand-blue-900 border-0 text-white"
             >
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-3">

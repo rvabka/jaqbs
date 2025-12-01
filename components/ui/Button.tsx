@@ -21,8 +21,8 @@ export function Button({
 
   const variants = {
     primary: [
-      'bg-gradient-to-r from-brand-blue-700 via-brand-blue-600 to-brand-blue-700 text-white',
-      'hover:from-brand-blue-800 hover:via-brand-blue-700 hover:to-brand-blue-800',
+      'bg-gradient-to-r from-brand-blue-900 via-brand-blue-600 to-brand-blue-900 text-white',
+      'hover:from-brand-blue-800 hover:via-brand-blue-900 hover:to-brand-blue-800',
       'hover:shadow-xl hover:shadow-brand-blue-500/25 hover:-translate-y-0.5',
       'focus:ring-brand-blue-500',
       'before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700'

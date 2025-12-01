@@ -39,12 +39,14 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Star
+  Star,
+  Building
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import FormSection from '@/components/FormSection';
 import { useRecaptcha } from '@/hooks/useRecaptcha';
 import CompanyName from './CompanyName';
+import { Select } from './ui/Select';
 
 const onboardingSteps = [
   {
@@ -117,6 +119,27 @@ const typeLabels: Record<string, string> = {
   internship: 'Staż'
 };
 
+const regionLabels: Record<string, string> = {
+  dolnoslaskie: 'Dolnośląskie',
+  'kujawsko-pomorskie': 'Kujawsko-pomorskie',
+  lubelskie: 'Lubelskie',
+  lubuskie: 'Lubuskie',
+  lodzkie: 'Łódzkie',
+  malopolskie: 'Małopolskie',
+  mazowieckie: 'Mazowieckie',
+  opolskie: 'Opolskie',
+  podkarpackie: 'Podkarpackie',
+  podlaskie: 'Podlaskie',
+  pomorskie: 'Pomorskie',
+  slaskie: 'Śląskie',
+  swietokrzyskie: 'Świętokrzyskie',
+  'warminsko-mazurskie': 'Warmińsko-mazurskie',
+  wielkopolskie: 'Wielkopolskie',
+  zachodniopomorskie: 'Zachodniopomorskie',
+  remote: 'Praca zdalna',
+  'cala-polska': 'Cała Polska'
+};
+
 interface CareerContentProps {
   jobs: Job[];
 }
@@ -128,6 +151,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
     email: '',
     phone: '',
     position: '',
+    region: '',
     message: '',
     cvFile: null as File | null
   });
@@ -160,6 +184,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
       formDataToSend.append('email', formData.email);
       formDataToSend.append('phone', formData.phone);
       formDataToSend.append('position', formData.position);
+      formDataToSend.append('region', formData.region);
       formDataToSend.append('message', formData.message);
       formDataToSend.append('recaptchaToken', recaptchaToken);
 
@@ -184,6 +209,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
         email: '',
         phone: '',
         position: '',
+        region: '',
         message: '',
         cvFile: null
       });
@@ -252,37 +278,59 @@ export default function CareerContent({ jobs }: CareerContentProps) {
             </h2>
           </div>
           <div className="relative max-w-7xl mx-auto">
-            <div className="absolute top-24 left-0 right-0 h-2 bg-gray-100 rounded-full transform z-0 hidden md:block mt-4"></div>
+            <div className="absolute top-24 left-0 right-0 h-2 bg-gray-100 rounded-full transform z-0 hidden lg:block mt-4"></div>
             <div
-              className="absolute top-24 left-0 h-2 bg-gradient-to-r from-brand-red-900 to-brand-blue-900 rounded-full transform z-10 transition-all duration-1000 shadow-lg hidden md:block mt-4"
+              className="absolute top-24 left-0 h-2 bg-gradient-to-r from-brand-red-900 to-brand-blue-900 rounded-full transform z-10 transition-all duration-1000 shadow-lg hidden lg:block mt-4"
               style={{
                 width: `${((activeStep + 1) / onboardingSteps.length) * 100}%`
               }}
             ></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-20">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-20">
               {onboardingSteps.map((step, index) => (
                 <div
                   key={step.id}
-                  className={`text-center transform transition-all duration-700 ${index <= activeStep ? 'scale-105 md:scale-110 -translate-y-2' : 'scale-100'}`}
+                  className={`text-center transform transition-all duration-700 ${index <= activeStep ? 'lg:scale-110 lg:-translate-y-2' : 'scale-100'}`}
                 >
                   <div
-                    className={`w-24 h-24 mx-auto ${index <= activeStep ? step.color : 'bg-gray-200'} rounded-full flex items-center justify-center mb-4 lg:mb-14 transition-all duration-700 shadow-xl hover:shadow-2xl ${index <= activeStep ? 'animate-pulse-glow' : ''}`}
+                    className={`w-20 h-20 lg:w-24 lg:h-24 mx-auto ${index <= activeStep ? step.color : 'bg-gray-200'} rounded-full flex items-center justify-center mb-4 lg:mb-14 transition-all duration-700 shadow-xl hover:shadow-2xl ${index <= activeStep ? 'animate-pulse-glow' : ''}`}
                   >
                     <step.icon
-                      className={`h-12 w-12 ${index <= activeStep ? 'text-white' : 'text-gray-400'} transition-all duration-300`}
+                      className={`h-10 w-10 lg:h-12 lg:w-12 ${index <= activeStep ? 'text-white' : 'text-gray-400'} transition-all duration-300`}
                     />
                   </div>
                   <h3
-                    className={`text-xl font-bold mb-3 ${index <= activeStep ? 'text-gray-900' : 'text-gray-500'} transition-colors duration-300`}
+                    className={`text-sm lg:text-xl font-bold mb-1 lg:mb-3 ${index <= activeStep ? 'text-gray-900' : 'text-gray-500'} transition-colors duration-300`}
                   >
                     {step.title}
                   </h3>
+                  <p className="text-xs lg:text-sm text-gray-500 hidden lg:block">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      <div className="max-w-4xl mx-auto px-6 pb-16">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="/hands.webp"
+            alt="Partnerska współpraca w JAQBS"
+            className="w-full h-[300px] md:h-[400px] object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-900/80 via-brand-blue-900/40 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+            <h3 className="text-2xl md:text-3xl font-bold mb-2">
+              Dołącz do naszego zespołu
+            </h3>
+            <p className="text-white/90 text-lg">
+              Razem zbudujemy przyszłość transportu
+            </p>
+          </div>
+        </div>
+      </div>
 
       <section className="py-12 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
@@ -359,16 +407,18 @@ export default function CareerContent({ jobs }: CareerContentProps) {
               </h2>
             </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
-                Odkryj możliwości w różnych działach z konkurencyjnymi
-                wynagrodzeniami i potencjałem rozwoju.
-              </p>
-            </AnimatedSection>
+            {jobs.length > 0 && (
+              <AnimatedSection direction="up" delay={0.4}>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto text-balance">
+                  Odkryj możliwości w różnych działach z konkurencyjnymi
+                  wynagrodzeniami i potencjałem rozwoju.
+                </p>
+              </AnimatedSection>
+            )}
           </AnimatedSection>
 
           {jobs.length === 0 ? (
-            <div className="text-center py-20">
+            <div className="text-center py-5">
               <p className="text-xl text-gray-600">
                 Obecnie nie mamy otwartych pozycji. Sprawdź ponownie wkrótce!
               </p>
@@ -395,6 +445,14 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                               <MapPin className="h-4 w-4 flex-shrink-0" />
                               <span>{job.location}</span>
                             </div>
+                            {job.region && (
+                              <div className="flex items-center space-x-1">
+                                <Building className="h-4 w-4 flex-shrink-0" />
+                                <span>
+                                  {regionLabels[job.region] || job.region}
+                                </span>
+                              </div>
+                            )}
                             <div className="flex items-center space-x-1">
                               <Clock className="h-4 w-4 flex-shrink-0" />
                               <span>{typeLabels[job.type] || job.type}</span>
@@ -414,23 +472,33 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                     </CardHeader>
                     <CardContent className="pt-4 flex-1 flex flex-col">
                       <div className="mb-6 flex-1">
-                        <h4 className="font-bold mb-3 text-gray-900">
-                          Wymagania:
-                        </h4>
-                        <ul className="space-y-2">
-                          {job.requirements.map((req, reqIndex) => (
-                            <li
-                              key={reqIndex}
-                              className="flex items-start space-x-3 text-sm text-gray-600"
-                            >
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
-                              <span>{req}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        {job.requirements && job.requirements.length > 0 && (
+                          <>
+                            <h4 className="font-bold mb-3 text-gray-900">
+                              Wymagania:
+                            </h4>
+                            <ul className="space-y-2">
+                              {job.requirements.map((req, reqIndex) => (
+                                <li
+                                  key={reqIndex}
+                                  className="flex items-start space-x-3 text-sm text-gray-600"
+                                >
+                                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                  <span>{req}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
 
                         {job.benefits && job.benefits.length > 0 && (
-                          <div className="mt-6">
+                          <div
+                            className={
+                              job.requirements && job.requirements.length > 0
+                                ? 'mt-6'
+                                : ''
+                            }
+                          >
                             <h4 className="font-bold mb-3 text-gray-900">
                               Oferujemy:
                             </h4>
@@ -448,12 +516,17 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                           </div>
                         )}
                       </div>
+
                       <Button
                         onClick={() => {
-                          setFormData({ ...formData, position: job.title });
+                          setFormData({
+                            ...formData,
+                            position: job.title,
+                            region: regionLabels[job.region] || job.region || ''
+                          });
                           scrollToForm();
                         }}
-                        className="w-full bg-brand-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12 mt-auto"
+                        className="w-full bg-brand-blue-900 shadow-lg hover:shadow-xl transition-all duration-300 h-12 mt-auto"
                       >
                         Aplikuj teraz
                         <ArrowDown className="ml-2 h-4 w-4" />
@@ -579,6 +652,52 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                   />
                 </div>
               </div>
+              <div className="grid md:grid-cols-2 gap-4 mt-4">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="region"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    Województwo <span className="text-brand-red-900">*</span>
+                  </Label>
+                  <Select
+                    id="region"
+                    required
+                    value={formData.region}
+                    onChange={e =>
+                      setFormData({ ...formData, region: e.target.value })
+                    }
+                    className="h-12"
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Wybierz województwo</option>
+                    <option value="Dolnośląskie">Dolnośląskie</option>
+                    <option value="Kujawsko-pomorskie">
+                      Kujawsko-pomorskie
+                    </option>
+                    <option value="Lubelskie">Lubelskie</option>
+                    <option value="Lubuskie">Lubuskie</option>
+                    <option value="Łódzkie">Łódzkie</option>
+                    <option value="Małopolskie">Małopolskie</option>
+                    <option value="Mazowieckie">Mazowieckie</option>
+                    <option value="Opolskie">Opolskie</option>
+                    <option value="Podkarpackie">Podkarpackie</option>
+                    <option value="Podlaskie">Podlaskie</option>
+                    <option value="Pomorskie">Pomorskie</option>
+                    <option value="Śląskie">Śląskie</option>
+                    <option value="Świętokrzyskie">Świętokrzyskie</option>
+                    <option value="Warmińsko-mazurskie">
+                      Warmińsko-mazurskie
+                    </option>
+                    <option value="Wielkopolskie">Wielkopolskie</option>
+                    <option value="Zachodniopomorskie">
+                      Zachodniopomorskie
+                    </option>
+                    <option value="Praca zdalna">Praca zdalna</option>
+                    <option value="Cała Polska">Cała Polska</option>
+                  </Select>
+                </div>
+              </div>
             </div>
 
             <div className="border-t border-gray-200 pt-8">
@@ -645,7 +764,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting}
-                className="w-full h-14 text-lg bg-brand-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full h-14 text-lg bg-brand-blue-900 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

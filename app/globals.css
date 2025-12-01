@@ -39,7 +39,7 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --brand-blue-700: oklch(0.45 0.15 240);
+  --brand-blue-900: oklch(0.45 0.15 240);
   --brand-blue-800: oklch(0.35 0.15 240);
   --brand-red-700: oklch(0.55 0.22 25);
   --brand-red-800: oklch(0.45 0.22 25);
@@ -120,7 +120,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --color-brand-blue-700: var(--brand-blue-700);
+  --color-brand-blue-900: var(--brand-blue-900);
   --color-brand-blue-800: var(--brand-blue-800);
   --color-brand-red-700: var(--brand-red-700);
   --color-brand-red-800: var(--brand-red-800);
@@ -822,7 +822,8 @@
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
   }
   50% {

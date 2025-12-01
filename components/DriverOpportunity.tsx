@@ -44,7 +44,7 @@ export default function DriverOpportunity() {
             >
               <Button
                 size="lg"
-                className="bg-brand-blue-700 hover:bg-brand-blue-800"
+                className="bg-brand-blue-900 hover:bg-brand-blue-800"
               >
                 Apply Now
               </Button>
