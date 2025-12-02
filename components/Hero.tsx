@@ -204,11 +204,11 @@ export default function Hero() {
                         />
                       </div>
 
-                      <h3
+                      <p
                         className={`font-bold mb-1 md:mb-1.5 text-sm md:text-base lg:text-lg text-white transition-transform duration-300 ${isActive ? 'scale-105' : 'scale-100'}`}
                       >
                         {step.label}
-                      </h3>
+                      </p>
 
                       <p
                         className={`text-xs md:text-sm transition-opacity duration-300 ${
