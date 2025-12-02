@@ -345,7 +345,7 @@ export default function WspolpracaPage() {
               </Button>
 
               <p className="text-xs text-gray-500 mt-4 text-center">
-                Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+                Ta strona jest chroniona przez reCAPTCHA Google. <br />
                 <a
                   href="https://policies.google.com/privacy"
                   target="_blank"

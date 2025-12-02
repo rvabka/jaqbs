@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero';
 import Partners from '@/components/Partners';
 import CheapestTransport from '@/components/CheapestTransport';
-import DriverOpportunity from '@/components/DriverOpportunity';
 import GlobalService from '@/components/GlobalService';
 import { client } from '@/lib/sanity/client';
 import { recentPostsQuery } from '@/lib/sanity/queries';
@@ -20,10 +19,9 @@ export default async function Home() {
     <main className="min-h-screen">
       <Hero />
       <Partners />
+      <GoogleReviews />
       <CheapestTransport />
       <GlobalService />
-      <GoogleReviews />
-      {/* <DriverOpportunity /> */}
       <RecentBlogPosts posts={recentPosts} />
     </main>
   );

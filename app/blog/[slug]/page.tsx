@@ -251,7 +251,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </header>
 
         {post.mainImage && (
-          <div className="max-w-7xl mx-auto px-6 -mt-16 relative z-20">
+          <div className="max-w-7xl mx-auto px-6 relative z-20">
             <AnimatedSection direction="up" delay={0.2}>
               <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <img

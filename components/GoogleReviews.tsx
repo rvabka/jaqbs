@@ -111,7 +111,7 @@ export default function GoogleReviews() {
           </AnimatedSection>
 
           <AnimatedSection direction="up" delay={0.4}>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
               Dziękujemy za zaufanie! Wasze opinie motywują nas do dalszego
               rozwoju i doskonalenia usług.
             </p>

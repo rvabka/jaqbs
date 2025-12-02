@@ -149,7 +149,7 @@ export default function CarriersPage() {
     { id: 7, image: '/7.webp' },
     { id: 8, image: '/9.webp' },
     { id: 9, image: '/10.webp' },
-    { id: 10, image: '/11.webp' },
+    { id: 10, image: '/11.webp' }
   ];
 
   return (
@@ -401,7 +401,7 @@ export default function CarriersPage() {
             </AnimatedSection>
 
             <FormSection
-              title="Dołącz do naszej sieci przewoźników"
+              title="Współpracuj z nami"
               description="Wypełnij formularz, a my skontaktujemy się z Tobą w sprawie współpracy."
             >
               <form onSubmit={handleSubmit} className="space-y-8">
@@ -587,7 +587,7 @@ export default function CarriersPage() {
                   </Button>
 
                   <p className="text-xs text-gray-500 mt-4 text-center">
-                    Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+                    Ta strona jest chroniona przez reCAPTCHA Google. <br />
                     <a
                       href="https://policies.google.com/privacy"
                       target="_blank"

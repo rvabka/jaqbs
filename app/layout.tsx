@@ -1,11 +1,16 @@
 import Navigation from '@/components/Navigation';
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = localFont({
+  src: './fonts/Inter-VariableFont_opsz,wght.ttf',
+  variable: '--font-inter',
+  weight: '100 900',
+  display: 'swap'
+});
 
 export const metadata: Metadata = {
   title: 'Transport i spedycja - Jaqbs',
@@ -19,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pl" className={inter.variable}>
       <body className={inter.className} suppressHydrationWarning={true}>
         <Navigation />
         <CookieBanner />

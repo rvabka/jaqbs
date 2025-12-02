@@ -68,7 +68,7 @@ export default function RecentBlogPosts({ posts }: RecentBlogPostsProps) {
           </AnimatedSection>
 
           <AnimatedSection direction="up" delay={0.4}>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
               Dowiedz się więcej o najnowszych trendach w branży transportowej i
               logistycznej
             </p>
@@ -157,7 +157,7 @@ export default function RecentBlogPosts({ posts }: RecentBlogPostsProps) {
 
         <AnimatedSection direction="up" delay={1.0} className="text-center">
           <div className="inline-flex items-center space-x-4 bg-brand-blue-900 text-white rounded-full px-8 py-4 shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
-            <Link href="/blog" className="text-lg font-semibold">
+            <Link href="/blog" className="text-md md:text-lg font-semibold">
               Zobacz wszystkie artykuły
             </Link>
             <svg

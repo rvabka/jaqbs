@@ -65,7 +65,7 @@ export default function Partners() {
 
           <AnimatedSection direction="up" delay={0.4}>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Współpracujemy z największymi firmami logistycznymi na świecie,
+              Współpracujemy z największymi firmami logistycznymi,
               zapewniając najwyższą jakość usług transportowych.
             </p>
           </AnimatedSection>

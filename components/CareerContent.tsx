@@ -322,12 +322,9 @@ export default function CareerContent({ jobs }: CareerContentProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-900/80 via-brand-blue-900/40 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-2">
+            <h3 className="text-2xl md:text-3xl font-bold mb-2 text-center">
               Dołącz do naszego zespołu
             </h3>
-            <p className="text-white/90 text-lg">
-              Razem zbudujemy przyszłość transportu
-            </p>
           </div>
         </div>
       </div>
@@ -403,7 +400,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
 
             <AnimatedSection direction="up" delay={0.2}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-                Otwarte pozycje
+                Pracuj z nami
               </h2>
             </AnimatedSection>
 
@@ -780,7 +777,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
               </Button>
 
               <p className="text-xs text-gray-500 mt-4 text-center">
-                Ta strona jest chroniona przez reCAPTCHA Google.{' '}
+                Ta strona jest chroniona przez reCAPTCHA Google. <br />
                 <a
                   href="https://policies.google.com/privacy"
                   target="_blank"

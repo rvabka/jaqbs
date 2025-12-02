@@ -127,7 +127,7 @@ export default function BlogContent({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, index) => (
             <Link key={post._id} href={`/blog/${post.slug.current}`}>
-              <Card className="hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-1 bg-white/80 backdrop-blur-sm hover-lift h-full">
+              <Card hover={false} className="hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-1 bg-white/80 backdrop-blur-sm hover-lift h-full">
                 {post.mainImage && (
                   <div className="aspect-video overflow-hidden">
                     <img

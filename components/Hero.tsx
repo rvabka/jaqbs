@@ -109,8 +109,8 @@ export default function Hero() {
               >
                 <Truck className="w-8 h-8 text-white" />
               </motion.div>
-              <span className="text-xs md:text-base font-medium text-white">
-                Od 2010 roku w branży spedycyjnej
+              <span className="text-sm md:text-base font-medium text-white">
+                Od 2010 roku w branży
               </span>
             </motion.div>
 

@@ -96,7 +96,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <div className="grid lg:grid-cols-2 gap-8">
               {featuredPosts.map(article => (
                 <Link key={article._id} href={`/blog/${article.slug.current}`}>
-                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
+                  <Card hover={false} className="overflow-hidden hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
                     <div className="aspect-video bg-gradient-to-br from-brand-red-700 via-brand-red-600 to-brand-blue-900 overflow-hidden">
                       {article.mainImage && (
                         <img

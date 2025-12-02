@@ -43,7 +43,10 @@ export default function FormSection({
         </AnimatedSection>
 
         <AnimatedSection direction="up" delay={0.6}>
-          <Card className="shadow-2xl border-0 hover:shadow-3xl transition-all duration-300">
+          <Card
+            hover={false}
+            className="shadow-2xl border-0 hover:shadow-3xl transition-all duration-300"
+          >
             <CardContent className="p-8 md:p-12">{children}</CardContent>
           </Card>
         </AnimatedSection>
