@@ -777,8 +777,7 @@ export default function CareerContent({ jobs }: CareerContentProps) {
               </Button>
 
               <p className="text-xs text-gray-500 mt-4 text-center">
-                Ta strona jest chroniona przez reCAPTCHA Google. <br />
-                <a
+                Ta strona jest chroniona przez reCAPTCHA Google. <br /><a
                   href="https://policies.google.com/privacy"
                   target="_blank"
                   rel="noopener noreferrer"

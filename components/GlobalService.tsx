@@ -18,25 +18,25 @@ export default function GlobalService() {
 
   const documents = [
     {
-      name: 'Licencja transportowa',
+      name: 'Certyfikat',
       icon: FileText,
-      file: '/docs/licencja-transportowa.pdf'
+      file: '/docs/Certyfikat.pdf'
     },
     {
       name: 'Licencja spedycyjna',
       icon: FileText,
-      file: '/docs/licencja-spedycyjna.pdf'
+      file: '/docs/Licencja spedycyjna.pdf'
     },
-    { name: 'Certyfikat ISO', icon: Award, file: '/docs/certyfikat-iso.pdf' },
+    { name: 'Licencja unijna', icon: Award, file: '/docs/Licencja unijna.pdf' },
     {
-      name: 'Zezwolenie międzynarodowe',
+      name: 'Zezwolenie',
       icon: FileText,
-      file: '/docs/zezwolenie-miedzynarodowe.pdf'
+      file: '/docs/Zezwolenie.pdf'
     },
     {
-      name: 'Zezwolenie międzynarodowe',
+      name: 'Ubezpieczeinie',
       icon: FileText,
-      file: '/docs/zezwolenie-miedzynarodowe.pdf'
+      file: '/docs/Ubezpieczenie.pdf'
     }
   ];
 

@@ -67,7 +67,7 @@ export function Button({
       className={cn(baseStyles, variants[variant], sizes[size], className)}
       {...(asChild ? {} : props)}
     >
-      <span className="relative z-10 flex items-center justify-center gap-2">
+      <span className="text-sm lg:text-base relative z-10 flex items-center justify-center gap-2">
         {children}
       </span>
 

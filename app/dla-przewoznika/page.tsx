@@ -370,7 +370,7 @@ export default function CarriersPage() {
       <section className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/5 rounded-full blur-3xl"></div>
 
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <AnimatedSection direction="left">
               <div className="inline-flex items-center space-x-2 bg-brand-blue-50 rounded-full px-4 py-2 text-sm font-medium text-brand-blue-800 mb-6">

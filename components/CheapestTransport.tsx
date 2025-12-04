@@ -1,6 +1,7 @@
 import { Package } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { AnimatedSection, StaggeredItem } from './ui/AnimatedSection';
+import Link from 'next/link';
 
 export default function CheapestTransport() {
   return (
@@ -43,7 +44,7 @@ export default function CheapestTransport() {
             </p>
             <AnimatedSection direction="up" delay={0.3}>
               <Button size="lg" variant="primary">
-                <a href="/o-nas">Dowiedz się więcej</a>
+                <Link href="/o-nas">Dowiedz się więcej</Link>
               </Button>
             </AnimatedSection>
           </div>

@@ -24,7 +24,7 @@ export default async function CareerPage() {
       <Suspense
         fallback={<div className="py-20 text-center">Ładowanie...</div>}
       >
-        <CareerContent jobs={jobs} />
+          <CareerContent jobs={jobs} />
       </Suspense>
     </div>
   );

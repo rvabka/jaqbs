@@ -87,10 +87,10 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pb-8 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 pb-0 lg:pb-8 relative z-10 w-full">
         <div className="flex flex-col items-center space-y-8 md:space-y-12">
           <div
-            className={`text-center space-y-4 md:space-y-6 transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`text-center space-y-3 md:space-y-6 transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
             <motion.div
               className="inline-flex items-center space-x-2 bg-white/10 rounded-full px-5 md:px-6 py-2 md:py-2.5 border border-white/20"
@@ -137,7 +137,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="text-base md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto px-4"
+              className="text-base md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto"
             >
               Profesjonalny transport krajowy i międzynarodowy z gwarancją
               bezpieczeństwa i terminowości
@@ -147,7 +147,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-2 md:pt-4 px-4"
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 pt-2 md:pt-4"
             >
               <Link
                 href={'/kontakt'}
@@ -170,7 +170,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
-            className="w-full max-w-5xl px-4"
+            className="w-full max-w-5xl"
           >
             <div className="relative rounded-2xl md:rounded-3xl p-4 md:p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 border border-white/20 shadow-2xl">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
@@ -181,7 +181,7 @@ export default function Hero() {
                   return (
                     <div
                       key={index}
-                      className={`relative flex flex-col items-center text-center p-4 md:p-5 rounded-xl md:rounded-2xl h-[220px] transition-all duration-300 ${
+                      className={`relative flex flex-col items-center text-center p-4 md:p-5 rounded-xl md:rounded-2xl h-[135px] lg:h-[220px] transition-all duration-300 ${
                         isActive
                           ? 'bg-gradient-to-br from-brand-blue-900/50 to-brand-blue-800/50 border-2 border-brand-blue-500/50 shadow-lg'
                           : isPrevious
@@ -211,7 +211,7 @@ export default function Hero() {
                       </p>
 
                       <p
-                        className={`text-xs md:text-sm transition-opacity duration-300 ${
+                        className={`text-xs md:text-sm transition-opacity duration-300 hidden lg:block ${
                           isActive
                             ? 'text-gray-200 opacity-100'
                             : 'text-white/70 opacity-70'
@@ -242,7 +242,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className=" absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+      <div className="hidden lg:block lg:absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
         <div className="w-6 h-10 md:w-7 md:h-12 border-2 border-white/40 rounded-full flex justify-center">
           <div className="w-1.5 h-3 md:h-4 bg-white/60 rounded-full mt-2 md:mt-2.5 animate-pulse"></div>
         </div>

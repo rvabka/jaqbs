@@ -54,7 +54,7 @@ export default function CTASection({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               asChild
-              className=" shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold"
+              className=" shadow-xl hover:shadow-2xl transition-all duration-300 rounded-full px-10 py-6 text-md lg:text-lg font-bold"
             >
               <Link href={primaryButtonHref}>{primaryButtonText}</Link>
             </Button>
@@ -63,7 +63,7 @@ export default function CTASection({
               <Button
                 asChild
                 variant="secondary"
-                className="border-2 border-white transition-all duration-300 rounded-full px-10 py-6 text-lg font-bold bg-transparent"
+                className="border-2 border-white transition-all duration-300 rounded-full px-10 py-6 text-md lg:text-lg font-bold bg-transparent"
               >
                 <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>
               </Button>

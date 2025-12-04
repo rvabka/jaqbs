@@ -12,9 +12,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <a href="/" className="flex items-center">
+              <Link href="/" className="flex items-center">
                 <img src="/logo_small.png" className="h-8 w-auto" alt="Logo" />
-              </a>
+              </Link>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6 mt-10">
               Profesjonalny transport krajowy i międzynarodowy z gwarancją
