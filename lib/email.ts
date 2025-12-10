@@ -42,7 +42,7 @@ export async function sendContactEmail(data: ContactFormData) {
   try {
     const { error } = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_TO!,
+      to: process.env.EMAIL_CONTACT!, // ← Zmiana
       subject: `Nowa wiadomość z formularza kontaktowego - ${data.subject || 'Brak tematu'}`,
       html: `
         <!DOCTYPE html>
@@ -113,7 +113,7 @@ export async function sendCarrierEmail(data: CarrierFormData) {
   try {
     const { error } = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_TO!,
+      to: process.env.EMAIL_SHIPPING!, // ← Zmiana (spedycja/przewoźnicy)
       subject: `Zgłoszenie przewoźnika - ${data.company}`,
       html: `
         <!DOCTYPE html>
@@ -192,7 +192,7 @@ export async function sendQuoteEmail(data: QuoteFormData) {
   try {
     const { error } = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_TO!,
+      to: process.env.EMAIL_OFFER!, // ← Zmiana (oferty/wyceny)
       subject: `Zapytanie o wycenę - ${data.company}`,
       html: `
         <!DOCTYPE html>
@@ -265,7 +265,7 @@ export async function sendCareerEmail(data: CareerFormData, cvBuffer?: Buffer) {
   try {
     const { error } = await resend.emails.send({
       from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_TO!,
+      to: process.env.EMAIL_RECRUITMENT!, // ← Zmiana (rekrutacja)
       subject: `Aplikacja na stanowisko: ${data.position}`,
       html: `
         <!DOCTYPE html>
