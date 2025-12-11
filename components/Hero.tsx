@@ -137,7 +137,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
-              className="text-base h-short:text-xs md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto"
+              className="text-lg h-short:text-xs md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto"
             >
               Profesjonalny transport krajowy i międzynarodowy z gwarancją
               bezpieczeństwa i terminowości
