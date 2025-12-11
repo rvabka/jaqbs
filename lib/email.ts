@@ -1,6 +1,12 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER!,
+    pass: process.env.GMAIL_APP_PASSWORD!
+  }
+});
 
 export interface ContactFormData {
   name: string;
@@ -40,9 +46,10 @@ export interface CareerFormData {
 
 export async function sendContactEmail(data: ContactFormData) {
   try {
-    const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_CONTACT!, // ← Zmiana
+    await transporter.sendMail({
+      from: `"JAQBS Transport" <${process.env.GMAIL_USER}>`,
+      to: process.env.EMAIL_CONTACT!,
+      replyTo: data.email,
       subject: `Nowa wiadomość z formularza kontaktowego - ${data.subject || 'Brak tematu'}`,
       html: `
         <!DOCTYPE html>
@@ -98,10 +105,6 @@ export async function sendContactEmail(data: ContactFormData) {
       `
     });
 
-    if (error) {
-      throw error;
-    }
-
     return { success: true };
   } catch (error) {
     console.error('Error sending contact email:', error);
@@ -111,9 +114,10 @@ export async function sendContactEmail(data: ContactFormData) {
 
 export async function sendCarrierEmail(data: CarrierFormData) {
   try {
-    const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_SHIPPING!, // ← Zmiana (spedycja/przewoźnicy)
+    await transporter.sendMail({
+      from: `"JAQBS Transport" <${process.env.GMAIL_USER}>`,
+      to: process.env.EMAIL_SHIPPING!,
+      replyTo: data.email,
       subject: `Zgłoszenie przewoźnika - ${data.company}`,
       html: `
         <!DOCTYPE html>
@@ -177,10 +181,6 @@ export async function sendCarrierEmail(data: CarrierFormData) {
       `
     });
 
-    if (error) {
-      throw error;
-    }
-
     return { success: true };
   } catch (error) {
     console.error('Error sending carrier email:', error);
@@ -190,9 +190,10 @@ export async function sendCarrierEmail(data: CarrierFormData) {
 
 export async function sendQuoteEmail(data: QuoteFormData) {
   try {
-    const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_OFFER!, // ← Zmiana (oferty/wyceny)
+    await transporter.sendMail({
+      from: `"JAQBS Transport" <${process.env.GMAIL_USER}>`,
+      to: process.env.EMAIL_OFFER!,
+      replyTo: data.email,
       subject: `Zapytanie o wycenę - ${data.company}`,
       html: `
         <!DOCTYPE html>
@@ -250,10 +251,6 @@ export async function sendQuoteEmail(data: QuoteFormData) {
       `
     });
 
-    if (error) {
-      throw error;
-    }
-
     return { success: true };
   } catch (error) {
     console.error('Error sending quote email:', error);
@@ -263,9 +260,10 @@ export async function sendQuoteEmail(data: QuoteFormData) {
 
 export async function sendCareerEmail(data: CareerFormData, cvBuffer?: Buffer) {
   try {
-    const { error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: process.env.EMAIL_RECRUITMENT!, // ← Zmiana (rekrutacja)
+    await transporter.sendMail({
+      from: `"JAQBS Transport" <${process.env.GMAIL_USER}>`,
+      to: process.env.EMAIL_RECRUITMENT!,
+      replyTo: data.email,
       subject: `Aplikacja na stanowisko: ${data.position}`,
       html: `
         <!DOCTYPE html>
@@ -346,10 +344,6 @@ export async function sendCareerEmail(data: CareerFormData, cvBuffer?: Buffer) {
           ]
         : []
     });
-
-    if (error) {
-      throw error;
-    }
 
     return { success: true };
   } catch (error) {

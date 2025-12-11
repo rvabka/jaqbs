@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import {
@@ -27,6 +28,20 @@ import { Post, Category } from '@/lib/sanity/types';
 import BlogContent from '@/components/blog/BlogContent';
 import { PageHero } from '@/components/PageHero';
 
+export const metadata: Metadata = {
+  title: 'Blog - Aktualności i poradniki | Jaqbs',
+  description:
+    'Blog o transporcie i spedycji. Aktualności branżowe, poradniki, nowości w logistyce. Ekspercka wiedza od profesjonalistów Jaqbs.',
+  keywords:
+    'blog transportowy, aktualności transport, poradniki spedycja, logistyka blog, branża TSL, transport międzynarodowy',
+  openGraph: {
+    title: 'Blog - Aktualności i poradniki | Jaqbs',
+    description:
+      'Blog o transporcie i spedycji. Aktualności branżowe i poradniki.',
+    url: 'https://jaqbs.eu/blog',
+    type: 'website'
+  }
+};
 
 const POSTS_PER_PAGE = 9;
 
@@ -96,7 +111,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <div className="grid lg:grid-cols-2 gap-8">
               {featuredPosts.map(article => (
                 <Link key={article._id} href={`/blog/${article.slug.current}`}>
-                  <Card hover={false} className="overflow-hidden hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-2 bg-white/80 backdrop-blur-sm">
+                  <Card
+                    hover={false}
+                    className="overflow-hidden hover:shadow-2xl transition-all duration-500 group cursor-pointer border-0 shadow-sm hover:-translate-y-2 bg-white/80 backdrop-blur-sm"
+                  >
                     <div className="aspect-video bg-gradient-to-br from-brand-red-700 via-brand-red-600 to-brand-blue-900 overflow-hidden">
                       {article.mainImage && (
                         <img

@@ -118,7 +118,7 @@ export default async function ArticlePage({ params }: PageProps) {
       name: 'Jaqbs',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://jaqbs.pl/logo.png'
+        url: 'https://jaqbs.eu/logo.png'
       }
     },
     mainEntityOfPage: {
@@ -135,19 +135,19 @@ export default async function ArticlePage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Strona główna',
-        item: 'https://jaqbs.pl'
+        item: 'https://jaqbs.eu'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: 'https://jaqbs.pl/blog'
+        item: 'https://jaqbs.eu/blog'
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: post.category,
-        item: `https://jaqbs.pl/blog?kategoria=${post.categorySlug}`
+        item: `https://jaqbs.eu/blog?kategoria=${post.categorySlug}`
       },
       {
         '@type': 'ListItem',
@@ -185,29 +185,33 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="absolute top-20 right-20 w-96 h-96 bg-brand-red-700/20 rounded-full blur-3xl animate-pulse-glow"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-brand-blue-900/20 rounded-full blur-3xl"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 pt-10">
+          <div className="max-w-7xl mx-auto px-3 relative z-10 pt-5">
             <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto mb-6">
-              <ol className="flex items-center space-x-2 text-sm">
-                <li>
+              <ol className="flex items-center space-x-2 text-sm overflow-x-auto scrollbar-hide">
+                <li className="flex-shrink-0">
                   <Link
                     href="/"
                     className="text-white/80 py-2 font-light hover:text-white transition-all duration-300"
                   >
-                    Strona główna /
+                    Strona główna
                   </Link>
                 </li>
-                <li>
+                <li className="flex-shrink-0 text-white/60">/</li>
+                <li className="flex-shrink-0">
                   <Link
                     href="/blog"
                     className="text-white/80 py-2 font-light hover:text-white transition-all duration-300"
                   >
-                    Blog /
+                    Blog
                   </Link>
                 </li>
-                <li className="text-white/80 py-2 font-bold">{post.title}</li>
+                <li className="flex-shrink-0 text-white/60">/</li>
+                <li className="text-white/80 py-2 font-bold truncate max-w-[200px] sm:max-w-none">
+                  {post.title}
+                </li>
               </ol>
             </nav>
-
+            
             <AnimatedSection direction="up">
               <Badge className={`${getCategoryColor(post.categoryColor)} mb-4`}>
                 {post.category}
